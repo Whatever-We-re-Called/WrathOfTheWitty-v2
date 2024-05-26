@@ -8,6 +8,7 @@ extends Node2D
 @export var enemy_party_character_roots: Array[Node2D]
 
 @onready var camera = $Camera2D
+@onready var battle_interface = $CanvasLayer/BattleInterface
 
 var selected_enemy_index = 2
 var player_characters: Array[BattleCharacter]
@@ -57,6 +58,8 @@ func _init_player_party():
 		battle_character.init(character_info, facing_direction)
 		
 		player_characters.append(battle_character)
+	
+	battle_interface.update_player_character_info(player_characters)
 
 
 func _init_enemy_party():

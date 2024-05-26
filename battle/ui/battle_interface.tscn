@@ -1,0 +1,191 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcw6fvsgrgcnt"]
+
+[ext_resource type="Script" path="res://battle/ui/battle_interface.gd" id="1_8kcoe"]
+[ext_resource type="Texture2D" uid="uid://cjjtsx7xursga" path="res://battle/ui/d12.svg" id="1_e24yy"]
+[ext_resource type="Texture2D" uid="uid://dihrmtvoyq5a6" path="res://characters/textures/insecurity_affinities/Deflect_Icon_Final.svg" id="1_efha7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0a3vh"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_cwf2q"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_j06hv"]
+font_size = 32
+font_color = Color(0.0392157, 0.737255, 0.843137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkcxb"]
+font_size = 32
+
+[node name="BattleInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8kcoe")
+
+[node name="TopLeftInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="ColorRect" type="ColorRect" parent="TopLeftInfo"]
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLeftInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopLeftInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Cockroach"
+label_settings = SubResource("LabelSettings_0a3vh")
+
+[node name="InsecurityAffinitiesContainer" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ActiveEffectsContainer" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/ActiveEffectsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_efha7")
+expand_mode = 1
+
+[node name="BottomLeftInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -255.0
+offset_right = 213.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftInfo"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="TargetLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "A/D - Target"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="ConfirmLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SPACE - Confirm"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "C - Back"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "E - View Bag"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="EndTurnLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "ENTER - End Turn"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomLeftInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+modulate = Color(0.0392157, 0.737255, 0.843137, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_e24yy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Mana "
+label_settings = SubResource("LabelSettings_j06hv")
+
+[node name="Label2" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "6"
+label_settings = SubResource("LabelSettings_dkcxb")
+
+[node name="BottomRightInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="PlayerCharacterInfoContainer" type="VBoxContainer" parent="BottomRightInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16

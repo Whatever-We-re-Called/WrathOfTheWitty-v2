@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="PartyInfo" load_steps=3 format=3 uid="uid://bc0rdh8w5yfmn"]
+[gd_resource type="Resource" script_class="PartyInfo" load_steps=4 format=3 uid="uid://bc0rdh8w5yfmn"]
 
 [ext_resource type="Resource" uid="uid://ffybeur4n71a" path="res://characters/info/resources/thanos_character_info.tres" id="1_detn5"]
 [ext_resource type="Script" path="res://battle/parties/party_info.gd" id="1_mvpvk"]
+[ext_resource type="Resource" uid="uid://bwqo0qjeitnb7" path="res://characters/info/resources/guy_character_info.tres" id="2_ecdgh"]
 
 [resource]
 script = ExtResource("1_mvpvk")
-characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("1_detn5")])
+characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("2_ecdgh")])
 max_mana = 0

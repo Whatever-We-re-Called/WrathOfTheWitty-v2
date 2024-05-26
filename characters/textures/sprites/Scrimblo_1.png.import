@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5egrqbpvw0sh"
-path="res://.godot/imported/Scrimblo_1.png-f541952d7b73a2a0eddc105b21cc637e.ctex"
+path="res://.godot/imported/Scrimblo_1.png-ca20c1d8b6ff9e5ae1ba2cbe83b2c949.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/Scrimblo_1.png"
-dest_files=["res://.godot/imported/Scrimblo_1.png-f541952d7b73a2a0eddc105b21cc637e.ctex"]
+source_file="res://characters/textures/sprites/Scrimblo_1.png"
+dest_files=["res://.godot/imported/Scrimblo_1.png-ca20c1d8b6ff9e5ae1ba2cbe83b2c949.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4e5mg6hslrme"
-path="res://.godot/imported/gun_pointed_at_camera_png_by_akithefull_dflhmqr-fullview.png-a3b5f17cfa1d334a419e1f15b752b122.ctex"
+uid="uid://dky6aplf5i78w"
+path="res://.godot/imported/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png-b406bc7f3d7c1a52999f450e0cc4ac9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/gun_pointed_at_camera_png_by_akithefull_dflhmqr-fullview.png"
-dest_files=["res://.godot/imported/gun_pointed_at_camera_png_by_akithefull_dflhmqr-fullview.png-a3b5f17cfa1d334a419e1f15b752b122.ctex"]
+source_file="res://characters/textures/sprites/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png"
+dest_files=["res://.godot/imported/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png-b406bc7f3d7c1a52999f450e0cc4ac9d.ctex"]
 
 [params]
 

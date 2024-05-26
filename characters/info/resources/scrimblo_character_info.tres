@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://0acin5kgb8yc"]
 
-[ext_resource type="Texture2D" uid="uid://c5egrqbpvw0sh" path="res://characters/textures/Scrimblo_1.png" id="1_lasqk"]
+[ext_resource type="Texture2D" uid="uid://c5egrqbpvw0sh" path="res://characters/textures/sprites/Scrimblo_1.png" id="1_lasqk"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="1_wtmt3"]
 
 [resource]

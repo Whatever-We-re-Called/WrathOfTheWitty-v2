@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_fmosv"]
 [ext_resource type="Resource" uid="uid://be5sn3rkg1hj2" path="res://battle/parties/resources/test_enemy_party_info.tres" id="3_3ojtu"]
 [ext_resource type="Script" path="res://battle/scene/battle_camera.gd" id="4_ip81e"]
-[ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/interface/battle_interface.tscn" id="5_alhgq"]
+[ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/ui/battle_interface.tscn" id="5_alhgq"]
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_party_character_roots", "enemy_party_character_roots")]
 script = ExtResource("1_7cosg")

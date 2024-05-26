@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmk8at32roe7v"
-path="res://.godot/imported/concept2_floor.png-cba9d8bf856adb17391d6a485e40d0af.ctex"
+uid="uid://cipjt5fmgcdj5"
+path="res://.godot/imported/handsome-and-smart-businessman-in-black-suit-isolated-on-white-background-copy-space-free-png.png-d5562067b454df5a436f37c5ae7d8f42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/concept2_floor.png"
-dest_files=["res://.godot/imported/concept2_floor.png-cba9d8bf856adb17391d6a485e40d0af.ctex"]
+source_file="res://characters/textures/sprites/handsome-and-smart-businessman-in-black-suit-isolated-on-white-background-copy-space-free-png.png"
+dest_files=["res://.godot/imported/handsome-and-smart-businessman-in-black-suit-isolated-on-white-background-copy-space-free-png.png-d5562067b454df5a436f37c5ae7d8f42.ctex"]
 
 [params]
 

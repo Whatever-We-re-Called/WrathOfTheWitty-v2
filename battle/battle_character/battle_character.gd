@@ -5,11 +5,14 @@ class_name BattleCharacter extends Node2D
 
 var character_info: CharacterInfo
 var facing_direction: Constants.FacingDirection
+var health: int
 
 
 func init(character_info: CharacterInfo, facing_direction: Constants.FacingDirection):
 	self.character_info = character_info.duplicate()
 	self.facing_direction = facing_direction
+	
+	self.health = character_info.max_health
 	
 	_init_sprite_2d()
 

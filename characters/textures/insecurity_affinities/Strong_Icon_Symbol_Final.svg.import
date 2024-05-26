@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6pglu77hr73j"
-path="res://.godot/imported/Marvel-Villian-Thanos-PNG-Images.png-c35a8d3e70ea665484fb61c4ffaf4fb3.ctex"
+uid="uid://6d8hka8utaaf"
+path="res://.godot/imported/Strong_Icon_Symbol_Final.svg-bddd39b54e73efa63f4e335b6fd2137f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/Marvel-Villian-Thanos-PNG-Images.png"
-dest_files=["res://.godot/imported/Marvel-Villian-Thanos-PNG-Images.png-c35a8d3e70ea665484fb61c4ffaf4fb3.ctex"]
+source_file="res://characters/textures/insecurity_affinities/Strong_Icon_Symbol_Final.svg"
+dest_files=["res://.godot/imported/Strong_Icon_Symbol_Final.svg-bddd39b54e73efa63f4e335b6fd2137f.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
