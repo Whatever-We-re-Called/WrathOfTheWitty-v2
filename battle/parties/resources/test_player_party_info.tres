@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://ffybeur4n71a" path="res://characters/info/resources/thanos_character_info.tres" id="1_detn5"]
 [ext_resource type="Script" path="res://battle/parties/party_info.gd" id="1_mvpvk"]
-[ext_resource type="Resource" uid="uid://bwqo0qjeitnb7" path="res://characters/info/resources/guy_character_info.tres" id="2_ecdgh"]
+[ext_resource type="Resource" uid="uid://bwqo0qjeitnb7" path="res://characters/info/resources/john_video_game_character_info.tres" id="2_ecdgh"]
 
 [resource]
 script = ExtResource("1_mvpvk")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddc0ooyns7i5m"
-path="res://.godot/imported/Base_Icon_Final.svg-33811c22ae15ded3a5531f5a883b996b.ctex"
+uid="uid://yxqfrqfgwmvr"
+path="res://.godot/imported/Base_Icon_Final.svg-f1bf2712a45c99ee3bf61afddb7abda6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/insecurity_affinities/Base_Icon_Final.svg"
-dest_files=["res://.godot/imported/Base_Icon_Final.svg-33811c22ae15ded3a5531f5a883b996b.ctex"]
+source_file="res://common/insecurities/textures/Base_Icon_Final.svg"
+dest_files=["res://.godot/imported/Base_Icon_Final.svg-f1bf2712a45c99ee3bf61afddb7abda6.ctex"]
 
 [params]
 

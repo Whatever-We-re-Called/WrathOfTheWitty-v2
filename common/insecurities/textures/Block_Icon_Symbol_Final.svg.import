@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxna1xym5bej8"
-path="res://.godot/imported/Heal_Icon_Symbol_Final.svg-eec9b48e27927c877087f7279d5aa2c8.ctex"
+uid="uid://kohpv35w7nji"
+path="res://.godot/imported/Block_Icon_Symbol_Final.svg-5ca84816b83b94e03e36d9211b8030e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/insecurity_affinities/Heal_Icon_Symbol_Final.svg"
-dest_files=["res://.godot/imported/Heal_Icon_Symbol_Final.svg-eec9b48e27927c877087f7279d5aa2c8.ctex"]
+source_file="res://common/insecurities/textures/Block_Icon_Symbol_Final.svg"
+dest_files=["res://.godot/imported/Block_Icon_Symbol_Final.svg-5ca84816b83b94e03e36d9211b8030e4.ctex"]
 
 [params]
 

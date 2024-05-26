@@ -6,8 +6,12 @@
 
 [resource]
 script = ExtResource("2_rqc3v")
+name = "Thanos"
 icon_texture = ExtResource("2_cxq0o")
 backward_facing_texture = ExtResource("1_o175m")
 texture_scale = Vector2(0.375, 0.375)
-insecurity_weaknesses = Array[int]([])
+insecurity_weaknesses = Array[int]([2])
+insecurity_blocks = Array[int]([])
+insecurity_heals = Array[int]([])
+insecurity_deflects = Array[int]([])
 max_health = 100

@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" path="res://battle/ui/battle_interface.gd" id="1_8kcoe"]
 [ext_resource type="Texture2D" uid="uid://cjjtsx7xursga" path="res://battle/ui/d12.svg" id="1_e24yy"]
-[ext_resource type="Texture2D" uid="uid://dihrmtvoyq5a6" path="res://characters/textures/insecurity_affinities/Deflect_Icon_Final.svg" id="1_efha7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0a3vh"]
 font_size = 32
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x56ge"]
+load_path = "res://.godot/imported/Deflect_Icon_Final.svg-d9f707df0af5aa9617b81fb6385ae0f9.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_cwf2q"]
 font_size = 24
@@ -26,84 +28,92 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8kcoe")
 
-[node name="TopLeftInfo" type="MarginContainer" parent="."]
+[node name="SelectedCharacterInfoUI" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="ColorRect" type="ColorRect" parent="TopLeftInfo"]
+[node name="ColorRect" type="ColorRect" parent="SelectedCharacterInfoUI"]
 layout_mode = 2
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="TopLeftInfo"]
+[node name="MarginContainer" type="MarginContainer" parent="SelectedCharacterInfoUI"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TopLeftInfo/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectedCharacterInfoUI/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 
-[node name="NameLabel" type="Label" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SelectedCharacterNameLabel" type="Label" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Cockroach"
 label_settings = SubResource("LabelSettings_0a3vh")
 
-[node name="InsecurityAffinitiesContainer" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SelectedCharacterInsecurityAffinitiesRoot" type="MarginContainer" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="SelectedCharacterInsecurityAffinitiesContainer" type="HBoxContainer" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+[node name="TextureRect" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot/SelectedCharacterInsecurityAffinitiesContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+[node name="TextureRect2" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot/SelectedCharacterInsecurityAffinitiesContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+[node name="TextureRect3" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot/SelectedCharacterInsecurityAffinitiesContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+[node name="TextureRect4" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot/SelectedCharacterInsecurityAffinitiesContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect5" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/HBoxContainer2/InsecurityAffinitiesContainer"]
+[node name="TextureRect5" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/HBoxContainer/SelectedCharacterInsecurityAffinitiesRoot/SelectedCharacterInsecurityAffinitiesContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ActiveEffectsContainer" type="HBoxContainer" parent="TopLeftInfo/MarginContainer/VBoxContainer"]
+[node name="ActiveEffectsContainer" type="HBoxContainer" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TopLeftInfo/MarginContainer/VBoxContainer/ActiveEffectsContainer"]
+[node name="TextureRect" type="TextureRect" parent="SelectedCharacterInfoUI/MarginContainer/VBoxContainer/ActiveEffectsContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("1_efha7")
+texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 
 [node name="BottomLeftInfo" type="MarginContainer" parent="."]
@@ -171,7 +181,7 @@ layout_mode = 2
 text = "6"
 label_settings = SubResource("LabelSettings_dkcxb")
 
-[node name="BottomRightInfo" type="MarginContainer" parent="."]
+[node name="PlayerCharacterInfoUI" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -185,7 +195,7 @@ grow_vertical = 0
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 24
 
-[node name="PlayerCharacterInfoContainer" type="VBoxContainer" parent="BottomRightInfo"]
+[node name="PlayerCharacterInfoContainer" type="VBoxContainer" parent="PlayerCharacterInfoUI"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16

@@ -110,3 +110,4 @@ func _set_selected_character(index: int):
 	for selectable_character in selectable_characters:
 		selectable_character.set_as_selected(selectable_character == selected_character)
 	
+	battle_interface.update_selected_character_info(selected_character)

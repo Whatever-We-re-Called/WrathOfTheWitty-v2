@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6d8hka8utaaf"
-path="res://.godot/imported/Strong_Icon_Symbol_Final.svg-bddd39b54e73efa63f4e335b6fd2137f.ctex"
+uid="uid://c4dt4x6eyv4tp"
+path="res://.godot/imported/Weak_Icon_Symbol_Final.svg-c44e622e99cc1f809cb8289e04a8e8eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/insecurity_affinities/Strong_Icon_Symbol_Final.svg"
-dest_files=["res://.godot/imported/Strong_Icon_Symbol_Final.svg-bddd39b54e73efa63f4e335b6fd2137f.ctex"]
+source_file="res://common/insecurities/textures/Weak_Icon_Symbol_Final.svg"
+dest_files=["res://.godot/imported/Weak_Icon_Symbol_Final.svg-c44e622e99cc1f809cb8289e04a8e8eb.ctex"]
 
 [params]
 

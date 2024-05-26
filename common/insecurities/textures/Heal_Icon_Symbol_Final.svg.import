@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dihrmtvoyq5a6"
-path="res://.godot/imported/Deflect_Icon_Final.svg-d9f707df0af5aa9617b81fb6385ae0f9.ctex"
+uid="uid://vr2048p6ly2q"
+path="res://.godot/imported/Heal_Icon_Symbol_Final.svg-e24fad72ffa6278f1abb30d87a908dc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/insecurity_affinities/Deflect_Icon_Final.svg"
-dest_files=["res://.godot/imported/Deflect_Icon_Final.svg-d9f707df0af5aa9617b81fb6385ae0f9.ctex"]
+source_file="res://common/insecurities/textures/Heal_Icon_Symbol_Final.svg"
+dest_files=["res://.godot/imported/Heal_Icon_Symbol_Final.svg-e24fad72ffa6278f1abb30d87a908dc8.ctex"]
 
 [params]
 

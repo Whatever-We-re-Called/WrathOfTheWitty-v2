@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boxvjt8eiskej"
-path="res://.godot/imported/Block_Icon_Symbol_Final.svg-1913568db566d61a81b5872d5f656357.ctex"
+uid="uid://bemi12ca1bbvm"
+path="res://.godot/imported/Strong_Icon_Final.svg-530a3540bd680b5cb0c9ff9a5a918df1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/textures/insecurity_affinities/Block_Icon_Symbol_Final.svg"
-dest_files=["res://.godot/imported/Block_Icon_Symbol_Final.svg-1913568db566d61a81b5872d5f656357.ctex"]
+source_file="res://common/insecurities/textures/Strong_Icon_Final.svg"
+dest_files=["res://.godot/imported/Strong_Icon_Final.svg-530a3540bd680b5cb0c9ff9a5a918df1.ctex"]
 
 [params]
 

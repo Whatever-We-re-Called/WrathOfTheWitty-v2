@@ -5,7 +5,11 @@
 
 [resource]
 script = ExtResource("2_wekuq")
+name = "Cockroach"
 forward_facing_texture = ExtResource("1_0ck8o")
 texture_scale = Vector2(0.8, 0.8)
-insecurity_weaknesses = Array[int]([])
+insecurity_weaknesses = Array[int]([0])
+insecurity_blocks = Array[int]([1, 2, 3, 4, 5])
+insecurity_heals = Array[int]([])
+insecurity_deflects = Array[int]([])
 max_health = 100
