@@ -1,6 +1,7 @@
 class_name CharacterInfo extends Resource
 
 @export_group("Visuals")
+@export var icon_texture: Texture2D
 @export var forward_facing_texture: Texture2D
 @export var backward_facing_texture: Texture2D
 @export var texture_scale: Vector2
