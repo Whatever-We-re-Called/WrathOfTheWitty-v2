@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://ee6s01idne7u"]
+
+[ext_resource type="Texture2D" uid="uid://dhwsa635orvuk" path="res://map/rooms/textures/rhombus.svg" id="1_54vdv"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_enter.gd" id="2_723c8"]
+[ext_resource type="Script" path="res://ui/framework/executors/scale.gd" id="3_dyswg"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_exit.gd" id="4_nmvlr"]
+[ext_resource type="PackedScene" uid="uid://irl2ycmnbgl" path="res://ui/framework/presets/tooltip/tooltip.tscn" id="5_oaf5u"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Rhombus4" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-158, -4)
+texture = ExtResource("1_54vdv")
+
+[node name="OnHoverEnter" type="Node2D" parent="Rhombus4" node_paths=PackedStringArray("associated_exit", "ui_parent")]
+script = ExtResource("2_723c8")
+associated_exit = NodePath("../OnHoverExit")
+ui_parent = NodePath("..")
+
+[node name="Scale" type="Node2D" parent="Rhombus4/OnHoverEnter"]
+script = ExtResource("3_dyswg")
+target = Vector2(2, 2)
+
+[node name="OnHoverExit" type="Node2D" parent="Rhombus4" node_paths=PackedStringArray("associated_enter", "ui_parent")]
+script = ExtResource("4_nmvlr")
+associated_enter = NodePath("../OnHoverEnter")
+ui_parent = NodePath("..")
+
+[node name="Scale" type="Node2D" parent="Rhombus4/OnHoverExit"]
+script = ExtResource("3_dyswg")
+target = Vector2(1, 1)
+
+[node name="Control" type="Control" parent="Rhombus4"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.18
+offset_top = -36.445
+offset_right = 0.18
+offset_bottom = -36.445
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(0.775, 0.775)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Rhombus3" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(152, -2)
+texture = ExtResource("1_54vdv")
+
+[node name="Control" type="Control" parent="Rhombus3"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.18
+offset_top = -36.445
+offset_right = 0.18
+offset_bottom = -36.445
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(0.775, 0.775)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TooltipText" type="Label" parent="Rhombus3"]
+offset_left = 31.0
+offset_top = 18.0
+offset_right = 129.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "test test test"
+
+[node name="Tooltip" parent="Rhombus3" node_paths=PackedStringArray("ui_parent") instance=ExtResource("5_oaf5u")]
+ui_parent = NodePath("..")
