@@ -13,25 +13,30 @@ extends Node2D
 var selected_enemy_index = 2
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
+var selectable_characters: Array[BattleCharacter]
 
-const BATTLE_CHARACTER = preload("res://battle/battle_character.tscn")
+const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
 
 func _ready():
 	_init_player_party()
 	_init_enemy_party()
+	
+	_set_selectable_characters(player_characters)
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("left") and selected_enemy_index > 0:
-		selected_enemy_index -= 1
-		camera.update_position(enemy_characters[selected_enemy_index])
-		select_ui.global_position = enemy_characters[selected_enemy_index].global_position + Vector2(-100, -100)
-	if Input.is_action_just_pressed("right") and selected_enemy_index < 4:
-		selected_enemy_index += 1
-		camera.update_position(enemy_characters[selected_enemy_index])
-		select_ui.global_position = enemy_characters[selected_enemy_index].global_position + Vector2(-100, -100)
-
+	if Input.is_action_just_pressed("left"):
+		_update_selected_character(-1)
+	if Input.is_action_just_pressed("right"):
+		_update_selected_character(1)
+	if Input.is_action_just_pressed("up"):
+		_set_selectable_characters(enemy_characters)
+		_set_selected_character(enemy_characters.size() / 2)
+	if Input.is_action_just_pressed("down"):
+		_set_selectable_characters(player_characters)
+		_set_selected_character(player_characters.size() / 2)
+	
 
 func _init_player_party():
 	var player_party_size = player_party.characters.size()
@@ -67,3 +72,24 @@ func _init_enemy_party():
 
 func _get_root_index(number_on_team: int, team_size: int, max_size: int):
 	return ((max_size - 1) - (team_size - 1)) + ((number_on_team * 2) - 2)
+
+
+func _set_selectable_characters(selectable_characters: Array[BattleCharacter]):
+	# TODO Add logic for unselectable party members.
+	self.selectable_characters = selectable_characters
+
+
+func _update_selected_character(index_change: int):
+	_set_selected_character(selected_enemy_index + index_change)
+
+
+func _set_selected_character(index: int):
+	selected_enemy_index = index
+	
+	if selected_enemy_index < 0:
+		selected_enemy_index = selectable_characters.size() - 1
+	elif selected_enemy_index > selectable_characters.size() - 1:
+		selected_enemy_index = 0
+	
+	camera.update_position(selectable_characters[selected_enemy_index])
+	select_ui.global_position = selectable_characters[selected_enemy_index].global_position + Vector2(-100, -100)

@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwl4acdfflq1a"]
+[gd_scene load_steps=7 format=3 uid="uid://dwl4acdfflq1a"]
 
 [ext_resource type="Script" path="res://battle/battle_scene.gd" id="1_7cosg"]
 [ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_fmosv"]
-[ext_resource type="Texture2D" uid="uid://cjk77jba8xis3" path="res://characters/textures/cockroach_1.png" id="2_vk6cs"]
 [ext_resource type="Resource" uid="uid://be5sn3rkg1hj2" path="res://battle/parties/resources/test_enemy_party_info.tres" id="3_3ojtu"]
-[ext_resource type="Texture2D" uid="uid://dky6aplf5i78w" path="res://characters/textures/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png" id="3_a314j"]
-[ext_resource type="Texture2D" uid="uid://wdqpjo0sn505" path="res://characters/textures/db0h5zn-1c6d1e03-24c2-4ac4-983e-e901e1492de3.png" id="3_ry2t0"]
 [ext_resource type="Script" path="res://battle/battle_camera.gd" id="4_ip81e"]
-[ext_resource type="Texture2D" uid="uid://b4e5mg6hslrme" path="res://characters/textures/gun_pointed_at_camera_png_by_akithefull_dflhmqr-fullview.png" id="7_1big5"]
+[ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/battle_interface.tscn" id="5_alhgq"]
+[ext_resource type="PackedScene" uid="uid://pjsorwi2bs5d" path="res://battle/battle_character/character_selected_ui.tscn" id="6_nqu3c"]
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_party_character_roots", "enemy_party_character_roots", "select_ui")]
 script = ExtResource("1_7cosg")
@@ -15,7 +13,7 @@ player_party = ExtResource("2_fmosv")
 enemy_party = ExtResource("3_3ojtu")
 player_party_character_roots = [NodePath("PlayerRoots/PlayerRoot"), NodePath("PlayerRoots/PlayerRoot2"), NodePath("PlayerRoots/PlayerRoot3"), NodePath("PlayerRoots/PlayerRoot4"), NodePath("PlayerRoots/PlayerRoot5"), NodePath("PlayerRoots/PlayerRoot6"), NodePath("PlayerRoots/PlayerRoot7")]
 enemy_party_character_roots = [NodePath("EnemyRoots/EnemyRoot"), NodePath("EnemyRoots/EnemyRoot2"), NodePath("EnemyRoots/EnemyRoot3"), NodePath("EnemyRoots/EnemyRoot4"), NodePath("EnemyRoots/EnemyRoot5"), NodePath("EnemyRoots/EnemyRoot6"), NodePath("EnemyRoots/EnemyRoot7"), NodePath("EnemyRoots/EnemyRoot8"), NodePath("EnemyRoots/EnemyRoot9")]
-select_ui = NodePath("ColorRect")
+select_ui = NodePath("PlayerRoots/CharacterSelectedUI")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -24,85 +22,9 @@ script = ExtResource("4_ip81e")
 max_x_pivot = 250
 max_y_pivot = 150
 
-[node name="PlayerPartyCharacterRoot" type="Node2D" parent="."]
-visible = false
-position = Vector2(-600, 400)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerPartyCharacterRoot2" type="Node2D" parent="."]
-visible = false
-position = Vector2(-200, 400)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerPartyCharacterRoot2"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_ry2t0")
-
-[node name="PlayerPartyCharacterRoot3" type="Node2D" parent="."]
-visible = false
-position = Vector2(200, 400)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerPartyCharacterRoot3"]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_a314j")
-
-[node name="PlayerPartyCharacterRoot4" type="Node2D" parent="."]
-visible = false
-position = Vector2(600, 400)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlayerPartyCharacterRoot4"]
-
-[node name="EnemyPartyCharacterRoot" type="Node2D" parent="."]
-visible = false
-position = Vector2(-900, -100)
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyPartyCharacterRoot"]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_vk6cs")
-
-[node name="EnemyPartyCharacterRoot2" type="Node2D" parent="."]
-visible = false
-position = Vector2(-450, -250)
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyPartyCharacterRoot2"]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("7_1big5")
-
-[node name="EnemyPartyCharacterRoot3" type="Node2D" parent="."]
-visible = false
-position = Vector2(1, -363)
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyPartyCharacterRoot3"]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_vk6cs")
-
-[node name="EnemyPartyCharacterRoot4" type="Node2D" parent="."]
-visible = false
-position = Vector2(450, -250)
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyPartyCharacterRoot4"]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_vk6cs")
-
-[node name="EnemyPartyCharacterRoot5" type="Node2D" parent="."]
-visible = false
-position = Vector2(900, -100)
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyPartyCharacterRoot5"]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_vk6cs")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -455.0
-offset_right = 96.0
-offset_bottom = -255.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 0.180392, 0.588235)
+[node name="BattleInterface" parent="CanvasLayer" instance=ExtResource("5_alhgq")]
 
 [node name="EnemyRoots" type="Node2D" parent="."]
 
@@ -155,3 +77,5 @@ position = Vector2(400, 600)
 
 [node name="PlayerRoot7" type="Node2D" parent="PlayerRoots"]
 position = Vector2(600, 600)
+
+[node name="CharacterSelectedUI" parent="PlayerRoots" instance=ExtResource("6_nqu3c")]

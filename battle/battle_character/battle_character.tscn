@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgdi7awfb3m6t"]
+
+[ext_resource type="Script" path="res://battle/battle_character/battle_character.gd" id="1_cfgn3"]
+[ext_resource type="PackedScene" uid="uid://pjsorwi2bs5d" path="res://battle/battle_character/character_selected_ui.tscn" id="2_8ncu5"]
+
+[node name="BattleCharacter" type="Sprite2D"]
+script = ExtResource("1_cfgn3")
+
+[node name="CharacterSelectedUI" parent="." instance=ExtResource("2_8ncu5")]
+visible = false
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://pjsorwi2bs5d"]
+
+[node name="CharacterSelectedUI" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -455.0
+offset_right = 96.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.180392, 0.588235)
