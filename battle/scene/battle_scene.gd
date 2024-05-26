@@ -49,7 +49,12 @@ func _init_player_party():
 		var player_root = player_party_character_roots[_get_root_index(i + 1, player_party_size)]
 		
 		player_root.add_child(battle_character)
-		battle_character.init(character_info, Constants.FacingDirection.BACKWARD)
+		var facing_direction: Constants.FacingDirection
+		if i < player_party_size / 2:
+			facing_direction = Constants.FacingDirection.BACKWARD_LEFT 
+		else:
+			facing_direction = Constants.FacingDirection.BACKWARD_RIGHT 
+		battle_character.init(character_info, facing_direction)
 		
 		player_characters.append(battle_character)
 
@@ -63,7 +68,12 @@ func _init_enemy_party():
 		var enemy_root = enemy_party_character_roots[_get_root_index(i + 1, enemy_party_size)]
 		
 		enemy_root.add_child(battle_character)
-		battle_character.init(character_info, Constants.FacingDirection.FORWARD)
+		var facing_direction: Constants.FacingDirection
+		if i < enemy_party_size / 2:
+			facing_direction = Constants.FacingDirection.FORWARD_LEFT 
+		else:
+			facing_direction = Constants.FacingDirection.FORWARD_RIGHT 
+		battle_character.init(character_info, facing_direction)
 		
 		enemy_characters.append(battle_character)
 

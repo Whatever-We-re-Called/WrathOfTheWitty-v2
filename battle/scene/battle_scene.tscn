@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwl4acdfflq1a"]
+[gd_scene load_steps=6 format=3 uid="uid://dwl4acdfflq1a"]
 
 [ext_resource type="Script" path="res://battle/scene/battle_scene.gd" id="1_7cosg"]
 [ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_fmosv"]
 [ext_resource type="Resource" uid="uid://be5sn3rkg1hj2" path="res://battle/parties/resources/test_enemy_party_info.tres" id="3_3ojtu"]
 [ext_resource type="Script" path="res://battle/scene/battle_camera.gd" id="4_ip81e"]
 [ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/interface/battle_interface.tscn" id="5_alhgq"]
-[ext_resource type="Texture2D" uid="uid://c258060ykudip" path="res://characters/info/resources/EAFDSAFA.png" id="6_8s0wm"]
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_party_character_roots", "enemy_party_character_roots")]
 script = ExtResource("1_7cosg")
@@ -13,12 +12,6 @@ player_party = ExtResource("2_fmosv")
 enemy_party = ExtResource("3_3ojtu")
 player_party_character_roots = [NodePath("PlayerRoots/PlayerRoot"), NodePath("PlayerRoots/PlayerRoot2"), NodePath("PlayerRoots/PlayerRoot3"), NodePath("PlayerRoots/PlayerRoot4"), NodePath("PlayerRoots/PlayerRoot5"), NodePath("PlayerRoots/PlayerRoot6"), NodePath("PlayerRoots/PlayerRoot7")]
 enemy_party_character_roots = [NodePath("EnemyRoots/EnemyRoot"), NodePath("EnemyRoots/EnemyRoot2"), NodePath("EnemyRoots/EnemyRoot3"), NodePath("EnemyRoots/EnemyRoot4"), NodePath("EnemyRoots/EnemyRoot5"), NodePath("EnemyRoots/EnemyRoot6"), NodePath("EnemyRoots/EnemyRoot7")]
-
-[node name="Eafdsafa" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.151276, 0.151276, 0.151276, 1)
-texture = ExtResource("6_8s0wm")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

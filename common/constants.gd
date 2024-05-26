@@ -9,6 +9,8 @@ enum Insecurity {
 }
 
 enum FacingDirection {
-	FORWARD,
-	BACKWARD
+	FORWARD_LEFT,
+	FORWARD_RIGHT,
+	BACKWARD_LEFT,
+	BACKWARD_RIGHT,
 }
