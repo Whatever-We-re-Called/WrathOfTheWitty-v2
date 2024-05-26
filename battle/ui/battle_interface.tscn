@@ -144,14 +144,19 @@ layout_mode = 2
 text = "SPACE - Confirm"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "C - Back"
-label_settings = SubResource("LabelSettings_cwf2q")
-
 [node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "E - View Bag"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="ViewBagLabel2" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "R - Guard"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "C - Back"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="EndTurnLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]

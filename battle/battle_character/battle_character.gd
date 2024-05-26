@@ -37,5 +37,6 @@ func _init_sprite_2d():
 	global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
 
 
-func set_as_selected(selected: bool):
+func set_as_selected(selected: bool, show_health: bool = true):
 	character_selected_ui.visible = selected
+	character_selected_ui.update_health(self, show_health)
