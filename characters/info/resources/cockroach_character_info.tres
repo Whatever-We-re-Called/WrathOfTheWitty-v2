@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://bmgh8hlp1fr3y"]
+
+[ext_resource type="Texture2D" uid="uid://cmk8at32roe7v" path="res://characters/textures/concept2_floor.png" id="1_0ck8o"]
+[ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_wekuq"]
+
+[resource]
+script = ExtResource("2_wekuq")
+forward_facing_texture = ExtResource("1_0ck8o")
+texture_scale = Vector2(1, 1)
+insecurity_weaknesses = Array[int]([])
+max_health = 100

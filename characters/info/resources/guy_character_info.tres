@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://bwqo0qjeitnb7"]
+
+[ext_resource type="Texture2D" uid="uid://dky6aplf5i78w" path="res://characters/textures/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png" id="1_jnn8e"]
+[ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_euk50"]
+
+[resource]
+script = ExtResource("2_euk50")
+backward_facing_texture = ExtResource("1_jnn8e")
+texture_scale = Vector2(0.75, 0.75)
+insecurity_weaknesses = Array[int]([])
+max_health = 100

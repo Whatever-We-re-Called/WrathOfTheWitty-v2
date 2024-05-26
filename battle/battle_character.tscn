@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgdi7awfb3m6t"]
+
+[ext_resource type="Script" path="res://battle/battle_character.gd" id="1_dya0b"]
+
+[node name="BattleCharacter" type="Sprite2D"]
+script = ExtResource("1_dya0b")

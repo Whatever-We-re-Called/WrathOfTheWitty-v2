@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartyInfo" load_steps=5 format=3 uid="uid://be5sn3rkg1hj2"]
+
+[ext_resource type="Script" path="res://battle/parties/party_info.gd" id="1_red0d"]
+[ext_resource type="Resource" uid="uid://bmgh8hlp1fr3y" path="res://characters/info/resources/cockroach_character_info.tres" id="1_xm6xw"]
+[ext_resource type="Resource" uid="uid://m37xb0naeqj5" path="res://characters/info/resources/gun_character_info.tres" id="2_5ygpn"]
+[ext_resource type="Resource" uid="uid://0acin5kgb8yc" path="res://characters/info/resources/scrimblo_character_info.tres" id="3_vuh1x"]
+
+[resource]
+script = ExtResource("1_red0d")
+characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_xm6xw"), ExtResource("2_5ygpn"), ExtResource("1_xm6xw"), ExtResource("1_xm6xw"), ExtResource("3_vuh1x")])
+max_mana = 3
