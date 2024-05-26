@@ -33,21 +33,6 @@ func _process(delta):
 		select_ui.global_position = enemy_characters[selected_enemy_index].global_position + Vector2(-100, -100)
 
 
-func _update_camera_position():
-	select_ui.position = enemy_party_character_roots[selected_enemy_index].position + Vector2(-100, -100)
-	match selected_enemy_index:
-		0:
-			camera.position.x = -300
-		2:
-			camera.position.x = -200
-		4:
-			camera.position.x = 0
-		6:
-			camera.position.x = 200
-		8:
-			camera.position.x = 300
-
-
 func _init_player_party():
 	var player_party_size = player_party.characters.size()
 	for i in range(player_party_size):

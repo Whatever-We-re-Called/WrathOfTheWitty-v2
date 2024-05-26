@@ -19,10 +19,10 @@ select_ui = NodePath("ColorRect")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 6.0
 script = ExtResource("4_ip81e")
 max_x_pivot = 250
-max_y_pivot = 175
+max_y_pivot = 150
 
 [node name="PlayerPartyCharacterRoot" type="Node2D" parent="."]
 visible = false
