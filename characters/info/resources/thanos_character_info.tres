@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_rqc3v")
 backward_facing_texture = ExtResource("1_o175m")
-texture_scale = Vector2(0.4, 0.4)
+texture_scale = Vector2(0.375, 0.375)
 insecurity_weaknesses = Array[int]([])
 max_health = 100

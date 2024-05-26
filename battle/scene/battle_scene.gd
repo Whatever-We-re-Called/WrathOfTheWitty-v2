@@ -6,7 +6,6 @@ extends Node2D
 @export_group("Other")
 @export var player_party_character_roots: Array[Node2D]
 @export var enemy_party_character_roots: Array[Node2D]
-@export var select_ui: Control
 
 @onready var camera = $Camera2D
 
@@ -14,6 +13,7 @@ var selected_enemy_index = 2
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
 var selectable_characters: Array[BattleCharacter]
+var selected_character: BattleCharacter
 
 const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
@@ -23,6 +23,8 @@ func _ready():
 	_init_enemy_party()
 	
 	_set_selectable_characters(player_characters)
+	_set_selected_character(0)
+	camera.reset_smoothing()
 
 
 func _process(delta):
@@ -35,7 +37,7 @@ func _process(delta):
 		_set_selected_character(enemy_characters.size() / 2)
 	if Input.is_action_just_pressed("down"):
 		_set_selectable_characters(player_characters)
-		_set_selected_character(player_characters.size() / 2)
+		_set_selected_character(0)
 	
 
 func _init_player_party():
@@ -44,12 +46,10 @@ func _init_player_party():
 		var character_info = player_party.characters[i]
 		
 		var battle_character = BATTLE_CHARACTER.instantiate()
-		var player_root = player_party_character_roots[_get_root_index(i + 1, player_party_size, 4)]
+		var player_root = player_party_character_roots[_get_root_index(i + 1, player_party_size)]
 		
 		player_root.add_child(battle_character)
 		battle_character.init(character_info, Constants.FacingDirection.BACKWARD)
-		var sprite_height = battle_character.texture.get_height()
-		battle_character.global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
 		
 		player_characters.append(battle_character)
 
@@ -60,23 +60,24 @@ func _init_enemy_party():
 		var character_info = enemy_party.characters[i]
 		
 		var battle_character = BATTLE_CHARACTER.instantiate()
-		var enemy_root = enemy_party_character_roots[_get_root_index(i + 1, enemy_party_size, 5)]
+		var enemy_root = enemy_party_character_roots[_get_root_index(i + 1, enemy_party_size)]
 		
 		enemy_root.add_child(battle_character)
 		battle_character.init(character_info, Constants.FacingDirection.FORWARD)
-		var sprite_height = battle_character.texture.get_height()
-		battle_character.global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
 		
 		enemy_characters.append(battle_character)
 
 
-func _get_root_index(number_on_team: int, team_size: int, max_size: int):
-	return ((max_size - 1) - (team_size - 1)) + ((number_on_team * 2) - 2)
+func _get_root_index(number_on_team: int, team_size: int):
+	return ((PartyInfo.MAX_SIZE - 1) - (team_size - 1)) + ((number_on_team * 2) - 2)
 
 
-func _set_selectable_characters(selectable_characters: Array[BattleCharacter]):
+func _set_selectable_characters(new_selectable_characters: Array[BattleCharacter]):
+	for selectable_character in selectable_characters:
+		selectable_character.set_as_selected(false)
+	
 	# TODO Add logic for unselectable party members.
-	self.selectable_characters = selectable_characters
+	selectable_characters = new_selectable_characters
 
 
 func _update_selected_character(index_change: int):
@@ -91,5 +92,8 @@ func _set_selected_character(index: int):
 	elif selected_enemy_index > selectable_characters.size() - 1:
 		selected_enemy_index = 0
 	
-	camera.update_position(selectable_characters[selected_enemy_index])
-	select_ui.global_position = selectable_characters[selected_enemy_index].global_position + Vector2(-100, -100)
+	selected_character = selectable_characters[selected_enemy_index]
+	camera.update_position(selected_character)
+	for selectable_character in selectable_characters:
+		selectable_character.set_as_selected(selectable_character == selected_character)
+	
