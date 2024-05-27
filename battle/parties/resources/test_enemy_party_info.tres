@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_red0d")
-characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_xm6xw"), ExtResource("1_xm6xw"), ExtResource("1_xm6xw"), ExtResource("1_xm6xw")])
+characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_xm6xw"), ExtResource("1_xm6xw"), ExtResource("1_xm6xw")])
 max_mana = 3

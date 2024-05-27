@@ -1,5 +1,14 @@
 extends Node2D
 
+enum State { 
+	PLAYER_SELECTING,
+	PLAYER_IDLE,
+	PLAYER_MENU,
+	PLAYER_TARGETING,
+	PLAYER_ATTACKING,
+	ENEMY_ATTACKING
+}
+
 @export_group("Teams")
 @export var player_party: PartyInfo
 @export var enemy_party: PartyInfo
@@ -10,7 +19,8 @@ extends Node2D
 @onready var camera = $Camera2D
 @onready var battle_interface = $CanvasLayer/BattleInterface
 
-var selected_enemy_index = 2
+var state: State
+var selected_character_index = 0
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
 var selectable_characters: Array[BattleCharacter]
@@ -23,23 +33,36 @@ func _ready():
 	_init_player_party()
 	_init_enemy_party()
 	
+	state = State.PLAYER_SELECTING
 	_set_selectable_characters(player_characters)
 	_set_selected_character(0)
+	
 	camera.reset_smoothing()
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("left"):
-		_update_selected_character(-1)
-	if Input.is_action_just_pressed("right"):
-		_update_selected_character(1)
-	if Input.is_action_just_pressed("up"):
-		_set_selectable_characters(enemy_characters)
-		_set_selected_character(enemy_characters.size() / 2)
-	if Input.is_action_just_pressed("down"):
-		_set_selectable_characters(player_characters)
-		_set_selected_character(0)
-	
+	_handle_controls_and_state_routing()
+
+
+func _handle_controls_and_state_routing():
+	match state:
+		State.PLAYER_SELECTING:
+			if Input.is_action_just_pressed("target_left"):
+				_update_selected_character(-1)
+			if Input.is_action_just_pressed("target_right"):
+				_update_selected_character(1)
+			if Input.is_action_just_pressed("confirm"):
+				state = State.PLAYER_IDLE
+				_set_selectable_characters(enemy_characters)
+		State.PLAYER_IDLE:
+			if Input.is_action_just_pressed("target_left"):
+				_update_selected_character(-1)
+			if Input.is_action_just_pressed("target_right"):
+				_update_selected_character(1)
+			if Input.is_action_just_pressed("back"):
+				state = State.PLAYER_SELECTING
+				_set_selectable_characters(player_characters)
+
 
 func _init_player_party():
 	var player_party_size = player_party.characters.size()
@@ -90,24 +113,26 @@ func _set_selectable_characters(new_selectable_characters: Array[BattleCharacter
 		selectable_character.set_as_selected(false)
 	
 	# TODO Add logic for unselectable party members.
+	var new_selected_index = lerp(0, new_selectable_characters.size() - 1, float(selected_character_index) / float(selectable_characters.size() - 1))
 	selectable_characters = new_selectable_characters
+	_set_selected_character(new_selected_index)
 
 
 func _update_selected_character(index_change: int):
-	_set_selected_character(selected_enemy_index + index_change)
+	_set_selected_character(selected_character_index + index_change)
 
 
 func _set_selected_character(index: int):
-	selected_enemy_index = index
+	selected_character_index = index
 	
-	if selected_enemy_index < 0:
-		selected_enemy_index = selectable_characters.size() - 1
-	elif selected_enemy_index > selectable_characters.size() - 1:
-		selected_enemy_index = 0
+	if selected_character_index < 0:
+		selected_character_index = selectable_characters.size() - 1
+	elif selected_character_index > selectable_characters.size() - 1:
+		selected_character_index = 0
 	
-	selected_character = selectable_characters[selected_enemy_index]
+	selected_character = selectable_characters[selected_character_index]
 	camera.update_position(selected_character)
 	for selectable_character in selectable_characters:
-		selectable_character.set_as_selected(selectable_character == selected_character)
+		selectable_character.set_as_selected(selectable_character == selected_character, state == State.PLAYER_TARGETING)
 	
 	battle_interface.update_selected_character_info(selected_character)

@@ -144,12 +144,23 @@ layout_mode = 2
 text = "SPACE - Confirm"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="ViewInfoLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "E - View Bag"
+text = "Q - View Info"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="ViewBagLabel2" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="AttackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "E - Attack"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "R - View Bag"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="GuardLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "R - Guard"
 label_settings = SubResource("LabelSettings_cwf2q")
