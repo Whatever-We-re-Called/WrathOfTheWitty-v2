@@ -62,6 +62,18 @@ func _handle_controls_and_state_routing():
 			if Input.is_action_just_pressed("back"):
 				state = State.PLAYER_SELECTING
 				_set_selectable_characters(player_characters)
+			if Input.is_action_just_pressed("choose_ability"):
+				state = State.PLAYER_MENU
+				battle_interface.set_choose_ability_ui_visibility(true, player_characters[selected_character_index].character_info)
+		State.PLAYER_MENU:
+			if Input.is_action_just_pressed("scroll_up"):
+				battle_interface.increase_chosen_ability_index(-1, player_characters[selected_character_index].character_info)
+			if Input.is_action_just_pressed("scroll_down"):
+				battle_interface.increase_chosen_ability_index(1, player_characters[selected_character_index].character_info)
+			if Input.is_action_just_pressed("back"):
+				state = State.PLAYER_IDLE
+				battle_interface.set_choose_ability_ui_visibility(false)
+			
 
 
 func _init_player_party():
@@ -133,6 +145,6 @@ func _set_selected_character(index: int):
 	selected_character = selectable_characters[selected_character_index]
 	camera.update_position(selected_character)
 	for selectable_character in selectable_characters:
-		selectable_character.set_as_selected(selectable_character == selected_character, state == State.PLAYER_TARGETING)
+		selectable_character.set_as_selected(selectable_character == selected_character, state != State.PLAYER_SELECTING)
 	
 	battle_interface.update_selected_character_info(selected_character)

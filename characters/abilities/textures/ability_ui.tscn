@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgyffth470fif"]
+
+[ext_resource type="Script" path="res://characters/abilities/textures/ability_ui.gd" id="1_myatl"]
+[ext_resource type="Texture2D" uid="uid://cjjtsx7xursga" path="res://battle/ui/d12.svg" id="2_c285w"]
+[ext_resource type="Texture2D" uid="uid://he8n0kdhv0qp" path="res://characters/abilities/textures/icons/exploding.svg" id="2_cfem0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_213lr"]
+font_size = 32
+font_color = Color(0.729412, 0.54902, 0.443137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8nh0"]
+font_size = 32
+font_color = Color(0.0392157, 0.737255, 0.843137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwsn3"]
+font_size = 32
+
+[node name="AbilityUI" type="ColorRect"]
+custom_minimum_size = Vector2(600, 64)
+size_flags_horizontal = 4
+color = Color(0.294118, 0.294118, 0.294118, 1)
+script = ExtResource("1_myatl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 192.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AbilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.729412, 0.54902, 0.443137, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_cfem0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AbilityInsultLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fuck you"
+label_settings = SubResource("LabelSettings_213lr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer"]
+modulate = Color(0.0392157, 0.737255, 0.843137, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_c285w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+text = " Mana "
+label_settings = SubResource("LabelSettings_l8nh0")
+
+[node name="ManaValueLabel" type="Label" parent="MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2"
+label_settings = SubResource("LabelSettings_pwsn3")

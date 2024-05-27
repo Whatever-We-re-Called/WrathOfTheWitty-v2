@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityTextures" load_steps=3 format=3 uid="uid://icqhuopiwffc"]
+
+[ext_resource type="Script" path="res://characters/abilities/textures/ability_textures.gd" id="1_bgpkd"]
+[ext_resource type="Texture2D" uid="uid://2wwnvn4pih6m" path="res://characters/abilities/textures/icons/hexagon_question.svg" id="1_ydepy"]
+
+[resource]
+script = ExtResource("1_bgpkd")
+appearance_texture = ExtResource("1_ydepy")
+effect_color = Color(0, 0, 0, 1)
+healing_color = Color(0, 0, 0, 1)
+support_color = Color(0, 0, 0, 1)
+passive_color = Color(0, 0, 0, 1)

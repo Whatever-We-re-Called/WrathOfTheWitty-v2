@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cyq11087r06hu"]
+
+[ext_resource type="Script" path="res://characters/abilities/resources/ability.gd" id="1_wn11s"]
+
+[resource]
+script = ExtResource("1_wn11s")
+type = 0
+insult = "ugly"
+description = "Deal normal Appearance damage to one opponent. Chance (15%) to inflict Fear."
+mana_cost = 3
+execution_function_name = ""
