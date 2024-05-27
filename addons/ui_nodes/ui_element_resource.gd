@@ -7,3 +7,4 @@ class_name UIElementResource
 @export var children: Array[UIElementResource]
 @export var tree_color_override: Color
 @export var script_file: Resource
+@export var index: int

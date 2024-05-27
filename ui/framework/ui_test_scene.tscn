@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://ee6s01idne7u"]
+[gd_scene load_steps=5 format=3 uid="uid://ee6s01idne7u"]
 
-[ext_resource type="Texture2D" uid="uid://dhwsa635orvuk" path="res://map/rooms/textures/rhombus.svg" id="1_54vdv"]
 [ext_resource type="Script" path="res://ui/framework/actions/on_hover_enter.gd" id="2_723c8"]
 [ext_resource type="Script" path="res://ui/framework/executors/scale.gd" id="3_dyswg"]
 [ext_resource type="Script" path="res://ui/framework/actions/on_hover_exit.gd" id="4_nmvlr"]
@@ -13,7 +12,6 @@
 [node name="Rhombus4" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(-158, -4)
-texture = ExtResource("1_54vdv")
 
 [node name="OnHoverEnter" type="Node2D" parent="Rhombus4" node_paths=PackedStringArray("associated_exit", "ui_parent")]
 script = ExtResource("2_723c8")
@@ -53,7 +51,6 @@ size_flags_vertical = 4
 [node name="Rhombus3" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(152, -2)
-texture = ExtResource("1_54vdv")
 
 [node name="Control" type="Control" parent="Rhombus3"]
 layout_direction = 1
