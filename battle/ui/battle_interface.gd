@@ -8,6 +8,14 @@ extends Control
 @onready var choose_ability_ui = %ChooseAbilityUI
 @onready var ability_container = %AbilityContainer
 @onready var ability_description_label = %AbilityDescriptionLabel
+@onready var target_label = %TargetLabel
+@onready var scroll_label = %ScrollLabel
+@onready var confirm_label = %ConfirmLabel
+@onready var view_info_label = %ViewInfoLabel
+@onready var choose_ability_label = %ChooseAbilityLabel
+@onready var view_bag_label = %ViewBagLabel
+@onready var back_label = %BackLabel
+@onready var end_turn_label = %EndTurnLabel
 
 var selected_ability_index = 0
 
@@ -85,7 +93,35 @@ func update_choose_ability_ui(character_info: CharacterInfo):
 	for i in range(character_info.abilities.size()):
 		var ability_ui = ABILITY_UI.instantiate()
 		ability_container.add_child(ability_ui)
-		print( i == selected_ability_index)
 		ability_ui.init(character_info.abilities[i], i == selected_ability_index)
 	
 	ability_description_label.text = character_info.abilities[selected_ability_index].description
+
+
+func update_controls_ui(state: BattleScene.State):
+	target_label.visible = false
+	scroll_label.visible = false
+	confirm_label.visible = false
+	view_info_label.visible = false
+	choose_ability_label.visible = false
+	view_bag_label.visible = false
+	back_label.visible = false
+	end_turn_label.visible = false
+	
+	match state:
+		BattleScene.State.PLAYER_SELECTING:
+			target_label.visible = true
+			confirm_label.visible = true
+			view_info_label.visible = true
+			view_bag_label.visible = true
+			end_turn_label.visible = true
+		BattleScene.State.PLAYER_IDLE:
+			target_label.visible = true
+			view_info_label.visible = true
+			choose_ability_label.visible = true
+			view_bag_label.visible = true
+			back_label.visible = true
+		BattleScene.State.PLAYER_MENU:
+			scroll_label.visible = true
+			confirm_label.visible = true
+			back_label.visible = true

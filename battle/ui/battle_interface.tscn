@@ -127,12 +127,13 @@ texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 
 [node name="BottomLeftInfo" type="MarginContainer" parent="."]
+z_index = 10
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -255.0
-offset_right = 213.0
+offset_top = -369.0
+offset_right = 215.0
 grow_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_bottom = 16
@@ -140,53 +141,55 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftInfo"]
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 2
 
 [node name="ControlsUI" type="VBoxContainer" parent="BottomLeftInfo/VBoxContainer"]
-z_index = 10
 layout_mode = 2
 
 [node name="TargetLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "A/D - Target"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="ScrollLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "W/S - Scroll"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="ConfirmLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "SPACE - Confirm"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="ViewInfoLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Q - View Info"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="ChooseAbilityLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "E - Choose Ability"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "R - View Bag"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="GuardLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
-visible = false
-layout_mode = 2
-text = "R - Guard"
-label_settings = SubResource("LabelSettings_cwf2q")
-
 [node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "C - Back"
 label_settings = SubResource("LabelSettings_cwf2q")
 
 [node name="EndTurnLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ENTER - End Turn"
 label_settings = SubResource("LabelSettings_cwf2q")

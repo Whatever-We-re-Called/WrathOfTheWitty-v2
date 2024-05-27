@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wfhsa")
 type = 0
-insult = "hideous"
+insult = "repulsive"
 description = "Deal strong Appearance damage to one opponent. Chance (15%) to inflict Fear."
 mana_cost = 4
 execution_function_name = ""

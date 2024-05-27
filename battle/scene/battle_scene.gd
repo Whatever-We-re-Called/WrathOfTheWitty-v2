@@ -1,4 +1,4 @@
-extends Node2D
+class_name BattleScene extends Node2D
 
 enum State { 
 	PLAYER_SELECTING,
@@ -52,7 +52,7 @@ func _handle_controls_and_state_routing():
 			if Input.is_action_just_pressed("target_right"):
 				_update_selected_character(1)
 			if Input.is_action_just_pressed("confirm"):
-				state = State.PLAYER_IDLE
+				set_state(State.PLAYER_IDLE)
 				_set_selectable_characters(enemy_characters)
 		State.PLAYER_IDLE:
 			if Input.is_action_just_pressed("target_left"):
@@ -60,10 +60,10 @@ func _handle_controls_and_state_routing():
 			if Input.is_action_just_pressed("target_right"):
 				_update_selected_character(1)
 			if Input.is_action_just_pressed("back"):
-				state = State.PLAYER_SELECTING
+				set_state(State.PLAYER_SELECTING)
 				_set_selectable_characters(player_characters)
 			if Input.is_action_just_pressed("choose_ability"):
-				state = State.PLAYER_MENU
+				set_state(State.PLAYER_MENU)
 				battle_interface.set_choose_ability_ui_visibility(true, player_characters[selected_character_index].character_info)
 		State.PLAYER_MENU:
 			if Input.is_action_just_pressed("scroll_up"):
@@ -71,7 +71,7 @@ func _handle_controls_and_state_routing():
 			if Input.is_action_just_pressed("scroll_down"):
 				battle_interface.increase_chosen_ability_index(1, player_characters[selected_character_index].character_info)
 			if Input.is_action_just_pressed("back"):
-				state = State.PLAYER_IDLE
+				set_state(State.PLAYER_IDLE)
 				battle_interface.set_choose_ability_ui_visibility(false)
 			
 
@@ -148,3 +148,8 @@ func _set_selected_character(index: int):
 		selectable_character.set_as_selected(selectable_character == selected_character, state != State.PLAYER_SELECTING)
 	
 	battle_interface.update_selected_character_info(selected_character)
+
+
+func set_state(new_state: State):
+	self.state = new_state
+	battle_interface.update_controls_ui(new_state)
