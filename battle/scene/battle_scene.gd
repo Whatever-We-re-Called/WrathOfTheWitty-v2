@@ -20,11 +20,34 @@ enum State {
 @onready var battle_interface = $CanvasLayer/BattleInterface
 
 var state: State
-var selected_character_index = 0
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
-var selectable_characters: Array[BattleCharacter]
-var selected_character: BattleCharacter
+
+class PartySelection:
+	var selectable_characters: Array[BattleCharacter]
+	var selected_index: int = 0
+	
+	func get_selected_character() -> BattleCharacter:
+		return selectable_characters[selected_index]
+	
+	func increment_selected_index(index_increment: int):
+		set_selected_index(selected_index + index_increment)
+	
+	func set_selected_index(index: int, include_ux: bool = true):
+		selected_index = index
+		
+		var max_index = selectable_characters.size() - 1
+		if index < 0: index = max_index
+		elif index > max_index: index = 0
+	
+	func reset():
+		for selectable_character in selectable_characters:
+			selectable_character.set_as_selected(false)
+		selected_index = 0
+
+var current_party_selection: PartySelection
+var player_party_selection: PartySelection
+var enemy_party_selection: PartySelection
 
 const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
@@ -32,10 +55,12 @@ const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character
 func _ready():
 	_init_player_party()
 	_init_enemy_party()
+	_init_party_selections()
 	
-	state = State.PLAYER_SELECTING
-	_set_selectable_characters(player_characters)
-	_set_selected_character(0)
+	set_state(State.PLAYER_SELECTING)
+	_update_selectable_characters(true)
+	print(player_party_selection.get_selected_character())
+	_update_selected_character_ui(player_party_selection)
 	
 	camera.reset_smoothing()
 
@@ -48,30 +73,35 @@ func _handle_controls_and_state_routing():
 	match state:
 		State.PLAYER_SELECTING:
 			if Input.is_action_just_pressed("target_left"):
-				_update_selected_character(-1)
+				player_party_selection.increment_selected_index(-1)
+				_update_selected_character_ui(player_party_selection)
 			if Input.is_action_just_pressed("target_right"):
-				_update_selected_character(1)
+				player_party_selection.increment_selected_index(1)
+				_update_selected_character_ui(player_party_selection)
 			if Input.is_action_just_pressed("confirm"):
 				set_state(State.PLAYER_IDLE)
-				_set_selectable_characters(enemy_characters)
+				_update_selected_character_ui(enemy_party_selection)
 		State.PLAYER_IDLE:
 			if Input.is_action_just_pressed("target_left"):
-				_update_selected_character(-1)
+				enemy_party_selection.increment_selected_index(-1)
+				_update_selected_character_ui(enemy_party_selection)
 			if Input.is_action_just_pressed("target_right"):
-				_update_selected_character(1)
+				enemy_party_selection.increment_selected_index(1)
+				_update_selected_character_ui(enemy_party_selection)
 			if Input.is_action_just_pressed("back"):
 				set_state(State.PLAYER_SELECTING)
-				_set_selectable_characters(player_characters)
+				_update_selected_character_ui(player_party_selection)
 			if Input.is_action_just_pressed("choose_ability"):
 				set_state(State.PLAYER_MENU)
-				battle_interface.set_choose_ability_ui_visibility(true, player_characters[selected_character_index].character_info)
+				battle_interface.set_choose_ability_ui_visibility(true, player_party_selection.get_selected_character().character_info)
 		State.PLAYER_MENU:
 			if Input.is_action_just_pressed("scroll_up"):
-				battle_interface.increase_chosen_ability_index(-1, player_characters[selected_character_index].character_info)
+				battle_interface.increase_chosen_ability_index(-1, player_party_selection.get_selected_character().character_info)
 			if Input.is_action_just_pressed("scroll_down"):
-				battle_interface.increase_chosen_ability_index(1, player_characters[selected_character_index].character_info)
+				battle_interface.increase_chosen_ability_index(1, player_party_selection.get_selected_character().character_info)
 			if Input.is_action_just_pressed("back"):
 				set_state(State.PLAYER_IDLE)
+				_update_selected_character_ui(enemy_party_selection)
 				battle_interface.set_choose_ability_ui_visibility(false)
 			
 
@@ -116,38 +146,36 @@ func _init_enemy_party():
 		enemy_characters.append(battle_character)
 
 
+func _init_party_selections():
+	player_party_selection = PartySelection.new()
+	enemy_party_selection = PartySelection.new()
+
+
 func _get_root_index(number_on_team: int, team_size: int):
 	return ((PartyInfo.MAX_SIZE - 1) - (team_size - 1)) + ((number_on_team * 2) - 2)
 
 
-func _set_selectable_characters(new_selectable_characters: Array[BattleCharacter]):
-	for selectable_character in selectable_characters:
-		selectable_character.set_as_selected(false)
+func _update_selectable_characters(reset: bool):
+	if reset:
+		player_party_selection.reset()
+		enemy_party_selection.reset()
 	
 	# TODO Add logic for unselectable party members.
-	var new_selected_index = lerp(0, new_selectable_characters.size() - 1, float(selected_character_index) / float(selectable_characters.size() - 1))
-	selectable_characters = new_selectable_characters
-	_set_selected_character(new_selected_index)
+	player_party_selection.selectable_characters = player_characters
+	enemy_party_selection.selectable_characters = enemy_characters
+	print(player_party_selection.selectable_characters)
 
 
-func _update_selected_character(index_change: int):
-	_set_selected_character(selected_character_index + index_change)
-
-
-func _set_selected_character(index: int):
-	selected_character_index = index
+func _update_selected_character_ui(party_selection: PartySelection):
+	camera.update_position(party_selection.get_selected_character())
+	battle_interface.update_selected_character_info(party_selection.get_selected_character())
 	
-	if selected_character_index < 0:
-		selected_character_index = selectable_characters.size() - 1
-	elif selected_character_index > selectable_characters.size() - 1:
-		selected_character_index = 0
-	
-	selected_character = selectable_characters[selected_character_index]
-	camera.update_position(selected_character)
-	for selectable_character in selectable_characters:
-		selectable_character.set_as_selected(selectable_character == selected_character, state != State.PLAYER_SELECTING)
-	
-	battle_interface.update_selected_character_info(selected_character)
+	# TODO Find a better way to do this.
+	var all_characters: Array[BattleCharacter]
+	all_characters.append_array(player_characters)
+	all_characters.append_array(enemy_characters)
+	for selectable_character in all_characters:
+		selectable_character.set_as_selected(selectable_character == party_selection.get_selected_character(), state != State.PLAYER_SELECTING)
 
 
 func set_state(new_state: State):
