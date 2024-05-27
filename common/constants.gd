@@ -26,6 +26,19 @@ enum InsecurityAffinityType {
 	DEFLECT
 }
 
+enum AbilityType {
+	NORMAL_ATTACK,
+	APPEARANCE_ATTACK,
+	SELF_ESTEEM_ATTACK,
+	INTELLIGENCE_ATTACK,
+	PHYSICAL_ABILITY_ATTACK,
+	SOCIAL_LIFE_ATTACK,
+	EFFECT,
+	HEALING,
+	SUPPORT,
+	PASSIVE
+}
+
 
 func get_insecurity_color(insecurity: Insecurity) -> Color:
 	match (insecurity):
