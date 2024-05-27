@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkppiyjy0xtl4"]
+
+[ext_resource type="Script" path="res://battle/ui/player_character_info_ui.gd" id="1_bk8og"]
+[ext_resource type="Texture2D" uid="uid://c6pglu77hr73j" path="res://characters/textures/sprites/Marvel-Villian-Thanos-PNG-Images.png" id="1_mjgdd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygj5w"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx61o"]
+bg_color = Color(1, 0.0313726, 0.0313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cb2qp"]
+
+[node name="PlayerCharacterInfoUI" type="VBoxContainer"]
+script = ExtResource("1_bk8og")
+
+[node name="PlayerIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(136, 96)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("1_mjgdd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="HealthProgressBar" type="ProgressBar" parent="Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 24)
+layout_mode = 2
+offset_left = -7.0
+offset_top = -9.0
+offset_right = 137.0
+offset_bottom = 15.0
+rotation = -0.1309
+theme_override_styles/background = SubResource("StyleBoxFlat_ygj5w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fx61o")
+value = 25.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HealthProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -11.5
+offset_right = 9.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HealthValueLabel" type="Label" parent="Control/HealthProgressBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_cb2qp")
+
+[node name="Label2" type="Label" parent="Control/HealthProgressBar/HBoxContainer"]
+layout_mode = 2
+text = " HP"
+label_settings = SubResource("LabelSettings_cb2qp")

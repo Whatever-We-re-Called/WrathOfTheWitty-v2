@@ -1,0 +1,42 @@
+class_name BattleCharacter extends Node2D
+
+@onready var sprite_2d = $Sprite2D
+@onready var character_selected_ui = $CharacterSelectedUI
+
+var character_info: CharacterInfo
+var facing_direction: Constants.FacingDirection
+var health: int
+
+
+func init(character_info: CharacterInfo, facing_direction: Constants.FacingDirection):
+	self.character_info = character_info.duplicate()
+	self.facing_direction = facing_direction
+	
+	self.health = character_info.max_health
+	
+	_init_sprite_2d()
+
+
+func _init_sprite_2d():
+	match facing_direction:
+		Constants.FacingDirection.FORWARD_LEFT:
+			sprite_2d.texture = character_info.forward_facing_texture
+			sprite_2d.flip_h = true
+		Constants.FacingDirection.FORWARD_RIGHT:
+			sprite_2d.texture = character_info.forward_facing_texture
+			sprite_2d.flip_h = false
+		Constants.FacingDirection.BACKWARD_LEFT:
+			sprite_2d.texture = character_info.backward_facing_texture
+			sprite_2d.flip_h = true
+		Constants.FacingDirection.BACKWARD_RIGHT:
+			sprite_2d.texture = character_info.backward_facing_texture
+			sprite_2d.flip_h = false
+	sprite_2d.scale = character_info.texture_scale
+	
+	var sprite_height = sprite_2d.texture.get_height()
+	global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
+
+
+func set_as_selected(selected: bool, show_health: bool = true):
+	character_selected_ui.visible = selected
+	character_selected_ui.update_health(self, show_health)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://bmgh8hlp1fr3y"]
+
+[ext_resource type="Texture2D" uid="uid://cmk8at32roe7v" path="res://characters/textures/sprites/concept2_floor.png" id="1_0ck8o"]
+[ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_wekuq"]
+
+[resource]
+script = ExtResource("2_wekuq")
+name = "Cockroach"
+forward_facing_texture = ExtResource("1_0ck8o")
+texture_scale = Vector2(0.8, 0.8)
+insecurity_weaknesses = Array[int]([0])
+insecurity_blocks = Array[int]([1, 2, 3, 4, 5])
+insecurity_heals = Array[int]([])
+insecurity_deflects = Array[int]([])
+max_health = 100

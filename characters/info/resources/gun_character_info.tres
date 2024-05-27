@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://m37xb0naeqj5"]
+
+[ext_resource type="Texture2D" uid="uid://b4e5mg6hslrme" path="res://characters/textures/sprites/gun_pointed_at_camera_png_by_akithefull_dflhmqr-fullview.png" id="1_ooi3f"]
+[ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_soadv"]
+
+[resource]
+script = ExtResource("2_soadv")
+forward_facing_texture = ExtResource("1_ooi3f")
+texture_scale = Vector2(0.25, 0.25)
+insecurity_weaknesses = Array[int]([])
+max_health = 100
