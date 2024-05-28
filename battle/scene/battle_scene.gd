@@ -62,7 +62,6 @@ func _ready():
 	
 	set_state(State.PLAYER_SELECTING)
 	_update_selectable_characters(true)
-	print(player_party_selection.get_selected_character())
 	_update_selected_character_ui(player_party_selection)
 	
 	camera.reset_smoothing()
@@ -104,6 +103,20 @@ func _handle_controls_and_state_routing():
 				battle_interface.increase_chosen_ability_index(1, player_party_selection.get_selected_character().character_info)
 			if Input.is_action_just_pressed("back"):
 				set_state(State.PLAYER_IDLE)
+				_update_selected_character_ui(enemy_party_selection)
+				battle_interface.set_choose_ability_ui_visibility(false)
+			if Input.is_action_just_pressed("confirm"):
+				set_state(State.PLAYER_TARGETING)
+				battle_interface.set_choose_ability_ui_visibility(false)
+		State.PLAYER_TARGETING:
+			if Input.is_action_just_pressed("target_left"):
+				enemy_party_selection.increment_selected_index(-1)
+				_update_selected_character_ui(enemy_party_selection)
+			if Input.is_action_just_pressed("target_right"):
+				enemy_party_selection.increment_selected_index(1)
+				_update_selected_character_ui(enemy_party_selection)
+			if Input.is_action_just_pressed("back"):
+				set_state(State.PLAYER_MENU)
 				_update_selected_character_ui(enemy_party_selection)
 				battle_interface.set_choose_ability_ui_visibility(false)
 			if Input.is_action_just_pressed("confirm"):

@@ -129,3 +129,12 @@ func update_controls_ui(state: BattleScene.State):
 			scroll_label.visible = true
 			confirm_label.visible = true
 			back_label.visible = true
+		BattleScene.State.PLAYER_TARGETING:
+			target_label.visible = true
+			confirm_label.visible = true
+			view_info_label.visible = true
+			back_label.visible = true
+		BattleScene.State.PLAYER_ATTACKING:
+			pass
+		BattleScene.State.ENEMY_ATTACKING:
+			pass
