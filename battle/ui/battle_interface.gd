@@ -98,6 +98,10 @@ func update_choose_ability_ui(character_info: CharacterInfo):
 	ability_description_label.text = character_info.abilities[selected_ability_index].description
 
 
+func get_selected_ability(character_info: CharacterInfo):
+	return character_info.abilities[selected_ability_index]
+
+
 func update_controls_ui(state: BattleScene.State):
 	target_label.visible = false
 	scroll_label.visible = false

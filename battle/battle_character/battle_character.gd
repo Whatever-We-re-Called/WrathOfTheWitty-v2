@@ -40,3 +40,9 @@ func _init_sprite_2d():
 func set_as_selected(selected: bool, show_health: bool = true):
 	character_selected_ui.visible = selected
 	character_selected_ui.update_health(self, show_health)
+
+
+func damage(amount: int):
+	health -= amount
+	health = clamp(health, 0, character_info.max_health)
+	character_selected_ui.update_health(self, true)

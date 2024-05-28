@@ -6,12 +6,10 @@
 [ext_resource type="Script" path="res://battle/scene/battle_camera.gd" id="4_ip81e"]
 [ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/ui/battle_interface.tscn" id="5_alhgq"]
 
-[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_party_character_roots", "enemy_party_character_roots")]
+[node name="BattleScene" type="Node2D"]
 script = ExtResource("1_7cosg")
 player_party = ExtResource("2_fmosv")
 enemy_party = ExtResource("3_3ojtu")
-player_party_character_roots = [NodePath("PlayerRoots/PlayerRoot"), NodePath("PlayerRoots/PlayerRoot2"), NodePath("PlayerRoots/PlayerRoot3"), NodePath("PlayerRoots/PlayerRoot4"), NodePath("PlayerRoots/PlayerRoot5"), NodePath("PlayerRoots/PlayerRoot6"), NodePath("PlayerRoots/PlayerRoot7")]
-enemy_party_character_roots = [NodePath("EnemyRoots/EnemyRoot"), NodePath("EnemyRoots/EnemyRoot2"), NodePath("EnemyRoots/EnemyRoot3"), NodePath("EnemyRoots/EnemyRoot4"), NodePath("EnemyRoots/EnemyRoot5"), NodePath("EnemyRoots/EnemyRoot6"), NodePath("EnemyRoots/EnemyRoot7")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -23,29 +21,6 @@ max_y_pivot = 50
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BattleInterface" parent="CanvasLayer" instance=ExtResource("5_alhgq")]
-
-[node name="EnemyRoots" type="Node2D" parent="."]
-
-[node name="EnemyRoot" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-475, -25)
-
-[node name="EnemyRoot2" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-325, -75)
-
-[node name="EnemyRoot3" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-150, -100)
-
-[node name="EnemyRoot4" type="Node2D" parent="EnemyRoots"]
-position = Vector2(0, -125)
-
-[node name="EnemyRoot5" type="Node2D" parent="EnemyRoots"]
-position = Vector2(150, -100)
-
-[node name="EnemyRoot6" type="Node2D" parent="EnemyRoots"]
-position = Vector2(325, -75)
-
-[node name="EnemyRoot7" type="Node2D" parent="EnemyRoots"]
-position = Vector2(475, -25)
 
 [node name="PlayerRoots" type="Node2D" parent="."]
 
@@ -69,3 +44,26 @@ position = Vector2(300, 525)
 
 [node name="PlayerRoot7" type="Node2D" parent="PlayerRoots"]
 position = Vector2(450, 525)
+
+[node name="EnemyRoots" type="Node2D" parent="."]
+
+[node name="EnemyRoot" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-475, -25)
+
+[node name="EnemyRoot2" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-325, -75)
+
+[node name="EnemyRoot3" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-150, -100)
+
+[node name="EnemyRoot4" type="Node2D" parent="EnemyRoots"]
+position = Vector2(0, -125)
+
+[node name="EnemyRoot5" type="Node2D" parent="EnemyRoots"]
+position = Vector2(150, -100)
+
+[node name="EnemyRoot6" type="Node2D" parent="EnemyRoots"]
+position = Vector2(325, -75)
+
+[node name="EnemyRoot7" type="Node2D" parent="EnemyRoots"]
+position = Vector2(475, -25)

@@ -8,4 +8,4 @@ type = 0
 insult = "ugly"
 description = "Deal weak Appearance damage to one opponent. Chance (15%) to inflict Fear."
 mana_cost = 2
-execution_function_name = ""
+execution_function_name = "_one_weak_appearance_attack"

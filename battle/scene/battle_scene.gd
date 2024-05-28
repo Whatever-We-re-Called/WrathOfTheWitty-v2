@@ -12,13 +12,14 @@ enum State {
 @export_group("Teams")
 @export var player_party: PartyInfo
 @export var enemy_party: PartyInfo
-@export_group("Other")
-@export var player_party_character_roots: Array[Node2D]
-@export var enemy_party_character_roots: Array[Node2D]
 
 @onready var camera = $Camera2D
 @onready var battle_interface = $CanvasLayer/BattleInterface
+@onready var enemy_roots = $EnemyRoots
+@onready var player_roots = $PlayerRoots
 
+var player_party_character_roots: Array[Node2D]
+var enemy_party_character_roots: Array[Node2D]
 var state: State
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
@@ -33,12 +34,12 @@ class PartySelection:
 	func increment_selected_index(index_increment: int):
 		set_selected_index(selected_index + index_increment)
 	
-	func set_selected_index(index: int, include_ux: bool = true):
+	func set_selected_index(index: int):
 		selected_index = index
 		
 		var max_index = selectable_characters.size() - 1
-		if index < 0: index = max_index
-		elif index > max_index: index = 0
+		if selected_index < 0: selected_index = max_index
+		elif selected_index > max_index: selected_index = 0
 	
 	func reset():
 		for selectable_character in selectable_characters:
@@ -53,6 +54,8 @@ const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character
 
 
 func _ready():
+	_init_character_roots()
+	
 	_init_player_party()
 	_init_enemy_party()
 	_init_party_selections()
@@ -103,7 +106,17 @@ func _handle_controls_and_state_routing():
 				set_state(State.PLAYER_IDLE)
 				_update_selected_character_ui(enemy_party_selection)
 				battle_interface.set_choose_ability_ui_visibility(false)
-			
+			if Input.is_action_just_pressed("confirm"):
+				set_state(State.PLAYER_ATTACKING)
+				battle_interface.set_choose_ability_ui_visibility(false)
+				_handle_player_attack()
+
+
+func _init_character_roots():
+	for root in player_roots.get_children():
+		player_party_character_roots.append(root)
+	for root in enemy_roots.get_children():
+		enemy_party_character_roots.append(root)
 
 
 func _init_player_party():
@@ -181,3 +194,15 @@ func _update_selected_character_ui(party_selection: PartySelection):
 func set_state(new_state: State):
 	self.state = new_state
 	battle_interface.update_controls_ui(new_state)
+
+
+func _handle_player_attack():
+	await get_tree().create_timer(1.0).timeout
+	var selected_ability = battle_interface.get_selected_ability(player_party_selection.get_selected_character().character_info)
+	var attacker_character = player_party_selection.get_selected_character()
+	var defender_character = enemy_party_selection.get_selected_character()
+	BattleExecution.try_to_execute(selected_ability, attacker_character, defender_character, self)
+	
+	await get_tree().create_timer(1.0).timeout
+	set_state(State.PLAYER_SELECTING)
+	_update_selected_character_ui(player_party_selection)
