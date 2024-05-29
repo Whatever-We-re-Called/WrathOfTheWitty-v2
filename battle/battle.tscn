@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwl4acdfflq1a"]
+
+[ext_resource type="Script" path="res://battle/battle.gd" id="1_ydm11"]
+[ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_ge8fs"]
+[ext_resource type="Resource" uid="uid://be5sn3rkg1hj2" path="res://battle/parties/resources/test_enemy_party_info.tres" id="3_a2ou6"]
+[ext_resource type="Script" path="res://battle/battle_camera.gd" id="4_p61fn"]
+[ext_resource type="PackedScene" uid="uid://dcw6fvsgrgcnt" path="res://battle/ui/battle_interface.tscn" id="5_prqcn"]
+[ext_resource type="Script" path="res://battle/states/battle_player_select_state.gd" id="6_5pkyc"]
+[ext_resource type="Script" path="res://battle/states/battle_player_start_state.gd" id="6_opgyb"]
+[ext_resource type="Script" path="res://battle/states/battle_player_idle_state.gd" id="7_xtv2s"]
+[ext_resource type="Script" path="res://battle/states/battle_player_menu_state.gd" id="9_yd8vo"]
+[ext_resource type="Script" path="res://battle/states/battle_player_target_state.gd" id="10_ee1h3"]
+[ext_resource type="Script" path="res://battle/states/battle_player_attack_state.gd" id="11_vxtks"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_ydm11")
+player_party = ExtResource("2_ge8fs")
+enemy_party = ExtResource("3_a2ou6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+script = ExtResource("4_p61fn")
+max_x_pivot = 50
+max_y_pivot = 50
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleInterface" parent="CanvasLayer" instance=ExtResource("5_prqcn")]
+
+[node name="PlayerRoots" type="Node2D" parent="."]
+
+[node name="PlayerRoot" type="Node2D" parent="PlayerRoots"]
+position = Vector2(-450, 525)
+
+[node name="PlayerRoot2" type="Node2D" parent="PlayerRoots"]
+position = Vector2(-300, 525)
+
+[node name="PlayerRoot3" type="Node2D" parent="PlayerRoots"]
+position = Vector2(-150, 525)
+
+[node name="PlayerRoot4" type="Node2D" parent="PlayerRoots"]
+position = Vector2(0, 525)
+
+[node name="PlayerRoot5" type="Node2D" parent="PlayerRoots"]
+position = Vector2(150, 525)
+
+[node name="PlayerRoot6" type="Node2D" parent="PlayerRoots"]
+position = Vector2(300, 525)
+
+[node name="PlayerRoot7" type="Node2D" parent="PlayerRoots"]
+position = Vector2(450, 525)
+
+[node name="EnemyRoots" type="Node2D" parent="."]
+
+[node name="EnemyRoot" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-475, -25)
+
+[node name="EnemyRoot2" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-325, -75)
+
+[node name="EnemyRoot3" type="Node2D" parent="EnemyRoots"]
+position = Vector2(-150, -100)
+
+[node name="EnemyRoot4" type="Node2D" parent="EnemyRoots"]
+position = Vector2(0, -125)
+
+[node name="EnemyRoot5" type="Node2D" parent="EnemyRoots"]
+position = Vector2(150, -100)
+
+[node name="EnemyRoot6" type="Node2D" parent="EnemyRoots"]
+position = Vector2(325, -75)
+
+[node name="EnemyRoot7" type="Node2D" parent="EnemyRoots"]
+position = Vector2(475, -25)
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="PlayerStart" type="Node" parent="StateMachine"]
+script = ExtResource("6_opgyb")
+
+[node name="PlayerSelect" type="Node" parent="StateMachine"]
+script = ExtResource("6_5pkyc")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine"]
+script = ExtResource("7_xtv2s")
+
+[node name="PlayerMenu" type="Node" parent="StateMachine"]
+script = ExtResource("9_yd8vo")
+
+[node name="PlayerTarget" type="Node" parent="StateMachine"]
+script = ExtResource("10_ee1h3")
+
+[node name="PlayerAttack" type="Node" parent="StateMachine"]
+script = ExtResource("11_vxtks")
+
+[node name="EnemyStart" type="Node" parent="StateMachine"]
+
+[node name="EnemyAttack" type="Node" parent="StateMachine"]

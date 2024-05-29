@@ -4,15 +4,15 @@ class BattleExecutionData:
 	var ability: Ability
 	var attacker_character: BattleCharacter
 	var defender_character: BattleCharacter
-	var battle_scene: BattleScene
+	var battle: Battle
 
 
-static func try_to_execute(ability: Ability, attacker_character: BattleCharacter, defender_character: BattleCharacter, battle_scene: BattleScene):
+static func try_to_execute(ability: Ability, attacker_character: BattleCharacter, defender_character: BattleCharacter, battle: Battle):
 	var battle_execution_data = BattleExecutionData.new()
 	battle_execution_data.ability = ability
 	battle_execution_data.attacker_character = attacker_character
 	battle_execution_data.defender_character = defender_character
-	battle_execution_data.battle_scene = battle_scene
+	battle_execution_data.battle = battle
 	
 	var execution_count = 1
 	

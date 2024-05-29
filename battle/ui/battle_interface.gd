@@ -16,6 +16,7 @@ extends Control
 @onready var view_bag_label = %ViewBagLabel
 @onready var back_label = %BackLabel
 @onready var end_turn_label = %EndTurnLabel
+@onready var mana_value_label = %ManaValueLabel
 
 var selected_ability_index = 0
 
@@ -102,39 +103,44 @@ func get_selected_ability(character_info: CharacterInfo):
 	return character_info.abilities[selected_ability_index]
 
 
-func update_controls_ui(state: BattleScene.State):
-	target_label.visible = false
-	scroll_label.visible = false
-	confirm_label.visible = false
-	view_info_label.visible = false
-	choose_ability_label.visible = false
-	view_bag_label.visible = false
-	back_label.visible = false
-	end_turn_label.visible = false
-	
-	match state:
-		BattleScene.State.PLAYER_SELECTING:
-			target_label.visible = true
-			confirm_label.visible = true
-			view_info_label.visible = true
-			view_bag_label.visible = true
-			end_turn_label.visible = true
-		BattleScene.State.PLAYER_IDLE:
-			target_label.visible = true
-			view_info_label.visible = true
-			choose_ability_label.visible = true
-			view_bag_label.visible = true
-			back_label.visible = true
-		BattleScene.State.PLAYER_MENU:
-			scroll_label.visible = true
-			confirm_label.visible = true
-			back_label.visible = true
-		BattleScene.State.PLAYER_TARGETING:
-			target_label.visible = true
-			confirm_label.visible = true
-			view_info_label.visible = true
-			back_label.visible = true
-		BattleScene.State.PLAYER_ATTACKING:
-			pass
-		BattleScene.State.ENEMY_ATTACKING:
-			pass
+func update_mana_ui(mana_value: int):
+	mana_value_label.text = str(mana_value)
+
+
+func update_controls_ui():
+	pass
+	#target_label.visible = false
+	#scroll_label.visible = false
+	#confirm_label.visible = false
+	#view_info_label.visible = false
+	#choose_ability_label.visible = false
+	#view_bag_label.visible = false
+	#back_label.visible = false
+	#end_turn_label.visible = false
+	#
+	#match state:
+		#BattleScene.State.PLAYER_SELECTING:
+			#target_label.visible = true
+			#confirm_label.visible = true
+			#view_info_label.visible = true
+			#view_bag_label.visible = true
+			#end_turn_label.visible = true
+		#BattleScene.State.PLAYER_IDLE:
+			#target_label.visible = true
+			#view_info_label.visible = true
+			#choose_ability_label.visible = true
+			#view_bag_label.visible = true
+			#back_label.visible = true
+		#BattleScene.State.PLAYER_MENU:
+			#scroll_label.visible = true
+			#confirm_label.visible = true
+			#back_label.visible = true
+		#BattleScene.State.PLAYER_TARGETING:
+			#target_label.visible = true
+			#confirm_label.visible = true
+			#view_info_label.visible = true
+			#back_label.visible = true
+		#BattleScene.State.PLAYER_ATTACKING:
+			#pass
+		#BattleScene.State.ENEMY_ATTACKING:
+			#pass

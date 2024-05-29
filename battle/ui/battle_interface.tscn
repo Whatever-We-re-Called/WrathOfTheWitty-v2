@@ -211,7 +211,8 @@ layout_mode = 2
 text = " Mana "
 label_settings = SubResource("LabelSettings_j06hv")
 
-[node name="Label2" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+[node name="ManaValueLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "6"
 label_settings = SubResource("LabelSettings_dkcxb")
