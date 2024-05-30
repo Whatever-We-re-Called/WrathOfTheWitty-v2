@@ -1,4 +1,4 @@
-extends Camera2D
+class_name BattleCamera extends Camera2D
 
 @export var max_x_pivot: int
 @export var max_y_pivot: int

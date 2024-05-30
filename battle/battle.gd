@@ -19,32 +19,7 @@ var enemy_party_character_roots: Array[Node2D]
 var current_mana: int
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
-
-class PartySelection:
-	var selectable_characters: Array[BattleCharacter]
-	var selected_index: int = 0
-	
-	func get_selected_character() -> BattleCharacter:
-		return selectable_characters[selected_index]
-	
-	func increment_selected_index(index_increment: int):
-		set_selected_index(selected_index + index_increment)
-	
-	func set_selected_index(index: int):
-		selected_index = index
-		
-		var max_index = selectable_characters.size() - 1
-		if selected_index < 0: selected_index = max_index
-		elif selected_index > max_index: selected_index = 0
-	
-	func reset():
-		for selectable_character in selectable_characters:
-			selectable_character.set_as_selected(false)
-		selected_index = 0
-
-var current_party_selection: PartySelection
-var player_party_selection: PartySelection
-var enemy_party_selection: PartySelection
+var party_selections: PartySelections
 
 const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
@@ -59,9 +34,6 @@ func _ready():
 	
 	change_to_state("PlayerStart")
 	
-	_update_selectable_characters(true)
-	update_selected_character_ui(player_party_selection)
-	
 	camera.reset_smoothing()
 
 
@@ -75,63 +47,6 @@ func _init_states():
 		if child is BattleState:
 			states[child.name.to_lower()] = child
 			child.init(self)
-
-
-func _handle_controls_and_state_routing():
-	pass
-	#match state:
-		#State.PLAYER_SELECTING:
-			#if Input.is_action_just_pressed("target_left"):
-				#player_party_selection.increment_selected_index(-1)
-				#_update_selected_character_ui(player_party_selection)
-			#if Input.is_action_just_pressed("target_right"):
-				#player_party_selection.increment_selected_index(1)
-				#_update_selected_character_ui(player_party_selection)
-			#if Input.is_action_just_pressed("confirm"):
-				#set_state(State.PLAYER_IDLE)
-				#_update_selected_character_ui(enemy_party_selection)
-		#State.PLAYER_IDLE:
-			#if Input.is_action_just_pressed("target_left"):
-				#enemy_party_selection.increment_selected_index(-1)
-				#_update_selected_character_ui(enemy_party_selection)
-			#if Input.is_action_just_pressed("target_right"):
-				#enemy_party_selection.increment_selected_index(1)
-				#_update_selected_character_ui(enemy_party_selection)
-			#if Input.is_action_just_pressed("back"):
-				#set_state(State.PLAYER_SELECTING)
-				#_update_selected_character_ui(player_party_selection)
-			#if Input.is_action_just_pressed("choose_ability"):
-				#set_state(State.PLAYER_MENU)
-				#battle_interface.set_choose_ability_ui_visibility(true, player_party_selection.get_selected_character().character_info)
-		#State.PLAYER_MENU:
-			#if Input.is_action_just_pressed("scroll_up"):
-				#battle_interface.increase_chosen_ability_index(-1, player_party_selection.get_selected_character().character_info)
-			#if Input.is_action_just_pressed("scroll_down"):
-				#battle_interface.increase_chosen_ability_index(1, player_party_selection.get_selected_character().character_info)
-			#if Input.is_action_just_pressed("back"):
-				#set_state(State.PLAYER_IDLE)
-				#_update_selected_character_ui(enemy_party_selection)
-				#battle_interface.set_choose_ability_ui_visibility(false)
-			#if Input.is_action_just_pressed("confirm"):
-				#if current_mana < battle_interface.get_selected_ability(player_party_selection.get_selected_character().character_info).mana_cost:
-					#return
-				#set_state(State.PLAYER_TARGETING)
-				#battle_interface.set_choose_ability_ui_visibility(false)
-		#State.PLAYER_TARGETING:
-			#if Input.is_action_just_pressed("target_left"):
-				#enemy_party_selection.increment_selected_index(-1)
-				#_update_selected_character_ui(enemy_party_selection)
-			#if Input.is_action_just_pressed("target_right"):
-				#enemy_party_selection.increment_selected_index(1)
-				#_update_selected_character_ui(enemy_party_selection)
-			#if Input.is_action_just_pressed("back"):
-				#set_state(State.PLAYER_MENU)
-				#_update_selected_character_ui(enemy_party_selection)
-				#battle_interface.set_choose_ability_ui_visibility(false)
-			#if Input.is_action_just_pressed("confirm"):
-				#set_state(State.PLAYER_ATTACKING)
-				#battle_interface.set_choose_ability_ui_visibility(false)
-				#_handle_player_attack()
 
 
 func _init_character_roots():
@@ -186,8 +101,8 @@ func _get_root_index(number_on_team: int, team_size: int):
 
 
 func _init_party_selections():
-	player_party_selection = PartySelection.new()
-	enemy_party_selection = PartySelection.new()
+	party_selections = PartySelections.new()
+	party_selections.init(player_characters, enemy_characters, camera)
 
 
 func change_to_state(new_state_name: String):
@@ -201,26 +116,3 @@ func change_to_state(new_state_name: String):
 	new_state._enter()
 	
 	current_state = new_state
-
-
-func _update_selectable_characters(reset: bool):
-	if reset:
-		player_party_selection.reset()
-		enemy_party_selection.reset()
-	
-	# TODO Add logic for unselectable party members.
-	player_party_selection.selectable_characters = player_characters
-	enemy_party_selection.selectable_characters = enemy_characters
-	print(player_party_selection.selectable_characters)
-
-
-func update_selected_character_ui(party_selection: PartySelection):
-	camera.update_position(party_selection.get_selected_character())
-	battle_interface.update_selected_character_info(party_selection.get_selected_character())
-	
-	# TODO Find a better way to do this.
-	var all_characters: Array[BattleCharacter]
-	all_characters.append_array(player_characters)
-	all_characters.append_array(enemy_characters)
-	for selectable_character in all_characters:
-		selectable_character.set_as_selected(selectable_character == party_selection.get_selected_character(), false)

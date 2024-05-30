@@ -1,17 +1,113 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgdi7awfb3m6t"]
+[gd_scene load_steps=7 format=3 uid="uid://dgdi7awfb3m6t"]
 
 [ext_resource type="Script" path="res://battle/battle_character/battle_character.gd" id="1_cfgn3"]
-[ext_resource type="PackedScene" uid="uid://pjsorwi2bs5d" path="res://battle/battle_character/character_selected_ui.tscn" id="2_8ncu5"]
+[ext_resource type="Texture2D" uid="uid://c2amcsn72jp5q" path="res://characters/textures/selection_2.svg" id="2_5npet"]
+[ext_resource type="Texture2D" uid="uid://buqhk5j2no1vu" path="res://characters/textures/selection_1.svg" id="3_imfyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irl1u"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvgu5"]
+bg_color = Color(1, 0.0313726, 0.0313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yofai"]
 
 [node name="BattleCharacter" type="Node2D"]
 script = ExtResource("1_cfgn3")
+select_drop_shadow_texture = ExtResource("2_5npet")
+target_drop_shadow_texture = ExtResource("3_imfyw")
+none_drop_shadow_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+select_player_drop_shadow_color = Color(0.356863, 0.541176, 0.992157, 1)
+selected_player_drop_shadow_color = Color(0.0980392, 0.380392, 0.984314, 1)
+select_enemy_drop_shadow_color = Color(1, 0.388235, 0.360784, 1)
+selected_enemy_drop_shadow_color = Color(1, 0.235294, 0.192157, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="CharacterSelectedUI" parent="." instance=ExtResource("2_8ncu5")]
-visible = false
-offset_left = -99.5
-offset_top = -99.5
-offset_right = 100.5
-offset_bottom = 100.5
-metadata/_edit_use_anchors_ = true
+[node name="DropShadow" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DropShadowSprite" type="Sprite2D" parent="DropShadow"]
+unique_name_in_owner = true
+z_index = -1
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_5npet")
+
+[node name="HealthContainer" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_right = 27.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DropShadow/HealthContainer"]
+custom_minimum_size = Vector2(152, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -16.0
+offset_right = 76.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DropShadow/HealthContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -12.0
+offset_right = 72.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HealthProgressBar" type="ProgressBar" parent="DropShadow/HealthContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_irl1u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lvgu5")
+value = 25.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -11.5
+offset_right = 9.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HealthValueLabel" type="Label" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_yofai")
+
+[node name="Label2" type="Label" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar/HBoxContainer"]
+layout_mode = 2
+text = " HP"
+label_settings = SubResource("LabelSettings_yofai")

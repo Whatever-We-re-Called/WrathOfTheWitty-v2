@@ -39,6 +39,18 @@ enum AbilityType {
 	PASSIVE
 }
 
+enum CharacterSelectState {
+	NONE,
+	PLAYER_SELECT,
+	PLAYER_SELECTED,
+	PLAYER_TARGET,
+	PLAYER_TARGETED,
+	ENEMY_SELECT,
+	ENEMY_SELECTED,
+	ENEMY_TARGET,
+	ENEMY_TARGETED
+}
+
 
 func get_insecurity_color(insecurity: Insecurity) -> Color:
 	match (insecurity):

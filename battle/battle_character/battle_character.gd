@@ -1,7 +1,21 @@
 class_name BattleCharacter extends Node2D
 
+@export_group("Drop Shadow (Temp?)")
+@export var select_drop_shadow_texture: Texture2D
+@export var target_drop_shadow_texture: Texture2D
+@export var none_drop_shadow_color: Color
+@export var select_player_drop_shadow_color: Color
+@export var selected_player_drop_shadow_color: Color
+@export var select_enemy_drop_shadow_color: Color
+@export var selected_enemy_drop_shadow_color: Color
+
 @onready var sprite_2d = $Sprite2D
-@onready var character_selected_ui = $CharacterSelectedUI
+@onready var health_container = %HealthContainer
+@onready var health_progress_bar = %HealthProgressBar
+@onready var health_value_label = %HealthValueLabel
+@onready var drop_shadow = %DropShadow
+@onready var drop_shadow_sprite = %DropShadowSprite
+
 
 var character_info: CharacterInfo
 var facing_direction: Constants.FacingDirection
@@ -35,14 +49,60 @@ func _init_sprite_2d():
 	
 	var sprite_height = sprite_2d.texture.get_height()
 	global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
+	drop_shadow.global_position.y += (sprite_height * character_info.texture_scale.y) / 2.0
 
 
-func set_as_selected(selected: bool, show_health: bool = true):
-	character_selected_ui.visible = selected
-	character_selected_ui.update_health(self, show_health)
+func set_drop_shadow(select_state: Constants.CharacterSelectState):
+	match select_state:
+		Constants.CharacterSelectState.NONE:
+			drop_shadow_sprite.modulate = none_drop_shadow_color
+			drop_shadow_sprite.texture = select_drop_shadow_texture
+			_update_health_ui(false)
+		Constants.CharacterSelectState.PLAYER_SELECT:
+			drop_shadow_sprite.modulate = select_player_drop_shadow_color
+			drop_shadow_sprite.texture = select_drop_shadow_texture
+			_update_health_ui(false)
+		Constants.CharacterSelectState.PLAYER_SELECTED:
+			drop_shadow_sprite.modulate = selected_player_drop_shadow_color
+			drop_shadow_sprite.texture = select_drop_shadow_texture
+			_update_health_ui(false)
+		Constants.CharacterSelectState.PLAYER_TARGET:
+			drop_shadow_sprite.modulate = select_player_drop_shadow_color
+			drop_shadow_sprite.texture = target_drop_shadow_texture
+			_update_health_ui(true)
+		Constants.CharacterSelectState.PLAYER_TARGETED:
+			drop_shadow_sprite.modulate = selected_player_drop_shadow_color
+			drop_shadow_sprite.texture = target_drop_shadow_texture
+			_update_health_ui(true)
+		Constants.CharacterSelectState.ENEMY_SELECT:
+			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
+			drop_shadow_sprite.texture = select_drop_shadow_texture
+			_update_health_ui(false)
+		Constants.CharacterSelectState.ENEMY_SELECTED:
+			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
+			drop_shadow_sprite.texture = select_drop_shadow_texture
+			_update_health_ui(false)
+		Constants.CharacterSelectState.ENEMY_TARGET:
+			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
+			drop_shadow_sprite.texture = target_drop_shadow_texture
+			_update_health_ui(true)
+		Constants.CharacterSelectState.ENEMY_TARGETED:
+			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
+			drop_shadow_sprite.texture = target_drop_shadow_texture
+			_update_health_ui(true)
+
+
+func _update_health_ui(display: bool):
+	if not display:
+		health_container.visible = false
+	else:
+		health_container.visible = true
+		health_value_label.text = str(health)
+		var progress_bar_value = (float(health) / float(character_info.max_health)) * 100.0
+		health_progress_bar.value = int(progress_bar_value)
 
 
 func damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, character_info.max_health)
-	character_selected_ui.update_health(self, true)
+	_update_health_ui(true)
