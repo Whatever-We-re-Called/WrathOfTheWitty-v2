@@ -77,11 +77,11 @@ func set_drop_shadow(select_state: Constants.CharacterSelectState):
 		Constants.CharacterSelectState.ENEMY_SELECT:
 			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = select_drop_shadow_texture
-			_update_health_ui(false)
+			_update_health_ui(true)
 		Constants.CharacterSelectState.ENEMY_SELECTED:
 			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = select_drop_shadow_texture
-			_update_health_ui(false)
+			_update_health_ui(true)
 		Constants.CharacterSelectState.ENEMY_TARGET:
 			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture

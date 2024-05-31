@@ -23,10 +23,9 @@ enemy_party = ExtResource("3_a2ou6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-position_smoothing_speed = 6.0
 script = ExtResource("4_p61fn")
 max_x_pivot = 50
-max_y_pivot = 50
+max_y_pivot = 75
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -35,48 +34,48 @@ max_y_pivot = 50
 [node name="PlayerRoots" type="Node2D" parent="."]
 
 [node name="PlayerRoot" type="Node2D" parent="PlayerRoots"]
-position = Vector2(-525, 525)
+position = Vector2(-525, 500)
 
 [node name="PlayerRoot2" type="Node2D" parent="PlayerRoots"]
-position = Vector2(-350, 525)
+position = Vector2(-350, 500)
 
 [node name="PlayerRoot3" type="Node2D" parent="PlayerRoots"]
-position = Vector2(-175, 525)
+position = Vector2(-175, 500)
 
 [node name="PlayerRoot4" type="Node2D" parent="PlayerRoots"]
-position = Vector2(0, 525)
+position = Vector2(0, 500)
 
 [node name="PlayerRoot5" type="Node2D" parent="PlayerRoots"]
-position = Vector2(175, 525)
+position = Vector2(175, 500)
 
 [node name="PlayerRoot6" type="Node2D" parent="PlayerRoots"]
-position = Vector2(350, 525)
+position = Vector2(350, 500)
 
 [node name="PlayerRoot7" type="Node2D" parent="PlayerRoots"]
-position = Vector2(525, 525)
+position = Vector2(525, 500)
 
 [node name="EnemyRoots" type="Node2D" parent="."]
 
 [node name="EnemyRoot" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-525, -25)
+position = Vector2(-525, -50)
 
 [node name="EnemyRoot2" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-350, -75)
+position = Vector2(-350, -100)
 
 [node name="EnemyRoot3" type="Node2D" parent="EnemyRoots"]
-position = Vector2(-175, -100)
+position = Vector2(-175, -125)
 
 [node name="EnemyRoot4" type="Node2D" parent="EnemyRoots"]
-position = Vector2(0, -125)
+position = Vector2(0, -150)
 
 [node name="EnemyRoot5" type="Node2D" parent="EnemyRoots"]
-position = Vector2(175, -100)
+position = Vector2(175, -125)
 
 [node name="EnemyRoot6" type="Node2D" parent="EnemyRoots"]
-position = Vector2(350, -75)
+position = Vector2(350, -100)
 
 [node name="EnemyRoot7" type="Node2D" parent="EnemyRoots"]
-position = Vector2(525, -25)
+position = Vector2(525, -50)
 
 [node name="StateMachine" type="Node" parent="."]
 

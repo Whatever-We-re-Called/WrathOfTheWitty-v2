@@ -102,6 +102,7 @@ func _get_root_index(number_on_team: int, team_size: int):
 
 func _init_party_selections():
 	party_selections = PartySelections.new()
+	party_selections.updated_selected_character.connect(update_selected_character)
 	party_selections.init(player_characters, enemy_characters, camera)
 
 
@@ -116,3 +117,8 @@ func change_to_state(new_state_name: String):
 	new_state._enter()
 	
 	current_state = new_state
+
+
+func update_selected_character(selected_character: BattleCharacter, update_display: bool):
+	camera.update_position(selected_character)
+	battle_interface.update_selected_character_info(selected_character)

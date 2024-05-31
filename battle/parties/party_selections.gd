@@ -1,5 +1,7 @@
 class_name PartySelections extends Node
 
+signal updated_selected_character(battle_character: BattleCharacter, update_display: bool)
+
 var player_character_selections: Dictionary
 var enemy_character_selections: Dictionary
 var camera: BattleCamera
@@ -46,6 +48,7 @@ func update_selected_character_index(state: Constants.CharacterSelectState, inde
 		if i == new_index:
 			checked_character_selections[battle_character] = state
 			if update_display:
+				updated_selected_character.emit(battle_character, update_display)
 				camera.update_position(battle_character)
 				battle_character.set_drop_shadow(state)
 		else:
