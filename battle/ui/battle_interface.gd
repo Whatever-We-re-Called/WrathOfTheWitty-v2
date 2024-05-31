@@ -18,8 +18,6 @@ extends Control
 @onready var end_turn_label = %EndTurnLabel
 @onready var mana_value_label = %ManaValueLabel
 
-var selected_ability_index = 0
-
 const PLAYER_CHARACTER_INFO_UI = preload("res://battle/ui/player_character_info_ui.tscn")
 const ABILITY_UI = preload("res://characters/abilities/textures/ability_ui.tscn")
 
@@ -69,38 +67,23 @@ func update_player_character_info(player_battle_characters: Array[BattleCharacte
 		player_character_info_ui.init(battle_character)
 
 
-func set_choose_ability_ui_visibility(is_visible: bool, character_info: CharacterInfo = null):
-	if is_visible:
-		choose_ability_ui.visible = true
-		selected_ability_index = 0
-		update_choose_ability_ui(character_info)
-	else:
-		choose_ability_ui.visible = false
+func set_choose_ability_ui_visibility(is_visible: bool):
+	choose_ability_ui.visible = is_visible
 
 
-func increase_chosen_ability_index(increment: int, character_info: CharacterInfo):
-	selected_ability_index += increment
-	if selected_ability_index > character_info.abilities.size() - 1:
-		selected_ability_index = 0
-	elif selected_ability_index < 0:
-		selected_ability_index = character_info.abilities.size() - 1
-	update_choose_ability_ui(character_info)
-
-
-func update_choose_ability_ui(character_info: CharacterInfo):
+func update_choose_ability_ui(selected_index: int, character_info: CharacterInfo, current_mana: int):
 	for child in ability_container.get_children():
 		child.queue_free()
 	
 	for i in range(character_info.abilities.size()):
 		var ability_ui = ABILITY_UI.instantiate()
 		ability_container.add_child(ability_ui)
-		ability_ui.init(character_info.abilities[i], i == selected_ability_index)
+		var ability = character_info.abilities[i]
+		var is_selected = i == selected_index
+		var is_selectable = current_mana >= ability.mana_cost 
+		ability_ui.init(ability, is_selected, is_selectable)
 	
-	ability_description_label.text = character_info.abilities[selected_ability_index].description
-
-
-func get_selected_ability(character_info: CharacterInfo):
-	return character_info.abilities[selected_ability_index]
+	ability_description_label.text = character_info.abilities[selected_index].description
 
 
 func update_mana_ui(mana_value: int):

@@ -16,10 +16,11 @@ var states: Dictionary = {}
 
 var player_party_character_roots: Array[Node2D]
 var enemy_party_character_roots: Array[Node2D]
-var current_mana: int
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
 var party_selections: PartySelections
+var current_player_mana: int
+var current_player_selected_ability: Ability
 
 const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
@@ -122,3 +123,29 @@ func change_to_state(new_state_name: String):
 func update_selected_character(selected_character: BattleCharacter, update_display: bool):
 	camera.update_position(selected_character)
 	battle_interface.update_selected_character_info(selected_character)
+
+
+func reset_for_player_turn():
+	current_player_mana = player_party.max_mana
+	battle_interface.update_mana_ui(current_player_mana)
+	
+	current_player_selected_ability = null
+
+
+func update_current_player_mana(mana_change: int):
+	current_player_mana += mana_change
+	battle_interface.update_mana_ui(current_player_mana)
+
+
+func can_current_mana_afford_ability(ability: Ability) -> bool:
+	return current_player_mana <= ability.mana_cost
+
+
+#func try_to_execute_selected_ability():
+	#var selected_ability = battle_interface.get_selected_ability(party_selections.get_selected_player_character().character_info)
+	#var ability_mana_cost = selected_ability.mana_cost
+	#if current_player_mana < ability_mana_cost:
+		#return
+	#else:
+		#change_to_state("PlayerTarget")
+		#battle_interface.set_choose_ability_ui_visibility(false)

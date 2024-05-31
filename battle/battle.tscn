@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwl4acdfflq1a"]
+[gd_scene load_steps=12 format=3 uid="uid://dwl4acdfflq1a"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_ydm11"]
 [ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_ge8fs"]
@@ -8,13 +8,9 @@
 [ext_resource type="Script" path="res://battle/states/battle_player_select_state.gd" id="6_5pkyc"]
 [ext_resource type="Script" path="res://battle/states/battle_player_start_state.gd" id="6_opgyb"]
 [ext_resource type="Script" path="res://battle/states/battle_player_idle_state.gd" id="7_xtv2s"]
-[ext_resource type="Script" path="res://battle/states/battle_player_menu_state.gd" id="9_yd8vo"]
+[ext_resource type="Script" path="res://battle/states/battle_player_ability_menu_state.gd" id="9_yd8vo"]
 [ext_resource type="Script" path="res://battle/states/battle_player_target_state.gd" id="10_ee1h3"]
 [ext_resource type="Script" path="res://battle/states/battle_player_attack_state.gd" id="11_vxtks"]
-[ext_resource type="Texture2D" uid="uid://buqhk5j2no1vu" path="res://characters/textures/selection_1.svg" id="12_8qqbs"]
-[ext_resource type="Texture2D" uid="uid://cmk8at32roe7v" path="res://characters/textures/sprites/concept2_floor.png" id="13_qse8m"]
-[ext_resource type="Texture2D" uid="uid://c2amcsn72jp5q" path="res://characters/textures/selection_2.svg" id="14_eec0m"]
-[ext_resource type="Texture2D" uid="uid://dgro2sf58lk0p" path="res://characters/textures/triangle_1.svg" id="15_x1mip"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ydm11")
@@ -88,7 +84,7 @@ script = ExtResource("6_5pkyc")
 [node name="PlayerIdle" type="Node" parent="StateMachine"]
 script = ExtResource("7_xtv2s")
 
-[node name="PlayerMenu" type="Node" parent="StateMachine"]
+[node name="PlayerAbilityMenu" type="Node" parent="StateMachine"]
 script = ExtResource("9_yd8vo")
 
 [node name="PlayerTarget" type="Node" parent="StateMachine"]
@@ -100,20 +96,3 @@ script = ExtResource("11_vxtks")
 [node name="EnemyStart" type="Node" parent="StateMachine"]
 
 [node name="EnemyAttack" type="Node" parent="StateMachine"]
-
-[node name="Selection1" type="Sprite2D" parent="."]
-position = Vector2(-3954, 1056)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("12_8qqbs")
-
-[node name="Concept2Floor" type="Sprite2D" parent="."]
-position = Vector2(-3955, 796)
-texture = ExtResource("13_qse8m")
-
-[node name="Selection2" type="Sprite2D" parent="."]
-position = Vector2(-3408, 1065)
-texture = ExtResource("14_eec0m")
-
-[node name="Triangle1" type="Sprite2D" parent="."]
-position = Vector2(-3901, 469)
-texture = ExtResource("15_x1mip")
