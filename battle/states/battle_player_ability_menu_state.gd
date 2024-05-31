@@ -29,6 +29,12 @@ func _update():
 		battle.change_to_state("PlayerTarget")
 
 
+func _update_controls_ui():
+	battle.battle_interface.scroll_label.visible = true
+	battle.battle_interface.confirm_label.visible = true
+	battle.battle_interface.back_label.visible = true
+
+
 func _increase_chosen_ability_index(increment: int):
 	selected_ability_index += increment
 	

@@ -90,6 +90,17 @@ func update_mana_ui(mana_value: int):
 	mana_value_label.text = str(mana_value)
 
 
+func reset_controls_ui():
+	target_label.visible = false
+	scroll_label.visible = false
+	confirm_label.visible = false
+	view_info_label.visible = false
+	choose_ability_label.visible = false
+	view_bag_label.visible = false
+	back_label.visible = false
+	end_turn_label.visible = false
+
+
 func update_controls_ui():
 	pass
 	#target_label.visible = false

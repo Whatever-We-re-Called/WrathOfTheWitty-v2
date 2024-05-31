@@ -17,4 +17,11 @@ func _update():
 		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, 1, true)
 	if Input.is_action_just_pressed("confirm"):
 		battle.change_to_state("PlayerIdle")
-		#battle.update_selected_character_ui(battle.enemy_party_selection)
+
+
+func _update_controls_ui():
+	battle.battle_interface.target_label.visible = true
+	battle.battle_interface.confirm_label.visible = true
+	battle.battle_interface.view_info_label.visible = true
+	battle.battle_interface.view_bag_label.visible = true
+	battle.battle_interface.end_turn_label.visible = true

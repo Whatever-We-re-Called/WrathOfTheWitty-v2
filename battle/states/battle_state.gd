@@ -17,3 +17,7 @@ func _exit():
 
 func _update():
 	pass
+
+
+func _update_controls_ui():
+	pass

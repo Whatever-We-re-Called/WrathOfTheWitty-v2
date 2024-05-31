@@ -117,6 +117,9 @@ func change_to_state(new_state_name: String):
 	
 	new_state._enter()
 	
+	battle_interface.reset_controls_ui()
+	new_state._update_controls_ui()
+	
 	current_state = new_state
 
 

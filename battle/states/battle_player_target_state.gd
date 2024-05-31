@@ -21,3 +21,10 @@ func _update():
 	if Input.is_action_just_pressed("confirm"):
 		battle.change_to_state("PlayerAttack")
 		battle.battle_interface.set_choose_ability_ui_visibility(false)
+
+
+func _update_controls_ui():
+	battle.battle_interface.target_label.visible = true
+	battle.battle_interface.confirm_label.visible = true
+	battle.battle_interface.view_info_label.visible = true
+	battle.battle_interface.back_label.visible = true
