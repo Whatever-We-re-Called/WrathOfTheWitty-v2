@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgdi7awfb3m6t"]
+[gd_scene load_steps=8 format=3 uid="uid://dgdi7awfb3m6t"]
 
 [ext_resource type="Script" path="res://battle/battle_character/battle_character.gd" id="1_cfgn3"]
 [ext_resource type="Texture2D" uid="uid://c2amcsn72jp5q" path="res://characters/textures/selection_2.svg" id="2_5npet"]
@@ -11,6 +11,10 @@ bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 bg_color = Color(1, 0.0313726, 0.0313726, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yofai"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_men73"]
+font_size = 24
+font_color = Color(0, 1, 0, 1)
 
 [node name="BattleCharacter" type="Node2D"]
 script = ExtResource("1_cfgn3")
@@ -111,3 +115,55 @@ label_settings = SubResource("LabelSettings_yofai")
 layout_mode = 2
 text = " HP"
 label_settings = SubResource("LabelSettings_yofai")
+
+[node name="WeakTag" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 28.0
+offset_right = 82.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="DropShadow/WeakTag"]
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 44.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[node name="Label" type="Label" parent="DropShadow/WeakTag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -22.5
+offset_right = 47.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+text = "Weak!"
+label_settings = SubResource("LabelSettings_men73")
+horizontal_alignment = 1
+vertical_alignment = 1

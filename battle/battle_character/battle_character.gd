@@ -15,6 +15,7 @@ class_name BattleCharacter extends Node2D
 @onready var health_value_label = %HealthValueLabel
 @onready var drop_shadow = %DropShadow
 @onready var drop_shadow_sprite = %DropShadowSprite
+@onready var weak_tag = %WeakTag
 
 
 var character_info: CharacterInfo
@@ -52,7 +53,7 @@ func _init_sprite_2d():
 	drop_shadow.global_position.y += (sprite_height * character_info.texture_scale.y) / 2.0
 
 
-func set_drop_shadow(select_state: Constants.CharacterSelectState):
+func set_drop_shadow(select_state: Constants.CharacterSelectState, abilities_to_check: Array[Ability] = []):
 	match select_state:
 		Constants.CharacterSelectState.NONE:
 			drop_shadow_sprite.modulate = none_drop_shadow_color
@@ -90,6 +91,15 @@ func set_drop_shadow(select_state: Constants.CharacterSelectState):
 			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture
 			_update_health_ui(true)
+	
+	if abilities_to_check.size() > 0 and health_container.visible:
+		for ability in abilities_to_check:
+			var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
+			var is_weak_to_ability = character_info.insecurity_weaknesses.has(ability_insecurity)
+			weak_tag.visible = is_weak_to_ability
+			break
+	else:
+		weak_tag.visible = false
 
 
 func _update_health_ui(display: bool):

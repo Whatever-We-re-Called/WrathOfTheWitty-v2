@@ -25,10 +25,10 @@ func _update():
 	if Input.is_action_just_pressed("scroll_down"):
 		_increase_chosen_ability_index(1)
 	if Input.is_action_just_pressed("back"):
+		battle.current_player_selected_ability = null
 		battle.change_to_state("PlayerIdle")
 	if Input.is_action_just_pressed("confirm"):
 		if _can_afford_selected_ability():
-			battle.current_player_selected_ability = character_info.abilities[selected_ability_index]
 			battle.change_to_state("PlayerTarget")
 
 
@@ -55,6 +55,7 @@ func _increase_chosen_ability_index(increment: int):
 		_increase_chosen_ability_index(increment)
 		return
 	
+	battle.current_player_selected_ability = character_info.abilities[selected_ability_index]
 	_update_ability_ui()
 	scroll_checks = 0
 

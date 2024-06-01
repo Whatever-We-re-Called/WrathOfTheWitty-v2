@@ -4,20 +4,20 @@ signal updated_selected_character(battle_character: BattleCharacter, update_disp
 
 var player_character_selections: Dictionary
 var enemy_character_selections: Dictionary
+var battle: Battle
 var camera: BattleCamera
 
 
-func init(player_characters: Array[BattleCharacter], enemy_characters: Array[BattleCharacter], camera: BattleCamera):
-	for player_character in player_characters:
+func init(battle: Battle):
+	for player_character in battle.player_characters:
 		player_character_selections[player_character] = Constants.CharacterSelectState.NONE
-	for enemy_character in enemy_characters:
+	for enemy_character in battle.enemy_characters:
 		enemy_character_selections[enemy_character] = Constants.CharacterSelectState.NONE
-	
-	self.camera = camera
+	self.battle = battle
+	self.camera = battle.camera
 
 
 func reset():
-	print("reset")
 	for player_character_selection in player_character_selections:
 		player_character_selection = Constants.CharacterSelectState.NONE
 	for enemy_character_selection in enemy_character_selections:
@@ -50,7 +50,8 @@ func update_selected_character_index(state: Constants.CharacterSelectState, inde
 			if update_display:
 				updated_selected_character.emit(battle_character, update_display)
 				camera.update_position(battle_character)
-				battle_character.set_drop_shadow(state)
+				print(battle.current_player_selected_ability)
+				battle_character.set_drop_shadow(state, battle.party_selections.get_selected_player_character().character_info.abilities)
 		else:
 			checked_character_selections[battle_character] = Constants.CharacterSelectState.NONE
 			if update_display:
