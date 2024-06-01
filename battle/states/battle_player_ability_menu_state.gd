@@ -4,10 +4,7 @@ var selected_ability_index: int
 var character_info: CharacterInfo
 var current_mana: int
 
-# TODO Surely there's a better way to handle this? I just
-# want to move on for now, though.
 var scroll_checks = 0
-var MAX_ALLOWED_SCROLL_CHECKS = 20
 
 func _enter():
 	battle.battle_interface.set_choose_ability_ui_visibility(true)
@@ -30,8 +27,9 @@ func _update():
 	if Input.is_action_just_pressed("back"):
 		battle.change_to_state("PlayerIdle")
 	if Input.is_action_just_pressed("confirm"):
-		battle.current_player_selected_ability = character_info.abilities[selected_ability_index]
-		battle.change_to_state("PlayerTarget")
+		if _can_afford_selected_ability():
+			battle.current_player_selected_ability = character_info.abilities[selected_ability_index]
+			battle.change_to_state("PlayerTarget")
 
 
 func _update_controls_ui():
@@ -42,7 +40,7 @@ func _update_controls_ui():
 
 func _increase_chosen_ability_index(increment: int):
 	scroll_checks += 1
-	if scroll_checks > MAX_ALLOWED_SCROLL_CHECKS:
+	if scroll_checks > character_info.abilities.size():
 		return
 	
 	selected_ability_index += increment
