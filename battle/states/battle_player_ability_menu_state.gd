@@ -4,6 +4,11 @@ var selected_ability_index: int
 var character_info: CharacterInfo
 var current_mana: int
 
+# TODO Surely there's a better way to handle this? I just
+# want to move on for now, though.
+var scroll_checks = 0
+var MAX_ALLOWED_SCROLL_CHECKS = 20
+
 func _enter():
 	battle.battle_interface.set_choose_ability_ui_visibility(true)
 	
@@ -36,6 +41,10 @@ func _update_controls_ui():
 
 
 func _increase_chosen_ability_index(increment: int):
+	scroll_checks += 1
+	if scroll_checks > MAX_ALLOWED_SCROLL_CHECKS:
+		return
+	
 	selected_ability_index += increment
 	
 	var max_abilities_index = character_info.abilities.size() - 1
@@ -49,6 +58,7 @@ func _increase_chosen_ability_index(increment: int):
 		return
 	
 	_update_ability_ui()
+	scroll_checks = 0
 
 
 func _update_ability_ui():

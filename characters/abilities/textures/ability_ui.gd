@@ -33,5 +33,4 @@ func init(enemy_character_info: CharacterInfo, ability: Ability, index: int, sel
 func update_tag():
 	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
 	var is_weak_to_ability = enemy_character_info.insecurity_weaknesses.has(ability_insecurity)
-	print(ability_insecurity, " ", is_weak_to_ability)
 	weak_tag.visible = is_weak_to_ability
