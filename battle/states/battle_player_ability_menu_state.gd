@@ -52,7 +52,7 @@ func _increase_chosen_ability_index(increment: int):
 
 
 func _update_ability_ui():
-	battle.battle_interface.update_choose_ability_ui(selected_ability_index, character_info, current_mana)
+	battle.battle_interface.update_choose_ability_ui(selected_ability_index, battle.party_selections, current_mana)
 
 
 func _can_afford_selected_ability() -> bool:

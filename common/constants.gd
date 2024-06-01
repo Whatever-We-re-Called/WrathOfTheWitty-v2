@@ -130,3 +130,34 @@ func get_ability_type_icon(ability_type: AbilityType) -> Texture2D:
 			return ABILITY_TEXTURES.passive_texture
 	
 	return ABILITY_TEXTURES.appearance_texture
+
+
+func get_matching_ability_type_for_insecurity(insecurity: Insecurity) -> AbilityType:
+	match insecurity:
+		Insecurity.APPEARANCE:
+			return AbilityType.APPEARANCE_ATTACK
+		Insecurity.SELF_ESTEEM:
+			return AbilityType.SELF_ESTEEM_ATTACK
+		Insecurity.INTELLIGENCE:
+			return AbilityType.INTELLIGENCE_ATTACK
+		Insecurity.PHYSICAL_ABILITY:
+			return AbilityType.PHYSICAL_ABILITY_ATTACK
+		Insecurity.SOCIAL_LIFE:
+			return AbilityType.SOCIAL_LIFE_ATTACK
+	return -1
+
+
+func get_matching_insecurity_for_ability_type(ability_type: AbilityType) -> Insecurity:
+	match ability_type:
+		AbilityType.APPEARANCE_ATTACK:
+			return Insecurity.APPEARANCE
+		AbilityType.SELF_ESTEEM_ATTACK:
+			return Insecurity.SELF_ESTEEM
+		AbilityType.INTELLIGENCE_ATTACK:
+			return Insecurity.INTELLIGENCE
+		AbilityType.PHYSICAL_ABILITY_ATTACK:
+			return Insecurity.PHYSICAL_ABILITY
+		AbilityType.SOCIAL_LIFE_ATTACK:
+			return Insecurity.SOCIAL_LIFE
+	return -1
+	

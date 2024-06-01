@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgyffth470fif"]
+[gd_scene load_steps=8 format=3 uid="uid://bgyffth470fif"]
 
 [ext_resource type="Script" path="res://characters/abilities/textures/ability_ui.gd" id="1_myatl"]
 [ext_resource type="Texture2D" uid="uid://cjjtsx7xursga" path="res://battle/ui/d12.svg" id="2_c285w"]
@@ -14,6 +14,11 @@ font_color = Color(0.0392157, 0.737255, 0.843137, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pwsn3"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2x06"]
+font_size = 32
+font_color = Color(1, 0.815686, 0.227451, 1)
+outline_size = 4
 
 [node name="AbilityUI" type="ColorRect"]
 custom_minimum_size = Vector2(600, 64)
@@ -87,3 +92,30 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "2"
 label_settings = SubResource("LabelSettings_pwsn3")
+
+[node name="WeakTag" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 563.0
+offset_top = 45.0
+offset_right = 603.0
+offset_bottom = 85.0
+
+[node name="Label" type="Label" parent="WeakTag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -23.0
+offset_right = 33.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+text = "Weak!"
+label_settings = SubResource("LabelSettings_r2x06")
+horizontal_alignment = 1
+vertical_alignment = 1
