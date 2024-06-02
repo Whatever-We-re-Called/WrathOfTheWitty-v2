@@ -118,6 +118,7 @@ label_settings = SubResource("LabelSettings_yofai")
 
 [node name="WeakTag" type="Control" parent="DropShadow"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,7 +1,7 @@
 class_name Battle extends Node2D
 
 
-@export_group("Teams")
+@export_group("Parties")
 @export var player_party: PartyInfo
 @export var enemy_party: PartyInfo
 
@@ -20,7 +20,7 @@ var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
 var party_selections: PartySelections
 var current_player_mana: int
-var current_player_selected_ability: Ability
+var current_selected_abilities: Array[Ability]
 
 const BATTLE_CHARACTER = preload("res://battle/battle_character/battle_character.tscn")
 
@@ -132,7 +132,12 @@ func reset_for_player_turn():
 	current_player_mana = player_party.max_mana
 	battle_interface.update_mana_ui(current_player_mana)
 	
-	current_player_selected_ability = null
+	for i in range(player_characters.size()):
+		if player_characters[i].health >= 0:
+			party_selections.set_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, i, true)
+			break
+	
+	current_selected_abilities.clear()
 
 
 func update_current_player_mana(mana_change: int):
@@ -142,6 +147,30 @@ func update_current_player_mana(mana_change: int):
 
 func can_current_mana_afford_ability(ability: Ability) -> bool:
 	return current_player_mana <= ability.mana_cost
+
+
+# TODO Probably updated current_selected_ability to properly
+# seperate single vs array (multiple) data handling?
+func update_current_selected_ability(selected_ability: Ability):
+	current_selected_abilities.clear()
+	current_selected_abilities.append(selected_ability)
+
+
+func update_current_selected_abilities(selected_abilities: Array[Ability]):
+	current_selected_abilities.clear()
+	current_selected_abilities.append_array(selected_abilities)
+
+
+func get_current_selected_ability() -> Ability:
+	return current_selected_abilities[0]
+
+
+func get_current_selected_abilities() -> Array[Ability]:
+	return current_selected_abilities
+
+
+func reset_current_selected_abilities():
+	current_selected_abilities.clear()
 
 
 #func try_to_execute_selected_ability():

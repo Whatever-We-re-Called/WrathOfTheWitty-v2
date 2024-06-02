@@ -54,6 +54,8 @@ func _init_sprite_2d():
 
 
 func set_drop_shadow(select_state: Constants.CharacterSelectState, abilities_to_check: Array[Ability] = []):
+	weak_tag.visible = false
+	
 	match select_state:
 		Constants.CharacterSelectState.NONE:
 			drop_shadow_sprite.modulate = none_drop_shadow_color
@@ -71,35 +73,32 @@ func set_drop_shadow(select_state: Constants.CharacterSelectState, abilities_to_
 			drop_shadow_sprite.modulate = select_player_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture
 			_update_health_ui(true)
+			update_weak_tag(abilities_to_check)
 		Constants.CharacterSelectState.PLAYER_TARGETED:
 			drop_shadow_sprite.modulate = selected_player_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture
 			_update_health_ui(true)
+			update_weak_tag(abilities_to_check)
 		Constants.CharacterSelectState.ENEMY_SELECT:
 			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = select_drop_shadow_texture
 			_update_health_ui(true)
+			update_weak_tag(abilities_to_check)
 		Constants.CharacterSelectState.ENEMY_SELECTED:
 			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = select_drop_shadow_texture
 			_update_health_ui(true)
+			update_weak_tag(abilities_to_check)
 		Constants.CharacterSelectState.ENEMY_TARGET:
 			drop_shadow_sprite.modulate = select_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture
 			_update_health_ui(true)
+			update_weak_tag(abilities_to_check)
 		Constants.CharacterSelectState.ENEMY_TARGETED:
 			drop_shadow_sprite.modulate = selected_enemy_drop_shadow_color
 			drop_shadow_sprite.texture = target_drop_shadow_texture
 			_update_health_ui(true)
-	
-	if abilities_to_check.size() > 0 and health_container.visible:
-		for ability in abilities_to_check:
-			var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
-			var is_weak_to_ability = character_info.insecurity_weaknesses.has(ability_insecurity)
-			weak_tag.visible = is_weak_to_ability
-			break
-	else:
-		weak_tag.visible = false
+			update_weak_tag(abilities_to_check)
 
 
 func _update_health_ui(display: bool):
@@ -110,6 +109,17 @@ func _update_health_ui(display: bool):
 		health_value_label.text = str(health)
 		var progress_bar_value = (float(health) / float(character_info.max_health)) * 100.0
 		health_progress_bar.value = int(progress_bar_value)
+
+
+func update_weak_tag(abilities_to_check: Array[Ability]):
+	if abilities_to_check.size() > 0 and health_container.visible:
+		for ability in abilities_to_check:
+			var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
+			var is_weak_to_ability = character_info.insecurity_weaknesses.has(ability_insecurity)
+			weak_tag.visible = is_weak_to_ability
+			break
+	else:
+		weak_tag.visible = false
 
 
 func damage(amount: int):

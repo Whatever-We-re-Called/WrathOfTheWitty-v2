@@ -31,7 +31,8 @@ func update_selected_character_info(battle_character: BattleCharacter):
 		selected_character_name_label.text = character_info.name
 		
 		for child in selected_character_insecurity_affinities_container.get_children():
-			child.queue_free()
+			child.free()
+		
 		var insecurity_affinities: Dictionary
 		insecurity_affinities[Constants.get_insecurity_icon(Constants.InsecurityAffinityType.WEAK)] = character_info.insecurity_weaknesses
 		insecurity_affinities[Constants.get_insecurity_icon(Constants.InsecurityAffinityType.STRONG)] = character_info.insecurity_strengths
@@ -59,7 +60,7 @@ func _get_insecurity_texture_rect(texture: Texture2D, color: Color) -> TextureRe
 
 func update_player_character_info(player_battle_characters: Array[BattleCharacter]):
 	for child in player_character_info_container.get_children():
-		child.queue_free()
+		child.free()
 	
 	for battle_character in player_battle_characters:
 		var player_character_info_ui = PLAYER_CHARACTER_INFO_UI.instantiate()

@@ -24,6 +24,24 @@ func reset():
 		enemy_character_selection = Constants.CharacterSelectState.NONE
 
 
+func set_selected_character_index(state: Constants.CharacterSelectState, index: int, update_display: bool = false):
+	var checked_character_selections = _get_checked_character_selections(state)
+	
+	for i in range(checked_character_selections.size()):
+		var battle_character = checked_character_selections.keys()[i]
+		if i == index:
+			checked_character_selections[battle_character] = state
+			if update_display:
+				updated_selected_character.emit(battle_character, update_display)
+				camera.update_position(battle_character)
+				battle_character.set_drop_shadow(state, battle.get_current_selected_abilities())
+		else:
+			checked_character_selections[battle_character] = Constants.CharacterSelectState.NONE
+			if update_display:
+				battle_character.set_drop_shadow(Constants.CharacterSelectState.NONE)
+
+
+
 func update_selected_character_index(state: Constants.CharacterSelectState, index_change: int, update_display: bool = false):
 	var checked_character_selections = _get_checked_character_selections(state)
 	
@@ -50,8 +68,7 @@ func update_selected_character_index(state: Constants.CharacterSelectState, inde
 			if update_display:
 				updated_selected_character.emit(battle_character, update_display)
 				camera.update_position(battle_character)
-				print(battle.current_player_selected_ability)
-				battle_character.set_drop_shadow(state, battle.party_selections.get_selected_player_character().character_info.abilities)
+				battle_character.set_drop_shadow(state, battle.get_current_selected_abilities())
 		else:
 			checked_character_selections[battle_character] = Constants.CharacterSelectState.NONE
 			if update_display:

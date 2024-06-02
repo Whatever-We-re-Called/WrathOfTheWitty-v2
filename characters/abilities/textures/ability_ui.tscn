@@ -94,6 +94,7 @@ label_settings = SubResource("LabelSettings_pwsn3")
 
 [node name="WeakTag" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_left = 563.0
 offset_top = 47.0

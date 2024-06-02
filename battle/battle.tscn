@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwl4acdfflq1a"]
+[gd_scene load_steps=14 format=3 uid="uid://dwl4acdfflq1a"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_ydm11"]
 [ext_resource type="Resource" uid="uid://bc0rdh8w5yfmn" path="res://battle/parties/resources/test_player_party_info.tres" id="2_ge8fs"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://battle/states/battle_player_ability_menu_state.gd" id="9_yd8vo"]
 [ext_resource type="Script" path="res://battle/states/battle_player_target_state.gd" id="10_ee1h3"]
 [ext_resource type="Script" path="res://battle/states/battle_player_attack_state.gd" id="11_vxtks"]
+[ext_resource type="Script" path="res://battle/states/battle_enemy_start_state.gd" id="12_esxqq"]
+[ext_resource type="Script" path="res://battle/states/battle_enemy_attack_state.gd" id="13_jclxc"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ydm11")
@@ -94,5 +96,7 @@ script = ExtResource("10_ee1h3")
 script = ExtResource("11_vxtks")
 
 [node name="EnemyStart" type="Node" parent="StateMachine"]
+script = ExtResource("12_esxqq")
 
 [node name="EnemyAttack" type="Node" parent="StateMachine"]
+script = ExtResource("13_jclxc")

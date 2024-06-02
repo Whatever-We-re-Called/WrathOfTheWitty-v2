@@ -17,6 +17,8 @@ func _update():
 		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, 1, true)
 	if Input.is_action_just_pressed("confirm"):
 		battle.change_to_state("PlayerIdle")
+	if Input.is_action_just_pressed("end_turn"):
+		battle.change_to_state("EnemyStart")
 
 
 func _update_controls_ui():

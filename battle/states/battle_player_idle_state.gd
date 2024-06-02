@@ -2,6 +2,7 @@ extends BattleState
 
 
 func _enter():
+	battle.update_current_selected_abilities(battle.party_selections.get_selected_player_character().character_info.abilities)
 	battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.ENEMY_SELECT, 0, true)
 
 
