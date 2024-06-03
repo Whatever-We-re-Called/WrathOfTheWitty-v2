@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=3 format=3 uid="uid://bmgh8hlp1fr3y"]
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=4 format=3 uid="uid://bmgh8hlp1fr3y"]
 
 [ext_resource type="Texture2D" uid="uid://cmk8at32roe7v" path="res://characters/textures/sprites/concept2_floor.png" id="1_0ck8o"]
+[ext_resource type="Resource" uid="uid://cyq11087r06hu" path="res://characters/abilities/resources/appearance_attack/one_normal_appearance_attack.tres" id="1_kvqrf"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_wekuq"]
 
 [resource]
@@ -9,7 +10,9 @@ name = "Cockroach"
 forward_facing_texture = ExtResource("1_0ck8o")
 texture_scale = Vector2(0.8, 0.8)
 insecurity_weaknesses = Array[int]([0])
-insecurity_blocks = Array[int]([1, 2, 3, 4, 5])
+insecurity_strengths = Array[int]([1, 2, 3, 4])
+insecurity_blocks = Array[int]([])
 insecurity_heals = Array[int]([])
 insecurity_deflects = Array[int]([])
 max_health = 100
+abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([ExtResource("1_kvqrf")])

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcw6fvsgrgcnt"]
+[gd_scene load_steps=12 format=3 uid="uid://dcw6fvsgrgcnt"]
 
 [ext_resource type="Script" path="res://battle/ui/battle_interface.gd" id="1_8kcoe"]
 [ext_resource type="Texture2D" uid="uid://cjjtsx7xursga" path="res://battle/ui/d12.svg" id="1_e24yy"]
+[ext_resource type="PackedScene" uid="uid://bgyffth470fif" path="res://characters/abilities/textures/ability_ui.tscn" id="3_4vrru"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0a3vh"]
 font_size = 32
@@ -18,6 +19,15 @@ font_color = Color(0.0392157, 0.737255, 0.843137, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dkcxb"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_smq4i"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4oph"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_op2a6"]
+font_size = 24
 
 [node name="BattleInterface" type="Control"]
 layout_mode = 3
@@ -117,12 +127,13 @@ texture = SubResource("CompressedTexture2D_x56ge")
 expand_mode = 1
 
 [node name="BottomLeftInfo" type="MarginContainer" parent="."]
+z_index = 10
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -255.0
-offset_right = 213.0
+offset_top = -369.0
+offset_right = 215.0
 grow_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_bottom = 16
@@ -130,47 +141,55 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftInfo"]
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BottomLeftInfo/VBoxContainer"]
+[node name="ControlsUI" type="VBoxContainer" parent="BottomLeftInfo/VBoxContainer"]
 layout_mode = 2
 
-[node name="TargetLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="TargetLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "A/D - Target"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="ConfirmLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="ScrollLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "W/S - Scroll"
+label_settings = SubResource("LabelSettings_cwf2q")
+
+[node name="ConfirmLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "SPACE - Confirm"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="ViewInfoLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="ViewInfoLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Q - View Info"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="AttackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="ChooseAbilityLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "E - Attack"
+text = "E - Choose Ability"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="ViewBagLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "R - View Bag"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="GuardLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "R - Guard"
-label_settings = SubResource("LabelSettings_cwf2q")
-
-[node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="BackLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "C - Back"
 label_settings = SubResource("LabelSettings_cwf2q")
 
-[node name="EndTurnLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/VBoxContainer"]
+[node name="EndTurnLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/ControlsUI"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "ENTER - End Turn"
 label_settings = SubResource("LabelSettings_cwf2q")
@@ -192,7 +211,8 @@ layout_mode = 2
 text = " Mana "
 label_settings = SubResource("LabelSettings_j06hv")
 
-[node name="Label2" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+[node name="ManaValueLabel" type="Label" parent="BottomLeftInfo/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "6"
 label_settings = SubResource("LabelSettings_dkcxb")
@@ -215,3 +235,81 @@ theme_override_constants/margin_bottom = 24
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
+
+[node name="ChooseAbilityUI" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ChooseAbilityUI"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="ColorRect2" type="ColorRect" parent="ChooseAbilityUI"]
+custom_minimum_size = Vector2(1200, 900)
+layout_mode = 2
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseAbilityUI"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="ChooseAbilityUI/VBoxContainer"]
+layout_mode = 2
+text = "Choose an Ability"
+label_settings = SubResource("LabelSettings_smq4i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChooseAbilityUI/VBoxContainer"]
+custom_minimum_size = Vector2(500, 720)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="AbilityContainer" type="VBoxContainer" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AbilityUI" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer/AbilityContainer" instance=ExtResource("3_4vrru")]
+layout_mode = 2
+color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Description:"
+label_settings = SubResource("LabelSettings_o4oph")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityDescriptionLabel" type="Label" parent="ChooseAbilityUI/VBoxContainer/ScrollContainer/HBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+text = "Deal Appearance damage to one opponent. Chance (15%) to inflict Fear."
+label_settings = SubResource("LabelSettings_op2a6")
+horizontal_alignment = 1
+autowrap_mode = 2

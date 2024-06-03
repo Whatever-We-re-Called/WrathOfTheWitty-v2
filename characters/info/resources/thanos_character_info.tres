@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=4 format=3 uid="uid://ffybeur4n71a"]
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=7 format=3 uid="uid://ffybeur4n71a"]
 
+[ext_resource type="Resource" uid="uid://bbnqgjp7scccg" path="res://characters/abilities/resources/appearance_attack/one_weak_appearance_attack.tres" id="1_cywf5"]
 [ext_resource type="Texture2D" uid="uid://wdqpjo0sn505" path="res://characters/textures/sprites/db0h5zn-1c6d1e03-24c2-4ac4-983e-e901e1492de3.png" id="1_o175m"]
 [ext_resource type="Texture2D" uid="uid://c6pglu77hr73j" path="res://characters/textures/sprites/Marvel-Villian-Thanos-PNG-Images.png" id="2_cxq0o"]
+[ext_resource type="Resource" uid="uid://cyq11087r06hu" path="res://characters/abilities/resources/appearance_attack/one_normal_appearance_attack.tres" id="2_ne03m"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_rqc3v"]
+[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/appearance_attack/one_strong_appearance_attack.tres" id="3_1e1xn"]
 
 [resource]
 script = ExtResource("2_rqc3v")
@@ -10,8 +13,10 @@ name = "Thanos"
 icon_texture = ExtResource("2_cxq0o")
 backward_facing_texture = ExtResource("1_o175m")
 texture_scale = Vector2(0.375, 0.375)
-insecurity_weaknesses = Array[int]([2])
+insecurity_weaknesses = Array[int]([0])
+insecurity_strengths = Array[int]([])
 insecurity_blocks = Array[int]([])
 insecurity_heals = Array[int]([])
 insecurity_deflects = Array[int]([])
 max_health = 100
+abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([ExtResource("1_cywf5"), ExtResource("2_ne03m"), ExtResource("3_1e1xn")])

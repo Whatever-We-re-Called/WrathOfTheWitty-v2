@@ -1,17 +1,426 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgdi7awfb3m6t"]
+[gd_scene load_steps=13 format=3 uid="uid://dgdi7awfb3m6t"]
 
 [ext_resource type="Script" path="res://battle/battle_character/battle_character.gd" id="1_cfgn3"]
-[ext_resource type="PackedScene" uid="uid://pjsorwi2bs5d" path="res://battle/battle_character/character_selected_ui.tscn" id="2_8ncu5"]
+[ext_resource type="Texture2D" uid="uid://c2amcsn72jp5q" path="res://characters/textures/selection_2.svg" id="2_5npet"]
+[ext_resource type="Texture2D" uid="uid://buqhk5j2no1vu" path="res://characters/textures/selection_1.svg" id="3_imfyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irl1u"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvgu5"]
+bg_color = Color(1, 0.0313726, 0.0313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yofai"]
+
+[sub_resource type="Animation" id="Animation_37g8t"]
+resource_name = "damage_dealt_display_rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageDealtDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, -32), Vector2(-7, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.0313726, 0.0313726, 1), Color(1, 0.0313726, 0.0313726, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kkuch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageDealtDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, -32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0313726, 0.0313726, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_apx4f"]
+_data = {
+"RESET": SubResource("Animation_kkuch"),
+"damage_dealt_display_rise": SubResource("Animation_37g8t")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_axc1f"]
+font_size = 24
+font_color = Color(1, 0.0313726, 0.0313726, 1)
+outline_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_men73"]
+font_size = 24
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3e8st"]
+font_size = 24
+font_color = Color(1, 0.517647, 0.0313726, 1)
 
 [node name="BattleCharacter" type="Node2D"]
 script = ExtResource("1_cfgn3")
+select_drop_shadow_texture = ExtResource("2_5npet")
+target_drop_shadow_texture = ExtResource("3_imfyw")
+none_drop_shadow_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+select_player_drop_shadow_color = Color(0.356863, 0.541176, 0.992157, 1)
+selected_player_drop_shadow_color = Color(0.0980392, 0.380392, 0.984314, 1)
+select_enemy_drop_shadow_color = Color(1, 0.388235, 0.360784, 1)
+selected_enemy_drop_shadow_color = Color(1, 0.235294, 0.192157, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="CharacterSelectedUI" parent="." instance=ExtResource("2_8ncu5")]
+[node name="DropShadow" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DropShadowSprite" type="Sprite2D" parent="DropShadow"]
+unique_name_in_owner = true
+z_index = -1
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_5npet")
+
+[node name="HealthContainer" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_right = 27.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DropShadow/HealthContainer"]
+custom_minimum_size = Vector2(152, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -16.0
+offset_right = 76.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DropShadow/HealthContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -12.0
+offset_right = 72.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HealthProgressBar" type="ProgressBar" parent="DropShadow/HealthContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_irl1u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lvgu5")
+value = 25.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -11.5
+offset_right = 9.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HealthValueLabel" type="Label" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_yofai")
+
+[node name="Label2" type="Label" parent="DropShadow/HealthContainer/HBoxContainer/HealthProgressBar/HBoxContainer"]
+layout_mode = 2
+text = " HP"
+label_settings = SubResource("LabelSettings_yofai")
+
+[node name="HealthAnimationPlayer" type="AnimationPlayer" parent="DropShadow/HealthContainer"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_apx4f")
+}
+
+[node name="DamageDealtDisplay" type="Control" parent="DropShadow/HealthContainer"]
+unique_name_in_owner = true
 visible = false
-offset_left = -99.5
-offset_top = -99.5
-offset_right = 100.5
-offset_bottom = 100.5
-metadata/_edit_use_anchors_ = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -52.0
+offset_right = 13.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="DropShadow/HealthContainer/DamageDealtDisplay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+layout_mode = 2
+text = "-"
+label_settings = SubResource("LabelSettings_axc1f")
+
+[node name="DamageDealtDisplayValue" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_axc1f")
+
+[node name="Label3" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+layout_mode = 2
+text = " HP"
+label_settings = SubResource("LabelSettings_axc1f")
+
+[node name="WeakTag" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 28.0
+offset_right = 82.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="DropShadow/WeakTag"]
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 44.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[node name="Label" type="Label" parent="DropShadow/WeakTag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -22.5
+offset_right = 47.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+text = "Weak!"
+label_settings = SubResource("LabelSettings_men73")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChainTag" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 28.0
+offset_right = 82.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="DropShadow/ChainTag"]
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -14.0
+offset_right = 44.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[node name="Label" type="Label" parent="DropShadow/ChainTag"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -22.5
+offset_right = 47.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1309
+text = "Chain!"
+label_settings = SubResource("LabelSettings_3e8st")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DepressionUI" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="DepressionUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -245.0
+offset_right = -120.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="ColorRect" type="ColorRect" parent="DepressionUI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="Label" type="Label" parent="DepressionUI/ColorRect2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_top = -23.0
+offset_right = 100.0
+text = "Depressed"
+horizontal_alignment = 1
+
+[node name="DepressionContainer" type="VBoxContainer" parent="DepressionUI/ColorRect2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_constants/separation = 4
