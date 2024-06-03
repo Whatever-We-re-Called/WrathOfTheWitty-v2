@@ -144,20 +144,28 @@ func _start_damage_dealt_animation(damage_dealt: int):
 	health_animation_player.play("RESET")
 
 
-func update_depression(character: BattleCharacter, ability: Ability):
+func update_depression(attacker_character: BattleCharacter, ability: Ability):
 	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
 	if not character_info.insecurity_weaknesses.has(ability_insecurity): return
 	
-	if depression_assaulters.has(character):
+	if depression_assaulters.has(attacker_character):
 		clear_depression()
 	
-	depression_assaulters.append(character)
+	depression_assaulters.append(attacker_character)
 	
 	depression_ui.visible = true
+	var container = HBoxContainer.new()
+	container.custom_minimum_size.y = 20
+	container.add_theme_constant_override("separation", 0)
+	depression_container.add_child(container)
+	var texture_rect = TextureRect.new()
+	texture_rect.texture = attacker_character.character_info.icon_texture
+	texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	container.add_child(texture_rect)
 	var color_rect = ColorRect.new()
 	color_rect.color = Constants.get_insecurity_color(ability_insecurity)
-	color_rect.custom_minimum_size.y = 20
-	depression_container.add_child(color_rect) 
+	color_rect.custom_minimum_size.x = 72
+	container.add_child(color_rect) 
 
 
 func clear_depression():
