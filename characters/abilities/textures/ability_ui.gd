@@ -4,13 +4,16 @@ extends ColorRect
 @onready var ability_insult_label = %AbilityInsultLabel
 @onready var mana_value_label = %ManaValueLabel
 @onready var weak_tag = %WeakTag
+@onready var chain_tag = %ChainTag
 
-var enemy_character_info: CharacterInfo
+var player_character: BattleCharacter
+var enemy_character: BattleCharacter
 var ability: Ability
 
 
-func init(enemy_character_info: CharacterInfo, ability: Ability, index: int, selected_index: int, current_mana: int):
-	self.enemy_character_info = enemy_character_info
+func init(player_character: BattleCharacter, enemy_character: BattleCharacter, ability: Ability, index: int, selected_index: int, current_mana: int):
+	self.player_character = player_character
+	self.enemy_character = enemy_character
 	self.ability = ability
 	
 	ability_icon.texture = Constants.get_ability_type_icon(ability.type)
@@ -31,6 +34,12 @@ func init(enemy_character_info: CharacterInfo, ability: Ability, index: int, sel
 
 
 func update_tag():
-	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
-	var is_weak_to_ability = enemy_character_info.insecurity_weaknesses.has(ability_insecurity)
-	weak_tag.visible = is_weak_to_ability
+	weak_tag.visible = false
+	chain_tag.visible = false
+	
+	if enemy_character.get_depression_size() > 0 and not enemy_character.depression_assaulters.has(player_character):
+		chain_tag.visible = true
+	else:
+		var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
+		var is_weak_to_ability = enemy_character.character_info.insecurity_weaknesses.has(ability_insecurity)
+		weak_tag.visible = is_weak_to_ability

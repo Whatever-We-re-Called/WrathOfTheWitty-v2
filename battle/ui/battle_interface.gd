@@ -76,16 +76,16 @@ func update_choose_ability_ui(selected_index: int, party_selections: PartySelect
 	for child in ability_container.get_children():
 		child.queue_free()
 	
-	var selected_player_character_info = party_selections.get_selected_player_character().character_info
-	var selected_enemy_character_info = party_selections.get_selected_enemy_character().character_info
-	for i in range(selected_player_character_info.abilities.size()):
+	var selected_player_character = party_selections.get_selected_player_character()
+	var selected_enemy_character = party_selections.get_selected_enemy_character()
+	for i in range(selected_player_character.character_info.abilities.size()):
 		var ability_ui = ABILITY_UI.instantiate()
 		ability_container.add_child(ability_ui)
-		var ability = selected_player_character_info.abilities[i]
+		var ability = selected_player_character.character_info.abilities[i]
 		var is_selected = i == selected_index
-		ability_ui.init(selected_enemy_character_info, ability, i, selected_index, current_mana)
+		ability_ui.init(selected_player_character, selected_enemy_character, ability, i, selected_index, current_mana)
 	
-	ability_description_label.text = selected_player_character_info.abilities[selected_index].description
+	ability_description_label.text = selected_player_character.character_info.abilities[selected_index].description
 
 
 func update_mana_ui(mana_value: int):

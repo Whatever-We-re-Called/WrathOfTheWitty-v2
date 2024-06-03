@@ -25,7 +25,7 @@ func _update():
 	if Input.is_action_just_pressed("scroll_down"):
 		_increase_chosen_ability_index(1)
 	if Input.is_action_just_pressed("back"):
-		battle.reset_currently_selected_abilities()
+		battle.reset_current_selected_abilities()
 		battle.change_to_state("PlayerIdle")
 	if Input.is_action_just_pressed("confirm"):
 		if _can_afford_selected_ability():

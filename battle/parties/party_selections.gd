@@ -34,12 +34,13 @@ func set_selected_character_index(state: Constants.CharacterSelectState, index: 
 			if update_display:
 				updated_selected_character.emit(battle_character, update_display)
 				camera.update_position(battle_character)
-				battle_character.set_drop_shadow(state, battle.get_current_selected_abilities())
+				battle_character.set_drop_shadow(state)
+				battle_character.update_selected_tags(battle.get_current_selected_abilities(), _get_selected_character_of_other_selections(checked_character_selections))
 		else:
 			checked_character_selections[battle_character] = Constants.CharacterSelectState.NONE
 			if update_display:
 				battle_character.set_drop_shadow(Constants.CharacterSelectState.NONE)
-
+				battle_character.reset_selected_tags()
 
 
 func update_selected_character_index(state: Constants.CharacterSelectState, index_change: int, update_display: bool = false):
@@ -68,21 +69,25 @@ func update_selected_character_index(state: Constants.CharacterSelectState, inde
 			if update_display:
 				updated_selected_character.emit(battle_character, update_display)
 				camera.update_position(battle_character)
-				battle_character.set_drop_shadow(state, battle.get_current_selected_abilities())
+				battle_character.set_drop_shadow(state)
+				battle_character.update_selected_tags(battle.get_current_selected_abilities(), _get_selected_character_of_other_selections(checked_character_selections))
 		else:
 			checked_character_selections[battle_character] = Constants.CharacterSelectState.NONE
 			if update_display:
 				battle_character.set_drop_shadow(Constants.CharacterSelectState.NONE)
+				battle_character.reset_selected_tags()
 
 
 func hide_player_selected_state():
 	for player_character_selection in player_character_selections:
 		player_character_selection.set_drop_shadow(Constants.CharacterSelectState.NONE)
+		player_character_selection.reset_selected_tags()
 
 
 func hide_enemy_selected_state():
 	for enemy_character_selection in enemy_character_selections:
 		enemy_character_selection.set_drop_shadow(Constants.CharacterSelectState.NONE)
+		enemy_character_selection.reset_selected_tags()
 
 
 func get_selected_player_character() -> BattleCharacter:
@@ -117,3 +122,12 @@ func _get_checked_character_selections(state: Constants.CharacterSelectState) ->
 		Constants.CharacterSelectState.ENEMY_TARGETED:
 			return enemy_character_selections
 	return player_character_selections
+
+
+func _get_selected_character_of_other_selections(checked_character_selections: Dictionary) -> BattleCharacter:
+	if checked_character_selections == player_character_selections:
+		return get_selected_enemy_character()
+	elif checked_character_selections == enemy_character_selections:
+		return get_selected_player_character()
+	else:
+		return null

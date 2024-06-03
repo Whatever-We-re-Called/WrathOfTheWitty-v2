@@ -7,4 +7,4 @@
 [resource]
 script = ExtResource("1_mvpvk")
 characters = Array[Resource("res://characters/info/character_info.gd")]([ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("1_detn5"), ExtResource("2_ecdgh")])
-max_mana = 3
+max_mana = 12
