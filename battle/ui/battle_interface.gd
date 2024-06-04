@@ -72,12 +72,12 @@ func set_choose_ability_ui_visibility(is_visible: bool):
 	choose_ability_ui.visible = is_visible
 
 
-func update_choose_ability_ui(selected_index: int, party_selections: PartySelections, current_mana: int):
+func update_choose_ability_ui(selected_index: int, battle_selections: BattleSelections, current_mana: int):
 	for child in ability_container.get_children():
 		child.queue_free()
 	
-	var selected_player_character = party_selections.get_selected_player_character()
-	var selected_enemy_character = party_selections.get_selected_enemy_character()
+	var selected_player_character = battle_selections.get_selected_player_character()
+	var selected_enemy_character = battle_selections.get_selected_enemy_character()
 	for i in range(selected_player_character.character_info.abilities.size()):
 		var ability_ui = ABILITY_UI.instantiate()
 		ability_container.add_child(ability_ui)

@@ -2,19 +2,23 @@ extends BattleState
 
 
 func _enter():
-	battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, 0, true)
-	battle.party_selections.hide_enemy_selected_state()
+	battle.battle_selections.set_is_selected(battle.player_characters, false)
+	battle.battle_selections.update_selected_index(battle.player_characters, 0)
+	battle.battle_selections.update_ui(battle.player_characters, true, false, false)
+	battle.battle_selections.update_ui(battle.enemy_characters, false, false, false)
 
 
 func _exit():
-	battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECTED, 0, true)
+	battle.battle_selections.set_is_selected(battle.player_characters, true)
 
 
 func _update():
 	if Input.is_action_just_pressed("target_left"):
-		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, -1, true)
+		battle.battle_selections.update_selected_index(battle.player_characters, -1)
+		battle.battle_selections.update_ui(battle.player_characters, true, false, false)
 	if Input.is_action_just_pressed("target_right"):
-		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, 1, true)
+		battle.battle_selections.update_selected_index(battle.player_characters, 1)
+		battle.battle_selections.update_ui(battle.player_characters, true, false, false)
 	if Input.is_action_just_pressed("confirm"):
 		battle.change_to_state("PlayerIdle")
 	if Input.is_action_just_pressed("end_turn"):

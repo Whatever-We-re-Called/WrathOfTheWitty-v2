@@ -111,6 +111,7 @@ func _update_health_ui(display: bool):
 
 
 func update_selected_tags(abilities_to_check: Array[Ability], attacker_character: BattleCharacter = null):
+	reset_selected_tags()
 	if health_container.visible == true:
 		if attacker_character != null and get_depression_size() > 0 and not depression_assaulters.has(attacker_character):
 			chain_tag.visible = true

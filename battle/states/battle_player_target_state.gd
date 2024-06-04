@@ -2,25 +2,28 @@ extends BattleState
 
 
 func _enter():
-	battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.ENEMY_TARGET, 0, true)
+	var enemy_selected_index = battle.battle_selections.get_selected_index(battle.enemy_characters)
+	battle.battle_selections.set_targeted_index(battle.enemy_characters, enemy_selected_index)
+	battle.battle_selections.update_ui(battle.player_characters, true, false, false)
+	battle.battle_selections.update_ui(battle.enemy_characters, false, true, false)
 
 
 func _exit():
-	battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.ENEMY_TARGETED, 0, true)
+	var enemy_targeted_index = battle.battle_selections.get_targeted_index(battle.enemy_characters)
+	battle.battle_selections.set_selected_index(battle.enemy_characters, enemy_targeted_index)
 
 
 func _update():
 	if Input.is_action_just_pressed("target_left"):
-		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.ENEMY_TARGET, -1, true)
+		battle.battle_selections.update_targeted_index(battle.enemy_characters, -1)
+		battle.battle_selections.update_ui(battle.enemy_characters, false, true, false)
 	if Input.is_action_just_pressed("target_right"):
-		battle.party_selections.update_selected_character_index(Constants.CharacterSelectState.ENEMY_TARGET, 1, true)
+		battle.battle_selections.update_targeted_index(battle.enemy_characters, 1)
+		battle.battle_selections.update_ui(battle.enemy_characters, false, true, false)
 	if Input.is_action_just_pressed("back"):
-		battle.change_to_state("PlayerMenu")
-		#battle.update_selected_character_ui(battle.enemy_party_selection)
-		battle.battle_interface.set_choose_ability_ui_visibility(false)
+		battle.change_to_state("PlayerAbilityMenu")
 	if Input.is_action_just_pressed("confirm"):
 		battle.change_to_state("PlayerAttack")
-		battle.battle_interface.set_choose_ability_ui_visibility(false)
 
 
 func _update_controls_ui():

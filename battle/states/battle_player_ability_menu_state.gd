@@ -7,10 +7,13 @@ var current_mana: int
 var scroll_checks = 0
 
 func _enter():
+	battle.battle_selections.update_ui(battle.player_characters, true, false, false)
+	battle.battle_selections.update_ui(battle.enemy_characters, true, false, false)
+	
 	battle.battle_interface.set_choose_ability_ui_visibility(true)
 	
 	selected_ability_index = 0
-	character_info = battle.party_selections.get_selected_player_character().character_info
+	character_info = battle.battle_selections.get_selected_player_character().character_info
 	current_mana = battle.current_player_mana
 	_update_ability_ui()
 
@@ -25,10 +28,10 @@ func _update():
 	if Input.is_action_just_pressed("scroll_down"):
 		_increase_chosen_ability_index(1)
 	if Input.is_action_just_pressed("back"):
-		battle.reset_current_selected_abilities()
 		battle.change_to_state("PlayerIdle")
 	if Input.is_action_just_pressed("confirm"):
 		if _can_afford_selected_ability():
+			battle.update_current_selected_ability(character_info.abilities[selected_ability_index])
 			battle.change_to_state("PlayerTarget")
 
 
@@ -62,7 +65,7 @@ func _increase_chosen_ability_index(increment: int):
 
 
 func _update_ability_ui():
-	battle.battle_interface.update_choose_ability_ui(selected_ability_index, battle.party_selections, current_mana)
+	battle.battle_interface.update_choose_ability_ui(selected_ability_index, battle.battle_selections, current_mana)
 
 
 func _can_afford_selected_ability() -> bool:

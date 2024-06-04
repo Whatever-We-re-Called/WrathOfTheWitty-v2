@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=4 format=3 uid="uid://bwqo0qjeitnb7"]
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=5 format=3 uid="uid://bwqo0qjeitnb7"]
 
+[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/appearance_attack/one_strong_appearance_attack.tres" id="1_hjf7a"]
 [ext_resource type="Texture2D" uid="uid://dky6aplf5i78w" path="res://characters/textures/sprites/pngtree-executive-facing-away-from-the-camera-in-a-png-image_10075602.png" id="1_j0k0c"]
 [ext_resource type="Texture2D" uid="uid://cipjt5fmgcdj5" path="res://characters/textures/sprites/handsome-and-smart-businessman-in-black-suit-isolated-on-white-background-copy-space-free-png.png" id="2_xxvix"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="3_p2x6d"]
@@ -16,4 +17,4 @@ insecurity_blocks = Array[int]([])
 insecurity_heals = Array[int]([])
 insecurity_deflects = Array[int]([])
 max_health = 100
-abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([])
+abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([ExtResource("1_hjf7a")])

@@ -18,7 +18,7 @@ var player_party_character_roots: Array[Node2D]
 var enemy_party_character_roots: Array[Node2D]
 var player_characters: Array[BattleCharacter]
 var enemy_characters: Array[BattleCharacter]
-var party_selections: PartySelections
+var battle_selections: BattleSelections
 var current_player_mana: int
 var current_selected_abilities: Array[Ability]
 
@@ -102,9 +102,9 @@ func _get_root_index(number_on_team: int, team_size: int):
 
 
 func _init_party_selections():
-	party_selections = PartySelections.new()
-	party_selections.updated_selected_character.connect(update_selected_character)
-	party_selections.init(self)
+	battle_selections = BattleSelections.new()
+	battle_selections.updated_selected_character.connect(update_selected_character)
+	battle_selections.init(self)
 
 
 func change_to_state(new_state_name: String):
@@ -123,7 +123,7 @@ func change_to_state(new_state_name: String):
 	current_state = new_state
 
 
-func update_selected_character(selected_character: BattleCharacter, update_display: bool):
+func update_selected_character(selected_character: BattleCharacter):
 	camera.update_position(selected_character)
 	battle_interface.update_selected_character_info(selected_character)
 
@@ -132,10 +132,10 @@ func reset_for_player_turn():
 	current_player_mana = player_party.max_mana
 	battle_interface.update_mana_ui(current_player_mana)
 	
-	for i in range(player_characters.size()):
-		if player_characters[i].health >= 0:
-			party_selections.set_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, i, true)
-			break
+	#for i in range(player_characters.size()):
+		#if player_characters[i].health >= 0:
+			#party_selections.set_selected_character_index(Constants.CharacterSelectState.PLAYER_SELECT, i, true)
+			#break
 	
 	current_selected_abilities.clear()
 
