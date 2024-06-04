@@ -113,14 +113,15 @@ func _update_health_ui(display: bool):
 func update_selected_tags(abilities_to_check: Array[Ability], attacker_character: BattleCharacter = null):
 	reset_selected_tags()
 	if health_container.visible == true:
-		if attacker_character != null and get_depression_size() > 0 and not depression_assaulters.has(attacker_character):
-			chain_tag.visible = true
-		elif abilities_to_check.size() > 0:
-			for ability in abilities_to_check:
-				var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
-				var is_weak_to_ability = character_info.insecurity_weaknesses.has(ability_insecurity)
-				weak_tag.visible = is_weak_to_ability
-				break
+		for ability in abilities_to_check:
+			var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
+			var is_weak_to_ability = character_info.insecurity_weaknesses.has(ability_insecurity)
+			
+			if is_weak_to_ability:
+				if attacker_character != null and get_depression_size() > 0 and not depression_assaulters.has(attacker_character):
+					chain_tag.visible = true
+				elif abilities_to_check.size() > 0:
+					weak_tag.visible = true
 
 
 func reset_selected_tags():
