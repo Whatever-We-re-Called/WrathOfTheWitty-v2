@@ -39,7 +39,7 @@ func _enter():
 		var defender_characters = battle.battle_selections.get_all_targeted_player_characters()
 		BattleExecution.try_to_execute(used_ability, attacker_character, defender_characters, battle)
 		battle.battle_interface.update_player_character_info(battle.player_characters)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.5).timeout
 		
 		battle.battle_selections.set_is_targeting_all(battle.player_characters, false)
 		battle.camera.unlock()

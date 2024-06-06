@@ -22,7 +22,7 @@ func _execute_attack():
 	var attacker_character = battle.battle_selections.get_selected_player_character()
 	var defender_character = battle.battle_selections.get_all_targeted_enemy_characters()
 	BattleExecution.try_to_execute(selected_ability, attacker_character, defender_character, battle)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	battle.update_current_player_mana(-selected_ability.mana_cost)
 	battle.change_to_state("PlayerSelect")
