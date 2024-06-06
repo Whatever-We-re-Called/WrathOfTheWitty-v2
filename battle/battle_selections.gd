@@ -32,7 +32,7 @@ func update_selected_index(characters: Array[BattleCharacter], index_change: int
 
 
 func set_selected_index(characters: Array[BattleCharacter], index: int):
-	var clamped_index = index % characters.size()
+	var clamped_index = (index + characters.size()) % characters.size()
 	battle_selection_data[characters].selected_index = clamped_index
 	updated_selected_character.emit(characters[clamped_index])
 
@@ -61,7 +61,7 @@ func update_targeted_index(characters: Array[BattleCharacter], index_change: int
 
 
 func set_targeted_index(characters: Array[BattleCharacter], index: int):
-	var clamped_index = index % characters.size()
+	var clamped_index = (index + characters.size()) % characters.size()
 	battle_selection_data[characters].targeted_index = clamped_index
 	updated_selected_character.emit(characters[clamped_index])
 
