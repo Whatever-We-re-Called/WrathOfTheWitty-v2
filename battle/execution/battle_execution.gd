@@ -30,8 +30,6 @@ static func _execute(battle_execution_data: BattleExecutionData):
 	var execute_callable = Callable(BattleExecution, execution_function_name)
 	execute_callable.call(battle_execution_data)
 	
-	var attacker_character = battle_execution_data.attacker_character
-	battle_execution_data.defender_character.update_depression(attacker_character, battle_execution_data.ability)
 
 
 static func _one_appearance_attack(battle_execution_data: BattleExecutionData):
@@ -60,21 +58,28 @@ static func _all_strong_appearance_attack(battle_execution_data: BattleExecution
 
 
 static func _deal_damage(battle_execution_data: BattleExecutionData, damage_dealt: int):
+	var ability = battle_execution_data.ability
+	var attacker_character = battle_execution_data.attacker_character
 	var defender_character = battle_execution_data.defender_character
 	
 	var multiplier = 1.0
+	var attack_land_type = Constants.AttackLandType.HIT
 	
-	# Weakness Multiplier
+	# Weakness
 	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(battle_execution_data.ability.type)
 	if defender_character.character_info.insecurity_weaknesses.has(ability_insecurity):
-		multiplier += 0.25
+		if defender_character.get_depression_size() > 0:
+			attack_land_type = Constants.AttackLandType.CHAIN
+			multiplier += 0.25 + (0.25 * defender_character.get_depression_size())
+		else:
+			attack_land_type = Constants.AttackLandType.WEAK
+			multiplier += 0.25
 	
-	# Depression Multiplier
-	multiplier += 0.25 * defender_character.get_depression_size()
+	defender_character.update_depression(attacker_character, ability)
 	
+	# Apply Damage
 	var final_damage_dealt = damage_dealt * multiplier
-	defender_character.damage(final_damage_dealt)
+	defender_character.damage(final_damage_dealt, attack_land_type)
 	
 	# TODO Remove debug
-	var attacker_character = battle_execution_data.attacker_character
 	print("Damage dealt: ", final_damage_dealt, " (Base: ", damage_dealt, ", Multiplier: ", multiplier, ")")

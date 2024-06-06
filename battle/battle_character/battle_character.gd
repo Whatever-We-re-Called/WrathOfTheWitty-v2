@@ -19,9 +19,13 @@ class_name BattleCharacter extends Node2D
 @onready var depression_ui = %DepressionUI
 @onready var depression_container = %DepressionContainer
 @onready var chain_tag = %ChainTag
-@onready var health_animation_player = %HealthAnimationPlayer
 @onready var damage_dealt_display = %DamageDealtDisplay
 @onready var damage_dealt_display_value = %DamageDealtDisplayValue
+@onready var miss_display = %MissDisplay
+@onready var weak_display = %WeakDisplay
+@onready var chain_display = %ChainDisplay
+@onready var damage_dealt_animation_player = %DamageDealtAnimationPlayer
+@onready var damage_land_type_animation_player = %DamageLandTypeAnimationPlayer
 
 
 var character_info: CharacterInfo
@@ -129,21 +133,48 @@ func reset_selected_tags():
 	chain_tag.visible = false
 
 
-func damage(amount: int):
+func damage(amount: int, land_type: Constants.AttackLandType = Constants.AttackLandType.HIT):
 	health -= amount
 	health = clamp(health, 0, character_info.max_health)
 	_update_health_ui(true)
-	_start_damage_dealt_animation(amount)
+	_start_damage_dealt_animation(amount, land_type)
 
 
-func _start_damage_dealt_animation(damage_dealt: int):
-	damage_dealt_display.visible = true
-	damage_dealt_display_value.text = str(damage_dealt)
-	health_animation_player.play("damage_dealt_display_rise")
-	await health_animation_player.animation_finished
-	
-	damage_dealt_display.visible = false
-	health_animation_player.play("RESET")
+func _start_damage_dealt_animation(damage_dealt: int, land_type: Constants.AttackLandType):
+	if damage_dealt > 0:
+		damage_dealt_display.visible = true
+		damage_dealt_display_value.text = str(damage_dealt)
+		damage_dealt_animation_player.play("damage_dealt_display_rise")
+		_start_damage_land_type_animation(land_type)
+		await damage_dealt_animation_player.animation_finished
+		
+		damage_dealt_display.visible = false
+		damage_dealt_animation_player.play("RESET")
+	else:
+		miss_display.visible = true
+		damage_dealt_animation_player.play("miss_display_rise")
+		await damage_dealt_animation_player.animation_finished
+		
+		miss_display.visible = false
+		damage_dealt_animation_player.play("RESET")
+
+
+func _start_damage_land_type_animation(land_type: Constants.AttackLandType):
+	match land_type:
+		Constants.AttackLandType.WEAK:
+			weak_display.visible = true
+			damage_land_type_animation_player.play("weak_display_rise")
+			await damage_land_type_animation_player.animation_finished
+			
+			weak_display.visible = false
+			damage_land_type_animation_player.play("RESET")
+		Constants.AttackLandType.CHAIN:
+			chain_display.visible = true
+			damage_land_type_animation_player.play("chain_display_rise")
+			await damage_land_type_animation_player.animation_finished
+			
+			chain_display.visible = false
+			damage_land_type_animation_player.play("RESET")
 
 
 func update_depression(attacker_character: BattleCharacter, ability: Ability):

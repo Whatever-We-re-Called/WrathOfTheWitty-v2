@@ -39,6 +39,14 @@ enum AbilityType {
 	PASSIVE
 }
 
+enum AttackLandType {
+	MISS,
+	HIT,
+	WEAK,
+	CHAIN,
+	CRITICAL
+}
+
 enum CharacterSelectState {
 	NONE,
 	PLAYER_SELECT,
