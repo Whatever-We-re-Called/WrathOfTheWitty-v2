@@ -17,7 +17,7 @@ func init(player_character: BattleCharacter, enemy_character: BattleCharacter, a
 	self.ability = ability
 	
 	ability_icon.texture = Constants.get_ability_type_icon(ability.type)
-	ability_insult_label.text = ability.insult
+	ability_insult_label.text = ability.text
 	mana_value_label.text = str(ability.mana_cost)
 	z_index = 100 + -index
 	

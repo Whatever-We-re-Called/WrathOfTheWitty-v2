@@ -4,6 +4,9 @@ extends BattleState
 func _enter():
 	var enemy_selected_index = battle.battle_selections.get_selected_index(battle.enemy_characters)
 	battle.battle_selections.set_targeted_index(battle.enemy_characters, enemy_selected_index)
+	if battle.get_current_selected_ability().does_target_all():
+		battle.battle_selections.set_is_targeting_all(battle.enemy_characters, true)
+		battle.lock_camera_on_party(battle.enemy_characters)
 	battle.battle_selections.update_ui(battle.player_characters, true, false, false)
 	battle.battle_selections.update_ui(battle.enemy_characters, false, true, false)
 

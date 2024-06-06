@@ -1,14 +1,18 @@
 class_name BattleSelections extends Node
 
 signal updated_selected_character(selected_character: BattleCharacter)
+signal centered_camera(characters: Array[BattleCharacter])
 
 class BattleSelectionData:
 	var is_player_party = false
 	var is_selected = false
+	var is_selecting_all = false
 	var selected_index = 0
 	var is_targeted = false
+	var is_targeting_all = false
 	var targeted_index = 0
 	var is_self_targeted = false
+	var is_self_targeting_all = false
 	var self_targeted_index = 0
 
 var battle_selection_data: Dictionary
@@ -70,9 +74,23 @@ func set_is_targeted(characters: Array[BattleCharacter], value: bool):
 	battle_selection_data[characters].is_targeted = value
 
 
+func set_is_targeting_all(characters: Array[BattleCharacter], value: bool):
+	battle_selection_data[characters].is_targeting_all = value
+
+
 func get_targeted_player_character() -> BattleCharacter:
 	var index = battle_selection_data[battle.player_characters].targeted_index
 	return battle.player_characters[index]
+
+
+func get_all_targeted_player_characters() -> Array[BattleCharacter]:
+	if battle_selection_data[battle.player_characters].is_targeting_all:
+		return battle.player_characters
+	else:
+		var result: Array[BattleCharacter]
+		var index = battle_selection_data[battle.player_characters].targeted_index
+		result.append(battle.player_characters[index])
+		return result
 
 
 func get_targeted_enemy_character() -> BattleCharacter:
@@ -80,12 +98,22 @@ func get_targeted_enemy_character() -> BattleCharacter:
 	return battle.enemy_characters[index]
 
 
+func get_all_targeted_enemy_characters() -> Array[BattleCharacter]:
+	if battle_selection_data[battle.enemy_characters].is_targeting_all:
+		return battle.enemy_characters
+	else:
+		var result: Array[BattleCharacter]
+		var index = battle_selection_data[battle.enemy_characters].targeted_index
+		result.append(battle.enemy_characters[index])
+		return result
+
+
 func update_ui(characters: Array[BattleCharacter], show_selected: bool, show_targeted: bool, show_self_targeted: bool):
 	var selection_data = battle_selection_data[characters]
 	
 	for i in range(characters.size()):
 		var character = characters[i]
-		if show_selected and selection_data.selected_index == i:
+		if show_selected and (selection_data.selected_index == i or selection_data.is_selecting_all):
 			if selection_data.is_selected:
 				if selection_data.is_player_party:
 					character.set_drop_shadow(Constants.CharacterSelectState.PLAYER_SELECTED)
@@ -96,7 +124,7 @@ func update_ui(characters: Array[BattleCharacter], show_selected: bool, show_tar
 					character.set_drop_shadow(Constants.CharacterSelectState.PLAYER_SELECT)
 				else:
 					character.set_drop_shadow(Constants.CharacterSelectState.ENEMY_SELECT)
-		elif show_targeted and selection_data.targeted_index == i:
+		elif show_targeted and (selection_data.targeted_index == i or selection_data.is_targeting_all):
 			if selection_data.is_targeted:
 				if selection_data.is_player_party:
 					character.set_drop_shadow(Constants.CharacterSelectState.PLAYER_TARGETED)

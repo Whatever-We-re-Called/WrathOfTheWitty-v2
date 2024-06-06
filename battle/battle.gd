@@ -173,6 +173,11 @@ func reset_current_selected_abilities():
 	current_selected_abilities.clear()
 
 
+func lock_camera_on_party(characters: Array[BattleCharacter]):
+	var middle_index = characters.size() / 2
+	camera.lock_at_position(characters[middle_index])
+
+
 #func try_to_execute_selected_ability():
 	#var selected_ability = battle_interface.get_selected_ability(party_selections.get_selected_player_character().character_info)
 	#var ability_mana_cost = selected_ability.mana_cost

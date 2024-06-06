@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cdjmsog2417yv"]
+
+[ext_resource type="Script" path="res://characters/abilities/resources/ability.gd" id="1_8ktdn"]
+
+[resource]
+script = ExtResource("1_8ktdn")
+type = 0
+text = "Text TBD"
+description = "Deal strong Appearance damage to one opponent. Very small chance to inflict Fear."
+target_type = 0
+mana_cost = 3
+value = 10
+accuracy = 0.98

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://duyyj3m6uokh4"]
+
+[ext_resource type="Script" path="res://characters/abilities/resources/ability.gd" id="1_p2ap6"]
+
+[resource]
+script = ExtResource("1_p2ap6")
+type = 0
+text = "Text TBD"
+description = "Deal Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."
+target_type = 1
+exhausts = false
+mana_cost = 4
+value = 6
+accuracy = 0.95

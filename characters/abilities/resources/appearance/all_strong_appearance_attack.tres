@@ -4,6 +4,11 @@
 
 [resource]
 script = ExtResource("1_pte3e")
-name = ""
 type = 0
-execution_function_name = ""
+text = "Text TBD"
+description = "Deal strong Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."
+target_type = 1
+exhausts = true
+mana_cost = 6
+value = 10
+accuracy = 0.95

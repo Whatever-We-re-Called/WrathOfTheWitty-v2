@@ -7,6 +7,9 @@ var current_mana: int
 var scroll_checks = 0
 
 func _enter():
+	battle.battle_selections.set_is_targeting_all(battle.enemy_characters, false)
+	battle.camera.unlock()
+	
 	battle.battle_selections.update_ui(battle.player_characters, true, false, false)
 	battle.battle_selections.update_ui(battle.enemy_characters, true, false, false)
 	

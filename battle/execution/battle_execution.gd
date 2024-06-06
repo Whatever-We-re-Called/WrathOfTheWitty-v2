@@ -7,17 +7,18 @@ class BattleExecutionData:
 	var battle: Battle
 
 
-static func try_to_execute(ability: Ability, attacker_character: BattleCharacter, defender_character: BattleCharacter, battle: Battle):
+static func try_to_execute(ability: Ability, attacker_character: BattleCharacter, defender_characters: Array[BattleCharacter], battle: Battle):
 	var battle_execution_data = BattleExecutionData.new()
 	battle_execution_data.ability = ability
 	battle_execution_data.attacker_character = attacker_character
-	battle_execution_data.defender_character = defender_character
 	battle_execution_data.battle = battle
 	
 	var execution_count = 1
 	
-	for i in range(execution_count):
-		_execute(battle_execution_data)
+	for defender_character in defender_characters:
+		battle_execution_data.defender_character = defender_character
+		for i in range(execution_count):
+			_execute(battle_execution_data)
 
 
 static func _execute(battle_execution_data: BattleExecutionData):
@@ -25,7 +26,7 @@ static func _execute(battle_execution_data: BattleExecutionData):
 	regex.compile("[a-z,A-Z,0-9,_]*.tres")
 	var file_name = regex.search(battle_execution_data.ability.resource_path).get_string()
 	var execution_function_name = "_" + file_name.substr(0, file_name.length() - 5)
-	
+	 
 	var attacker_character = battle_execution_data.attacker_character
 	battle_execution_data.defender_character.update_depression(attacker_character, battle_execution_data.ability)
 	
@@ -33,16 +34,29 @@ static func _execute(battle_execution_data: BattleExecutionData):
 	execute_callable.call(battle_execution_data)
 
 
-static func _one_weak_appearance_attack(battle_execution_data: BattleExecutionData):
-	_deal_damage(battle_execution_data, 5)
-
-
-static func _one_normal_appearance_attack(battle_execution_data: BattleExecutionData):
-	_deal_damage(battle_execution_data, 10)
+static func _one_appearance_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
 
 
 static func _one_strong_appearance_attack(battle_execution_data: BattleExecutionData):
-	_deal_damage(battle_execution_data, 20)
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+
+
+static func _one_very_strong_appearance_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+
+
+static func _all_appearance_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+
+
+static func _all_strong_appearance_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
 
 
 static func _deal_damage(battle_execution_data: BattleExecutionData, damage_dealt: int):

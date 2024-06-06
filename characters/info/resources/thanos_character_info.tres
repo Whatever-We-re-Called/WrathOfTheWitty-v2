@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=7 format=3 uid="uid://ffybeur4n71a"]
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=9 format=3 uid="uid://ffybeur4n71a"]
 
-[ext_resource type="Resource" uid="uid://bbnqgjp7scccg" path="res://characters/abilities/resources/appearance_attack/one_weak_appearance_attack.tres" id="1_cywf5"]
+[ext_resource type="Resource" uid="uid://bbnqgjp7scccg" path="res://characters/abilities/resources/appearance/one_appearance_attack.tres" id="1_2jkmn"]
 [ext_resource type="Texture2D" uid="uid://wdqpjo0sn505" path="res://characters/textures/sprites/db0h5zn-1c6d1e03-24c2-4ac4-983e-e901e1492de3.png" id="1_o175m"]
 [ext_resource type="Texture2D" uid="uid://c6pglu77hr73j" path="res://characters/textures/sprites/Marvel-Villian-Thanos-PNG-Images.png" id="2_cxq0o"]
-[ext_resource type="Resource" uid="uid://cyq11087r06hu" path="res://characters/abilities/resources/appearance_attack/one_normal_appearance_attack.tres" id="2_ne03m"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_rqc3v"]
-[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/appearance_attack/one_strong_appearance_attack.tres" id="3_1e1xn"]
+[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/appearance/one_strong_appearance_attack.tres" id="2_ru172"]
+[ext_resource type="Resource" uid="uid://cyq11087r06hu" path="res://characters/abilities/resources/appearance/one_very_strong_appearance_attack.tres" id="3_54t0e"]
+[ext_resource type="Resource" uid="uid://duyyj3m6uokh4" path="res://characters/abilities/resources/appearance/all_appearance_attack.tres" id="4_6qsi8"]
+[ext_resource type="Resource" uid="uid://ckeyfmu8vjvp5" path="res://characters/abilities/resources/appearance/all_strong_appearance_attack.tres" id="5_f6x3q"]
 
 [resource]
 script = ExtResource("2_rqc3v")
@@ -19,4 +21,4 @@ insecurity_blocks = Array[int]([])
 insecurity_heals = Array[int]([])
 insecurity_deflects = Array[int]([])
 max_health = 100
-abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([ExtResource("1_cywf5"), ExtResource("2_ne03m"), ExtResource("3_1e1xn")])
+abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([ExtResource("1_2jkmn"), ExtResource("2_ru172"), ExtResource("3_54t0e"), ExtResource("4_6qsi8"), ExtResource("5_f6x3q")])
