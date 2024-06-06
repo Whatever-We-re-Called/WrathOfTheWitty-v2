@@ -154,6 +154,9 @@ func update_depression(attacker_character: BattleCharacter, ability: Ability):
 		clear_depression()
 	
 	depression_assaulters.append(attacker_character)
+	if depression_assaulters.size() >= PartyInfo.MAX_SIZE:
+		clear_depression()
+		return
 	
 	depression_ui.visible = true
 	var container = HBoxContainer.new()

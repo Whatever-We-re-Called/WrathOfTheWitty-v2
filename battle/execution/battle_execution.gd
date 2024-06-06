@@ -26,12 +26,12 @@ static func _execute(battle_execution_data: BattleExecutionData):
 	regex.compile("[a-z,A-Z,0-9,_]*.tres")
 	var file_name = regex.search(battle_execution_data.ability.resource_path).get_string()
 	var execution_function_name = "_" + file_name.substr(0, file_name.length() - 5)
-	 
-	var attacker_character = battle_execution_data.attacker_character
-	battle_execution_data.defender_character.update_depression(attacker_character, battle_execution_data.ability)
 	
 	var execute_callable = Callable(BattleExecution, execution_function_name)
 	execute_callable.call(battle_execution_data)
+	
+	var attacker_character = battle_execution_data.attacker_character
+	battle_execution_data.defender_character.update_depression(attacker_character, battle_execution_data.ability)
 
 
 static func _one_appearance_attack(battle_execution_data: BattleExecutionData):
@@ -62,8 +62,14 @@ static func _all_strong_appearance_attack(battle_execution_data: BattleExecution
 static func _deal_damage(battle_execution_data: BattleExecutionData, damage_dealt: int):
 	var defender_character = battle_execution_data.defender_character
 	
-	# Depression multiplier
 	var multiplier = 1.0
+	
+	# Weakness Multiplier
+	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(battle_execution_data.ability.type)
+	if defender_character.character_info.insecurity_weaknesses.has(ability_insecurity):
+		multiplier += 0.25
+	
+	# Depression Multiplier
 	multiplier += 0.25 * defender_character.get_depression_size()
 	
 	var final_damage_dealt = damage_dealt * multiplier
