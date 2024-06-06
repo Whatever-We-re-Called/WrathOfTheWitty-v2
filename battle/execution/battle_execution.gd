@@ -65,17 +65,21 @@ static func _deal_damage(battle_execution_data: BattleExecutionData, damage_deal
 	var multiplier = 1.0
 	var attack_land_type = Constants.AttackLandType.HIT
 	
-	# Weakness
-	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(battle_execution_data.ability.type)
-	if defender_character.character_info.insecurity_weaknesses.has(ability_insecurity):
-		if defender_character.get_depression_size() > 0:
-			attack_land_type = Constants.AttackLandType.CHAIN
-			multiplier += 0.25 + (0.25 * defender_character.get_depression_size())
-		else:
-			attack_land_type = Constants.AttackLandType.WEAK
-			multiplier += 0.25
-	
-	defender_character.update_depression(attacker_character, ability)
+	var rng = RandomNumberGenerator.new()
+	if rng.randf_range(0.0, 1.0) <= ability.accuracy:
+		var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(battle_execution_data.ability.type)
+		if defender_character.character_info.insecurity_weaknesses.has(ability_insecurity):
+			if defender_character.get_depression_size() > 0:
+				attack_land_type = Constants.AttackLandType.CHAIN
+				multiplier += 0.25 + (0.25 * defender_character.get_depression_size())
+			else:
+				attack_land_type = Constants.AttackLandType.WEAK
+				multiplier += 0.25
+		
+		defender_character.update_depression(attacker_character, ability)
+	else:
+		attack_land_type = Constants.AttackLandType.MISS
+		damage_dealt = 0
 	
 	# Apply Damage
 	var final_damage_dealt = damage_dealt * multiplier
