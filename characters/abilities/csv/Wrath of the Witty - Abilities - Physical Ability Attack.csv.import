@@ -1,0 +1,18 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+uid="uid://dvby5u7t8f3wx"
+path="res://.godot/imported/Wrath of the Witty - Abilities - Physical Ability Attack.csv-513bc3766b4ab5924c878980c55189e5.res"
+
+[deps]
+
+source_file="res://characters/abilities/csv/Wrath of the Witty - Abilities - Physical Ability Attack.csv"
+dest_files=["res://.godot/imported/Wrath of the Witty - Abilities - Physical Ability Attack.csv-513bc3766b4ab5924c878980c55189e5.res"]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=false
+force_float=true

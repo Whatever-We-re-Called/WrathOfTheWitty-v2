@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cyq11087r06hu"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cikpecn30u400"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_3rpkg"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_20wdu"]
 
 [resource]
-script = ExtResource("1_3rpkg")
+script = ExtResource("1_20wdu")
 type = 0
 text = "repulsive"
-description = "Deal very strong Appearance damage to one opponent. Very small chance to inflict Fear."
-target_type = 0
+description = "Deal very strong Appearance damage to one opponent. very small chance to inflict Fear."
+target_type = 1
 exhausts = true
 mana_cost = 4
 value = 16
 attack_accuracy = 0.98
-effect_accuracy = 0.15
+effect_accuracy = 0.98

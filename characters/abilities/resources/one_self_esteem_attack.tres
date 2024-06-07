@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://7id80yusj7lj"]
+
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_pwwxh"]
+
+[resource]
+script = ExtResource("1_pwwxh")
+type = 0
+text = "---"
+description = "Deal Self-esteem damage to one opponent. very small chance to inflict Despair."
+target_type = 1
+exhausts = false
+mana_cost = 2
+value = 6
+attack_accuracy = 0.98
+effect_accuracy = 0.98

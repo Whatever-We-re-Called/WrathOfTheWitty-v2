@@ -1,0 +1,18 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+uid="uid://bx30b12knvc2o"
+path="res://.godot/imported/Wrath of the Witty - Abilities - Self-esteem Attack.csv-ea37e30987325360c3dbc18f1b255eaa.res"
+
+[deps]
+
+source_file="res://characters/abilities/csv/Wrath of the Witty - Abilities - Self-esteem Attack.csv"
+dest_files=["res://.godot/imported/Wrath of the Witty - Abilities - Self-esteem Attack.csv-ea37e30987325360c3dbc18f1b255eaa.res"]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=false
+force_float=true

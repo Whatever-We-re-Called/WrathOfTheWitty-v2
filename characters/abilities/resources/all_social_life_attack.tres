@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bhfscmeedb7x2"]
+
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_pydcx"]
+
+[resource]
+script = ExtResource("1_pydcx")
+type = 0
+text = "---"
+description = "Deal Social Life damage to all opponents. Tiny chance to inflict Freeze for each opponent."
+target_type = 3
+exhausts = false
+mana_cost = 4
+value = 6
+attack_accuracy = 0.95
+effect_accuracy = 0.95

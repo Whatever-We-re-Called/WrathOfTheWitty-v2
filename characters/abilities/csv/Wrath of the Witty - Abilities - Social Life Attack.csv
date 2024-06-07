@@ -1,0 +1,6 @@
+File Name,Insult/Compliment,Description,Target Type,Exhausts,Mana Cost,Value,Attack Accuracy,Effect Accuracy
+one_social_life_attack,---,Deal Social Life damage to one opponent. very small chance to inflict Freeze.,One Other,FALSE,2,6,98.00%,98.00%
+one_strong_social_life_attack,---,Deal strong Social Life damage to one opponent. very small chance to inflict Freeze.,One Other,FALSE,3,10,98.00%,98.00%
+one_very_strong_social_life_attack,---,Deal very strong Social Life damage to one opponent. very small chance to inflict Freeze.,One Other,TRUE,4,16,98.00%,98.00%
+all_social_life_attack,---,Deal Social Life damage to all opponents. Tiny chance to inflict Freeze for each opponent.,All Other,FALSE,4,6,95.00%,95.00%
+all_strong_social_life_attack,---,Deal strong Social Life damage to one opponent. Tiny chance to inflict Freeze for each opponent.,All Other,TRUE,6,10,95.00%,95.00%

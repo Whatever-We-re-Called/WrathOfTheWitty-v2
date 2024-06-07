@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cu34kej3685yd"]
+
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_h7afr"]
+
+[resource]
+script = ExtResource("1_h7afr")
+type = 0
+text = "---"
+description = "Deal very strong Social Life damage to one opponent. very small chance to inflict Freeze."
+target_type = 1
+exhausts = true
+mana_cost = 4
+value = 16
+attack_accuracy = 0.98
+effect_accuracy = 0.98

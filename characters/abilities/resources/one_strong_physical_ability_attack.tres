@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bmhldlrhvtm7u"]
+
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_5e1x7"]
+
+[resource]
+script = ExtResource("1_5e1x7")
+type = 0
+text = "---"
+description = "Deal strong Physical Ability damage to one opponent. very small chance to inflict Burn."
+target_type = 1
+exhausts = false
+mana_cost = 3
+value = 10
+attack_accuracy = 0.98
+effect_accuracy = 0.98

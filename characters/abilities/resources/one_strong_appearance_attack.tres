@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cdjmsog2417yv"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b1meohv2iqbtc"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_8ktdn"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_5mydh"]
 
 [resource]
-script = ExtResource("1_8ktdn")
+script = ExtResource("1_5mydh")
 type = 0
 text = "disgusting"
-description = "Deal strong Appearance damage to one opponent. Very small chance to inflict Fear."
-target_type = 0
+description = "Deal strong Appearance damage to one opponent. very small chance to inflict Fear."
+target_type = 1
 exhausts = false
 mana_cost = 3
 value = 10
 attack_accuracy = 0.98
-effect_accuracy = 1.0
+effect_accuracy = 0.98
