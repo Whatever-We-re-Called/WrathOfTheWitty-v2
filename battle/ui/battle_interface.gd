@@ -48,6 +48,7 @@ func update_selected_character_info(battle_character: BattleCharacter):
 				display_insecurity_affinities = true
 		selected_character_insecurity_affinities_root.visible = display_insecurity_affinities
 
+
 func _get_insecurity_texture_rect(texture: Texture2D, color: Color) -> TextureRect:
 	var texture_rect = TextureRect.new()
 	texture_rect.texture = texture

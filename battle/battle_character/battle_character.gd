@@ -1,5 +1,7 @@
 class_name BattleCharacter extends Node2D
 
+signal updated_player_stats
+
 @export_group("Drop Shadow (Temp?)")
 @export var select_drop_shadow_texture: Texture2D
 @export var target_drop_shadow_texture: Texture2D
@@ -248,6 +250,8 @@ func apply_status_effect(status_effect: Constants.ActiveStatusEffect):
 		status_effect_texture.texture = Constants.get_status_effect_icon(status_effect)
 		status_effect_texture.modulate = Constants.get_status_effect_color(status_effect)
 		status_effect_texture.modulate.a /= 2 
+		
+		updated_player_stats.emit()
 
 
 func clear_active_status_effect():

@@ -29,7 +29,6 @@ static func _execute(battle_execution_data: BattleExecutionData):
 	
 	var execute_callable = Callable(BattleExecution, execution_function_name)
 	execute_callable.call(battle_execution_data)
-	
 
 
 static func _one_appearance_attack(battle_execution_data: BattleExecutionData):
@@ -60,6 +59,120 @@ static func _all_strong_appearance_attack(battle_execution_data: BattleExecution
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
 	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
+
+
+static func _one_self_esteem_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.DESPAIR)
+
+
+static func _one_strong_self_esteem_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.DESPAIR)
+
+
+static func _one_very_strong_self_esteem_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.DESPAIR)
+
+
+static func _all_self_esteem_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.DESPAIR)
+
+
+static func _one_intelligence_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.POISON)
+
+
+static func _one_strong_intelligence_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.POISON)
+
+
+static func _one_very_strong_intelligence_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.POISON)
+
+
+static func _all_intelligence_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.POISON)
+
+
+static func _all_strong_intelligence_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.POISON)
+
+
+static func _one_physical_ability_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.RAGE)
+
+
+static func _one_strong_physical_ability_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.RAGE)
+
+
+static func _one_very_strong_physical_ability_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.RAGE)
+
+
+static func _all_physical_ability_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.RAGE)
+
+
+static func _all_strong_physical_ability_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.RAGE)
+
+
+static func _one_social_life_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FREEZE)
+
+
+static func _one_strong_social_life_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FREEZE)
+
+
+static func _one_very_strong_social_life_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FREEZE)
+
+
+static func _all_social_life_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FREEZE)
+
+
+static func _all_strong_social_life_attack(battle_execution_data: BattleExecutionData):
+	var damage_dealt = battle_execution_data.ability.value
+	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FREEZE)
 
 
 static func _deal_damage(battle_execution_data: BattleExecutionData, damage_dealt: int):

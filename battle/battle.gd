@@ -64,6 +64,7 @@ func _init_player_party():
 		
 		var battle_character = BATTLE_CHARACTER.instantiate()
 		var player_root = player_party_character_roots[_get_root_index(i + 1, player_party_size)]
+		battle_character.updated_player_stats.connect(_on_updated_player_stats)
 		
 		player_root.add_child(battle_character)
 		var facing_direction: Constants.FacingDirection
@@ -176,6 +177,10 @@ func reset_current_selected_abilities():
 func lock_camera_on_party(characters: Array[BattleCharacter]):
 	var middle_index = characters.size() / 2
 	camera.lock_at_position(characters[middle_index])
+
+
+func _on_updated_player_stats():
+	battle_interface.update_player_character_info(player_characters)
 
 
 #func try_to_execute_selected_ability():

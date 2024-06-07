@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkppiyjy0xtl4"]
+[gd_scene load_steps=7 format=3 uid="uid://dkppiyjy0xtl4"]
 
 [ext_resource type="Script" path="res://battle/ui/player_character_info_ui.gd" id="1_bk8og"]
 [ext_resource type="Texture2D" uid="uid://c6pglu77hr73j" path="res://characters/textures/sprites/Marvel-Villian-Thanos-PNG-Images.png" id="1_mjgdd"]
+[ext_resource type="Texture2D" uid="uid://0e0ppcy2khur" path="res://characters/effects/status_effects/textures/hexagon_question.svg" id="3_cuv0q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygj5w"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
@@ -20,6 +21,26 @@ custom_minimum_size = Vector2(136, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("1_mjgdd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StatusEffectTexture" type="TextureRect" parent="PlayerIcon"]
+unique_name_in_owner = true
+modulate = Color(0.486275, 0.298039, 0.521569, 0.588235)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cuv0q")
 expand_mode = 1
 stretch_mode = 5
 
