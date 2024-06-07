@@ -7,6 +7,7 @@ func _enter():
 		var enemy_character = battle.enemy_characters[i]
 		if enemy_character.health <= 0: continue
 		
+		# Select enemy.
 		battle.battle_selections.update_ui(battle.player_characters, false, false, false)
 		battle.reset_current_selected_abilities()
 		
@@ -14,6 +15,10 @@ func _enter():
 		battle.battle_selections.update_ui(battle.enemy_characters, true, false, false)
 		await get_tree().create_timer(1).timeout
 		
+		battle.battle_selections.set_is_selected(battle.enemy_characters, true)
+		battle.battle_selections.update_ui(battle.enemy_characters, true, false, false)
+		
+		# Target player and choose ability.
 		var target_player_index = -1
 		while target_player_index < 0:
 			var test_target_player_index = rng.randi_range(0, battle.player_characters.size() - 1)
@@ -25,8 +30,6 @@ func _enter():
 		if used_ability.does_target_all():
 			battle.battle_selections.set_is_targeting_all(battle.player_characters, true)
 			battle.lock_camera_on_party(battle.player_characters)
-		battle.battle_selections.set_is_selected(battle.enemy_characters, true)
-		battle.battle_selections.update_ui(battle.enemy_characters, true, false, false)
 		battle.battle_selections.set_targeted_index(battle.player_characters, target_player_index)
 		battle.battle_selections.update_ui(battle.player_characters, false, true, false)
 		await get_tree().create_timer(1).timeout

@@ -236,6 +236,10 @@ func get_depression_size() -> int:
 	return depression_assaulters.size()
 
 
+func is_character_a_depression_assaulter(character: BattleCharacter):
+	return depression_assaulters.has(character)
+
+
 func apply_status_effect(status_effect: Constants.ActiveStatusEffect):
 	if active_status_effect == Constants.ActiveStatusEffect.NONE:
 		active_status_effect = status_effect
