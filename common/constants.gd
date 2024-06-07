@@ -2,6 +2,7 @@ extends Node
 
 const INSECURITY_TEXTURES = preload("res://common/insecurities/insecurity_textures.tres")
 const ABILITY_TEXTURES = preload("res://characters/abilities/textures/ability_textures.tres")
+const STATUS_EFFECT_TEXTURES = preload("res://characters/effects/status_effects/status_effect_textures.tres")
 
 enum Insecurity {
 	APPEARANCE,
@@ -57,6 +58,15 @@ enum CharacterSelectState {
 	ENEMY_SELECTED,
 	ENEMY_TARGET,
 	ENEMY_TARGETED
+}
+
+enum ActiveStatusEffect {
+	NONE,
+	FEAR,
+	DESPAIR,
+	POISON,
+	RAGE,
+	FREEZE
 }
 
 
@@ -152,7 +162,8 @@ func get_matching_ability_type_for_insecurity(insecurity: Insecurity) -> Ability
 			return AbilityType.PHYSICAL_ABILITY_ATTACK
 		Insecurity.SOCIAL_LIFE:
 			return AbilityType.SOCIAL_LIFE_ATTACK
-	return -1
+		_:
+			return -1
 
 
 func get_matching_insecurity_for_ability_type(ability_type: AbilityType) -> Insecurity:
@@ -167,5 +178,37 @@ func get_matching_insecurity_for_ability_type(ability_type: AbilityType) -> Inse
 			return Insecurity.PHYSICAL_ABILITY
 		AbilityType.SOCIAL_LIFE_ATTACK:
 			return Insecurity.SOCIAL_LIFE
-	return -1
-	
+		_:
+			return -1
+
+
+func get_status_effect_color(status_effect: ActiveStatusEffect) -> Color:
+	match status_effect:
+		ActiveStatusEffect.FEAR:
+			return STATUS_EFFECT_TEXTURES.fear_color
+		ActiveStatusEffect.DESPAIR:
+			return STATUS_EFFECT_TEXTURES.despair_color
+		ActiveStatusEffect.POISON:
+			return STATUS_EFFECT_TEXTURES.poison_color
+		ActiveStatusEffect.RAGE:
+			return STATUS_EFFECT_TEXTURES.rage_color
+		ActiveStatusEffect.FREEZE:
+			return STATUS_EFFECT_TEXTURES.freeze_color
+		_:
+			return Color.WHITE
+
+
+func get_status_effect_icon(status_effect: ActiveStatusEffect) -> Texture2D:
+	match status_effect:
+		ActiveStatusEffect.FEAR:
+			return STATUS_EFFECT_TEXTURES.fear_texture
+		ActiveStatusEffect.DESPAIR:
+			return STATUS_EFFECT_TEXTURES.despair_texture
+		ActiveStatusEffect.POISON:
+			return STATUS_EFFECT_TEXTURES.poison_texture
+		ActiveStatusEffect.RAGE:
+			return STATUS_EFFECT_TEXTURES.rage_texture
+		ActiveStatusEffect.FREEZE:
+			return STATUS_EFFECT_TEXTURES.freeze_texture
+		_:
+			return null

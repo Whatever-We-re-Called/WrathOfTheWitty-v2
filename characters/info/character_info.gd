@@ -17,3 +17,6 @@ class_name CharacterInfo extends Resource
 @export var max_health: int
 @export_group("Abilities")
 @export var abilities: Array[Ability]
+
+
+const FEAR_IGNORE_CHANCE = 0.7

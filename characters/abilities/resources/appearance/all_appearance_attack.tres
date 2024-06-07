@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource("1_p2ap6")
 type = 0
-text = "Text TBD"
+text = "bloated bunch"
 description = "Deal Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."
 target_type = 1
 exhausts = false
 mana_cost = 4
 value = 6
-accuracy = 0.95
+attack_accuracy = 0.95
+effect_accuracy = 0.1

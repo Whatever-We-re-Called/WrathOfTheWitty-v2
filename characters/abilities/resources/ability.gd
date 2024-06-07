@@ -9,7 +9,8 @@ enum TargetType { ONE, ALL }
 @export var exhausts: bool
 @export var mana_cost: int
 @export var value: int
-@export var accuracy: float
+@export var attack_accuracy: float
+@export var effect_accuracy: float
 
 
 func does_target_all() -> bool:

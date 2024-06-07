@@ -5,9 +5,11 @@
 [resource]
 script = ExtResource("1_pdsly")
 type = 0
-text = "Text TBD"
+text = "ugly"
 description = "Deal Appearance damage to one opponent. Very small chance to inflict Fear."
 target_type = 0
+exhausts = false
 mana_cost = 2
 value = 6
-accuracy = 0.98
+attack_accuracy = 0.98
+effect_accuracy = 0.15

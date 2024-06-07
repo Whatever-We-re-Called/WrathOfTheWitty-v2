@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffectTextures" load_steps=3 format=3 uid="uid://bk55exo8qyljd"]
+
+[ext_resource type="Texture2D" uid="uid://0e0ppcy2khur" path="res://characters/effects/status_effects/textures/hexagon_question.svg" id="1_o67y7"]
+[ext_resource type="Script" path="res://characters/effects/status_effects/status_effect_textures.gd" id="2_afs8y"]
+
+[resource]
+script = ExtResource("2_afs8y")
+fear_texture = ExtResource("1_o67y7")
+fear_color = Color(0.654902, 0.576471, 0.396078, 1)
+despair_color = Color(0, 0, 0, 1)
+poison_color = Color(0, 0, 0, 1)
+rage_color = Color(0, 0, 0, 1)
+freeze_color = Color(0, 0, 0, 1)

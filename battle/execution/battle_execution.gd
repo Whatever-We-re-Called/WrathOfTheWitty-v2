@@ -35,26 +35,31 @@ static func _execute(battle_execution_data: BattleExecutionData):
 static func _one_appearance_attack(battle_execution_data: BattleExecutionData):
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
 
 
 static func _one_strong_appearance_attack(battle_execution_data: BattleExecutionData):
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
 
 
 static func _one_very_strong_appearance_attack(battle_execution_data: BattleExecutionData):
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
 
 
 static func _all_appearance_attack(battle_execution_data: BattleExecutionData):
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
 
 
 static func _all_strong_appearance_attack(battle_execution_data: BattleExecutionData):
 	var damage_dealt = battle_execution_data.ability.value
 	_deal_damage(battle_execution_data, damage_dealt)
+	_apply_effect(battle_execution_data, Constants.ActiveStatusEffect.FEAR)
 
 
 static func _deal_damage(battle_execution_data: BattleExecutionData, damage_dealt: int):
@@ -66,7 +71,7 @@ static func _deal_damage(battle_execution_data: BattleExecutionData, damage_deal
 	var attack_land_type = Constants.AttackLandType.HIT
 	
 	var rng = RandomNumberGenerator.new()
-	if rng.randf_range(0.0, 1.0) <= ability.accuracy:
+	if rng.randf_range(0.0, 1.0) <= ability.attack_accuracy:
 		var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(battle_execution_data.ability.type)
 		if defender_character.character_info.insecurity_weaknesses.has(ability_insecurity):
 			if defender_character.get_depression_size() > 0:
@@ -87,3 +92,10 @@ static func _deal_damage(battle_execution_data: BattleExecutionData, damage_deal
 	
 	# TODO Remove debug
 	print("Damage dealt: ", final_damage_dealt, " (Base: ", damage_dealt, ", Multiplier: ", multiplier, ")")
+
+
+static func _apply_effect(battle_execution_data: BattleExecutionData, status_effect: Constants.ActiveStatusEffect):
+	var rng = RandomNumberGenerator.new()
+	if rng.randf_range(0.0, 1.0) <= battle_execution_data.ability.effect_accuracy:
+		var defender_player = battle_execution_data.defender_character
+		defender_player.apply_status_effect(status_effect)

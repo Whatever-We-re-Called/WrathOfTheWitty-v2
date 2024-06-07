@@ -37,8 +37,17 @@ func _enter():
 		
 		var attacker_character = battle.battle_selections.get_selected_enemy_character()
 		var defender_characters = battle.battle_selections.get_all_targeted_player_characters()
-		BattleExecution.try_to_execute(used_ability, attacker_character, defender_characters, battle)
-		battle.battle_interface.update_player_character_info(battle.player_characters)
+		var execute_ability = true
+		
+		if attacker_character.active_status_effect == Constants.ActiveStatusEffect.FEAR:
+			if rng.randf_range(0.0, 1.0) <= CharacterInfo.FEAR_IGNORE_CHANCE:
+				execute_ability = false
+		
+		if execute_ability:
+			BattleExecution.try_to_execute(used_ability, attacker_character, defender_characters, battle)
+		else:
+			attacker_character.start_ignore_animation()
+			battle.battle_selections.update_selected_index(battle.enemy_characters, 0)
 		await get_tree().create_timer(1.5).timeout
 		
 		battle.battle_selections.set_is_targeting_all(battle.player_characters, false)
@@ -47,7 +56,6 @@ func _enter():
 		battle.battle_selections.update_ui(battle.player_characters, true, false, false)
 		battle.battle_selections.set_is_targeted(battle.player_characters, false)
 		battle.battle_selections.update_ui(battle.player_characters, false, true, false)
-		
 	
 	battle.change_to_state("PlayerStart")
 

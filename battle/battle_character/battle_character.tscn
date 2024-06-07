@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgdi7awfb3m6t"]
+[gd_scene load_steps=21 format=3 uid="uid://dgdi7awfb3m6t"]
 
 [ext_resource type="Script" path="res://battle/battle_character/battle_character.gd" id="1_cfgn3"]
 [ext_resource type="Texture2D" uid="uid://c2amcsn72jp5q" path="res://characters/textures/selection_2.svg" id="2_5npet"]
@@ -17,7 +17,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageDealtDisplay:position")
+tracks/0/path = NodePath("../DamageDealtDisplay:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
+tracks/1/path = NodePath("../DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,7 +41,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
+tracks/2/path = NodePath("../DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -53,7 +53,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MissDisplay:position")
+tracks/3/path = NodePath("../MissDisplay:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -65,7 +65,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%MissDisplay:position")
+tracks/4/path = NodePath("../MissDisplay:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -77,7 +77,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%MissDisplay/Label:label_settings:font_color")
+tracks/5/path = NodePath("../MissDisplay/Label:label_settings:font_color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -89,7 +89,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%MissDisplay/Label:label_settings:outline_color")
+tracks/6/path = NodePath("../MissDisplay/Label:label_settings:outline_color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -101,7 +101,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("WeakDisplay:position")
+tracks/7/path = NodePath("../WeakDisplay:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -113,7 +113,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("WeakDisplay/Label:label_settings:outline_color")
+tracks/8/path = NodePath("../WeakDisplay/Label:label_settings:outline_color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -125,7 +125,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("WeakDisplay/Label:label_settings:font_color")
+tracks/9/path = NodePath("../WeakDisplay/Label:label_settings:font_color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -137,7 +137,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%ChainDisplay:position")
+tracks/10/path = NodePath("../ChainDisplay:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -149,7 +149,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("%ChainDisplay/Label:label_settings:font_color")
+tracks/11/path = NodePath("../ChainDisplay/Label:label_settings:font_color")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -161,7 +161,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("%ChainDisplay/Label:label_settings:outline_color")
+tracks/12/path = NodePath("../ChainDisplay/Label:label_settings:outline_color")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -170,6 +170,82 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../IgnoreDisplay:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, -32)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../IgnoreDisplay/Label:label_settings:font_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../IgnoreDisplay/Label:label_settings:outline_color")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bcgpb"]
+resource_name = "chain_display_rise"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ChainDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, -64), Vector2(-7, -160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ChainDisplay/Label:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.517647, 0.0313726, 1), Color(1, 0.517647, 0.0313726, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ChainDisplay/Label:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_37g8t"]
 resource_name = "damage_dealt_display_rise"
@@ -177,7 +253,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageDealtDisplay:position")
+tracks/0/path = NodePath("../DamageDealtDisplay:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,7 +265,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
+tracks/1/path = NodePath("../DamageDealtDisplay/HBoxContainer2/Label:label_settings:font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -201,7 +277,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
+tracks/2/path = NodePath("../DamageDealtDisplay/HBoxContainer2/Label:label_settings:outline_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -213,7 +289,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MissDisplay:position")
+tracks/3/path = NodePath("../MissDisplay:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -229,7 +305,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%MissDisplay:position")
+tracks/0/path = NodePath("../MissDisplay:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -241,7 +317,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%MissDisplay/Label:label_settings:font_color")
+tracks/1/path = NodePath("../MissDisplay/Label:label_settings:font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -253,47 +329,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%MissDisplay/Label:label_settings:outline_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bcgpb"]
-resource_name = "chain_display_rise"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%ChainDisplay:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-7, -64), Vector2(-7, -160)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%ChainDisplay/Label:label_settings:font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0.517647, 0.0313726, 1), Color(1, 0.517647, 0.0313726, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%ChainDisplay/Label:label_settings:outline_color")
+tracks/2/path = NodePath("../MissDisplay/Label:label_settings:outline_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -309,7 +345,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeakDisplay:position")
+tracks/0/path = NodePath("../WeakDisplay:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -321,7 +357,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeakDisplay/Label:label_settings:outline_color")
+tracks/1/path = NodePath("../WeakDisplay/Label:label_settings:outline_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -333,7 +369,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeakDisplay/Label:label_settings:font_color")
+tracks/2/path = NodePath("../WeakDisplay/Label:label_settings:font_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -343,14 +379,60 @@ tracks/2/keys = {
 "values": [Color(0, 1, 0, 1), Color(0, 1, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jg1oe"]
+resource_name = "ignore_display_rise"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../IgnoreDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, -32), Vector2(-7, -128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../IgnoreDisplay/Label:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.196078, 0.196078, 0.196078, 1), Color(0.196078, 0.196078, 0.196078, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../IgnoreDisplay/Label:label_settings:outline_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_apx4f"]
 _data = {
 "RESET": SubResource("Animation_kkuch"),
 "chain_display_rise": SubResource("Animation_bcgpb"),
 "damage_dealt_display_rise": SubResource("Animation_37g8t"),
+"ignore_display_rise": SubResource("Animation_jg1oe"),
 "miss_display_rise": SubResource("Animation_1tm7n"),
 "weak_display_rise": SubResource("Animation_dokdg")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_auh2w"]
+font_size = 24
+font_color = Color(0.196078, 0.196078, 0.196078, 1)
+outline_size = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_543ah"]
 font_size = 24
@@ -392,6 +474,24 @@ select_enemy_drop_shadow_color = Color(1, 0.388235, 0.360784, 1)
 selected_enemy_drop_shadow_color = Color(1, 0.235294, 0.192157, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StatusEffectTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.486275, 0.298039, 0.521569, 0.588235)
+custom_minimum_size = Vector2(192, 192)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -63.5
+offset_right = 64.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="DropShadow" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -481,36 +581,73 @@ layout_mode = 2
 text = " HP"
 label_settings = SubResource("LabelSettings_yofai")
 
-[node name="DamageDealtAnimationPlayer" type="AnimationPlayer" parent="DropShadow/HealthContainer"]
+[node name="DamageDealtAnimationPlayer" type="AnimationPlayer" parent="DropShadow"]
 unique_name_in_owner = true
+root_node = NodePath("../HealthContainer")
 libraries = {
 "": SubResource("AnimationLibrary_apx4f")
 }
 
-[node name="DamageLandTypeAnimationPlayer" type="AnimationPlayer" parent="DropShadow/HealthContainer"]
+[node name="DamageLandTypeAnimationPlayer" type="AnimationPlayer" parent="DropShadow"]
 unique_name_in_owner = true
+root_node = NodePath("../HealthContainer")
 libraries = {
 "": SubResource("AnimationLibrary_apx4f")
 }
 
-[node name="MissDisplay" type="Control" parent="DropShadow/HealthContainer"]
+[node name="IgnoreDisplay" type="Control" parent="DropShadow"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 8.00005
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="DropShadow/IgnoreDisplay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 13.0
-offset_bottom = -12.0
+offset_left = -27.5
+offset_top = -17.0
+offset_right = 27.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IGNORE"
+label_settings = SubResource("LabelSettings_auh2w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissDisplay" type="Control" parent="DropShadow"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="DropShadow/HealthContainer/MissDisplay"]
+[node name="Label" type="Label" parent="DropShadow/MissDisplay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -528,24 +665,24 @@ label_settings = SubResource("LabelSettings_543ah")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WeakDisplay" type="Control" parent="DropShadow/HealthContainer"]
+[node name="WeakDisplay" type="Control" parent="DropShadow"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -84.0
-offset_right = 13.0
-offset_bottom = -43.9999
+offset_left = -7.0
+offset_top = -64.0
+offset_right = 33.0
+offset_bottom = -23.9999
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="DropShadow/HealthContainer/WeakDisplay"]
+[node name="Label" type="Label" parent="DropShadow/WeakDisplay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -563,24 +700,24 @@ label_settings = SubResource("LabelSettings_1adv7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChainDisplay" type="Control" parent="DropShadow/HealthContainer"]
+[node name="ChainDisplay" type="Control" parent="DropShadow"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -180.0
-offset_right = 13.0
-offset_bottom = -140.0
+offset_left = -7.0
+offset_top = -160.0
+offset_right = 33.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="DropShadow/HealthContainer/ChainDisplay"]
+[node name="Label" type="Label" parent="DropShadow/ChainDisplay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -598,24 +735,24 @@ label_settings = SubResource("LabelSettings_oq1bo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamageDealtDisplay" type="Control" parent="DropShadow/HealthContainer"]
+[node name="DamageDealtDisplay" type="Control" parent="DropShadow"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -52.0
-offset_right = 13.0
-offset_bottom = -12.0
+offset_left = -7.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="DropShadow/HealthContainer/DamageDealtDisplay"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="DropShadow/DamageDealtDisplay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -631,18 +768,18 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+[node name="Label" type="Label" parent="DropShadow/DamageDealtDisplay/HBoxContainer2"]
 layout_mode = 2
 text = "-"
 label_settings = SubResource("LabelSettings_axc1f")
 
-[node name="DamageDealtDisplayValue" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+[node name="DamageDealtDisplayValue" type="Label" parent="DropShadow/DamageDealtDisplay/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "10"
 label_settings = SubResource("LabelSettings_axc1f")
 
-[node name="Label3" type="Label" parent="DropShadow/HealthContainer/DamageDealtDisplay/HBoxContainer2"]
+[node name="Label3" type="Label" parent="DropShadow/DamageDealtDisplay/HBoxContainer2"]
 layout_mode = 2
 text = " HP"
 label_settings = SubResource("LabelSettings_axc1f")

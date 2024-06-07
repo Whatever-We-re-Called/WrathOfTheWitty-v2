@@ -26,12 +26,16 @@ class_name BattleCharacter extends Node2D
 @onready var chain_display = %ChainDisplay
 @onready var damage_dealt_animation_player = %DamageDealtAnimationPlayer
 @onready var damage_land_type_animation_player = %DamageLandTypeAnimationPlayer
+@onready var status_effect_texture = %StatusEffectTexture
+@onready var ignore_display = %IgnoreDisplay
 
 
 var character_info: CharacterInfo
 var facing_direction: Constants.FacingDirection
 var health: int
 var depression_assaulters: Array[BattleCharacter]
+var active_status_effect: Constants.ActiveStatusEffect = Constants.ActiveStatusEffect.NONE
+var turns_with_active_status_effect: int = 0
 
 
 func init(character_info: CharacterInfo, facing_direction: Constants.FacingDirection):
@@ -62,6 +66,14 @@ func _init_sprite_2d():
 	var sprite_height = sprite_2d.texture.get_height()
 	global_position.y -= (sprite_height * character_info.texture_scale.y) / 2.0
 	drop_shadow.global_position.y += (sprite_height * character_info.texture_scale.y) / 2.0
+
+
+func handle_turn_start():
+	handle_active_status_effect()
+
+
+func handle_turn_end():
+	pass
 
 
 func set_drop_shadow(select_state: Constants.CharacterSelectState):
@@ -177,6 +189,15 @@ func _start_damage_land_type_animation(land_type: Constants.AttackLandType):
 			damage_land_type_animation_player.play("RESET")
 
 
+func start_ignore_animation():
+	ignore_display.visible = true
+	damage_land_type_animation_player.play("ignore_display_rise")
+	await damage_land_type_animation_player.animation_finished
+	
+	ignore_display.visible = false
+	damage_land_type_animation_player.play("RESET")
+
+
 func update_depression(attacker_character: BattleCharacter, ability: Ability):
 	var ability_insecurity = Constants.get_matching_insecurity_for_ability_type(ability.type)
 	if not character_info.insecurity_weaknesses.has(ability_insecurity): return
@@ -213,3 +234,30 @@ func clear_depression():
 
 func get_depression_size() -> int:
 	return depression_assaulters.size()
+
+
+func apply_status_effect(status_effect: Constants.ActiveStatusEffect):
+	if active_status_effect == Constants.ActiveStatusEffect.NONE:
+		active_status_effect = status_effect
+		turns_with_active_status_effect = 0
+		sprite_2d.modulate = Constants.get_status_effect_color(status_effect)
+		status_effect_texture.texture = Constants.get_status_effect_icon(status_effect)
+		status_effect_texture.modulate = Constants.get_status_effect_color(status_effect)
+		status_effect_texture.modulate.a /= 2 
+
+
+func reset_active_status_effect():
+	active_status_effect = Constants.ActiveStatusEffect.NONE
+	turns_with_active_status_effect = 0
+	sprite_2d.modulate = Color.WHITE
+	status_effect_texture.texture = null
+
+
+func handle_active_status_effect():
+	match active_status_effect:
+		Constants.ActiveStatusEffect.FEAR:
+			match turns_with_active_status_effect:
+				1:
+					turns_with_active_status_effect += 1
+				2:
+					reset_active_status_effect()
