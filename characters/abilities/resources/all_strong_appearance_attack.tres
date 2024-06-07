@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://d0wsm8i5gbskv"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cqjmqly667kos"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_n6efv"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_upfor"]
 
 [resource]
-script = ExtResource("1_n6efv")
+script = ExtResource("1_upfor")
 type = 0
 text = "greasy slobs"
 description = "Deal strong Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."
@@ -12,4 +12,4 @@ exhausts = true
 mana_cost = 6
 value = 10
 attack_accuracy = 0.95
-effect_accuracy = 0.95
+effect_accuracy = 0.1

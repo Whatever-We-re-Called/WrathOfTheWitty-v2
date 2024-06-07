@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bdyxdq2bwmpjv"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://d7cl58knjwry"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_w2beh"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_4mdps"]
 
 [resource]
-script = ExtResource("1_w2beh")
-type = 0
-text = "---"
+script = ExtResource("1_4mdps")
+type = 2
+text = "pathetic"
 description = "Deal very strong Self-esteem damage to one opponent. very small chance to inflict Despair."
 target_type = 1
 exhausts = true
 mana_cost = 4
 value = 16
 attack_accuracy = 0.98
-effect_accuracy = 0.98
+effect_accuracy = 0.15

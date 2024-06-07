@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bauwnut4cf2aa"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ut3h0a487c2h"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_b8nxy"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_ccoyi"]
 
 [resource]
-script = ExtResource("1_b8nxy")
-type = 0
-text = "---"
+script = ExtResource("1_ccoyi")
+type = 4
+text = "lonely"
 description = "Deal Social Life damage to one opponent. very small chance to inflict Freeze."
 target_type = 1
 exhausts = false
 mana_cost = 2
 value = 6
 attack_accuracy = 0.98
-effect_accuracy = 0.98
+effect_accuracy = 0.15

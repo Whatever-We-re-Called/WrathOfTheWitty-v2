@@ -1,6 +1,0 @@
-File Name,Insult/Compliment,Description,Target Type,Exhausts,Mana Cost,Value,Attack Accuracy,Effect Accuracy
-one_intelligence_attack,---,Deal Intelligence damage to one opponent. very small chance to inflict Poison.,One Other,FALSE,2,6,98.00%,98.00%
-one_strong_intelligence_attack,---,Deal strong Intelligence damage to one opponent. very small chance to inflict Poison.,One Other,FALSE,3,10,98.00%,98.00%
-one_very_strong_intelligence_attack,---,Deal very strong Intelligence damage to one opponent. very small chance to inflict Poison.,One Other,TRUE,4,16,98.00%,98.00%
-all_intelligence_attack,---,Deal Intelligence damage to all opponents. Tiny chance to inflict Poison for each opponent.,All Other,FALSE,4,6,95.00%,95.00%
-all_strong_intelligence_attack,---,Deal strong Intelligence damage to one opponent. Tiny chance to inflict Poison for each opponent.,All Other,TRUE,6,10,95.00%,95.00%

@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b3bvcibpok783"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dej85i2y3davg"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_rjhjy"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_dmfl5"]
 
 [resource]
-script = ExtResource("1_rjhjy")
+script = ExtResource("1_dmfl5")
 type = 0
 text = "ugly"
-description = "Deal Appearance damage to one opponent. very small chance to inflict Fear."
+description = "Deal Appearance damage to one opponent. Very small chance to inflict Fear."
 target_type = 1
 exhausts = false
 mana_cost = 2
 value = 6
 attack_accuracy = 0.98
-effect_accuracy = 0.98
+effect_accuracy = 0.15

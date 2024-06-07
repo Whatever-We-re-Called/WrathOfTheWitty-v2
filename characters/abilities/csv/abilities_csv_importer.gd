@@ -1,21 +1,31 @@
 @tool
 class_name AbilitiesCSVImporter extends Resource
 
+signal finished_processing_type
+
 @export var import: bool = false:
 	set(value):
-		_import()
+		if not is_running:
+			_import()
+@export var is_running: bool = false
+
+var current_csv_file = null
 
 const ABILITIES_PATH = "res://characters/abilities/"
+const TEMP_PATH = "res://characters/abilities/temp.csv"
 const RESOURCE_SAVE_PATH = "res://characters/abilities/resources/"
-const CSV_FILES = [
-	preload("res://characters/abilities/csv/Wrath of the Witty - Abilities - Appearance Attack.csv"),
-	preload("res://characters/abilities/csv/Wrath of the Witty - Abilities - Intelligence Attack.csv"),
-	preload("res://characters/abilities/csv/Wrath of the Witty - Abilities - Physical Ability Attack.csv"),
-	preload("res://characters/abilities/csv/Wrath of the Witty - Abilities - Self-esteem Attack.csv"),
-	preload("res://characters/abilities/csv/Wrath of the Witty - Abilities - Social Life Attack.csv")
-]
+const GID_NUMBERS = {
+	Constants.AbilityType.APPEARANCE_ATTACK: 0,
+	Constants.AbilityType.SELF_ESTEEM_ATTACK: 2144088841,
+	Constants.AbilityType.INTELLIGENCE_ATTACK: 74296121,
+	Constants.AbilityType.PHYSICAL_ABILITY_ATTACK: 1184434838,
+	Constants.AbilityType.SOCIAL_LIFE_ATTACK: 1104121680
+}
+
 
 func _import():
+	is_running = true
+	
 	var dir = DirAccess.open(ABILITIES_PATH)
 	if dir != null:
 		dir.remove(RESOURCE_SAVE_PATH)
@@ -23,11 +33,29 @@ func _import():
 	else:
 		dir.make_dir_recursive(RESOURCE_SAVE_PATH)
 	
-	for csv_file in CSV_FILES:
+	var requester = HTTPRequest.new()
+	EditorInterface.get_edited_scene_root().add_child(requester)
+	requester.request_completed.connect(_on_request_completed)
+	for gid_number in GID_NUMBERS:
+		requester.request("https://docs.google.com/spreadsheets/d/1e8IUim1I__UI9z75k35SvM6t0nqz7aL4TIBNw-VkA1w/gviz/tq?tqx=out:csv&gid=" + str(GID_NUMBERS[gid_number]))
+		await requester.request_completed
+		
+		dir = DirAccess.open(ABILITIES_PATH)
+		if dir.file_exists(TEMP_PATH):
+			dir.remove(TEMP_PATH)
+		var file = FileAccess.open(TEMP_PATH, FileAccess.WRITE)
+		file.store_string(current_csv_file)
+		file.close()
+		EditorInterface.get_resource_filesystem().scan_sources()
+		await EditorInterface.get_edited_scene_root().get_tree().create_timer(0.5).timeout
+		
+		var csv_file = load("res://characters/abilities/temp.csv")
+		
 		for i in range(csv_file.records.size() - 1):
 			var row_data = csv_file.records[i + 1]
 			
 			var ability_resource = Ability.new()
+			ability_resource.type = gid_number
 			ability_resource.text = row_data[1]
 			ability_resource.description = row_data[2]
 			ability_resource.target_type = _get_enum_of_target_type_string(row_data[3])
@@ -43,6 +71,16 @@ func _import():
 			var file_path = RESOURCE_SAVE_PATH + row_data[0] + ".tres"
 			print("Creating: " + file_path)
 			ResourceSaver.save(ability_resource, file_path)
+	
+	dir.remove(TEMP_PATH)
+	dir.remove(TEMP_PATH + ".import")
+	is_running = false
+	print("Finished!")
+
+
+
+func _on_request_completed(result, response_code, headers, body):
+	current_csv_file = body.get_string_from_utf8()
 
 
 func _get_enum_of_target_type_string(value: String) -> Ability.TargetType:

@@ -2,3 +2,4 @@
 .godot/
 */subproject/*
 *.tmp
+*/temp.csv

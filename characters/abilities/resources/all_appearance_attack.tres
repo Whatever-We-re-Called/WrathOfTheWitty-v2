@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bi3su2bn1mmw0"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://72gxeejljog7"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_vw84c"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_oe8up"]
 
 [resource]
-script = ExtResource("1_vw84c")
+script = ExtResource("1_oe8up")
 type = 0
 text = "bloated bunch"
 description = "Deal Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."
@@ -12,4 +12,4 @@ exhausts = false
 mana_cost = 4
 value = 6
 attack_accuracy = 0.95
-effect_accuracy = 0.95
+effect_accuracy = 0.1

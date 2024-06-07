@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://clbulf63rm4y0"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b532f8fn3l28u"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_upnaf"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_anqtn"]
 
 [resource]
-script = ExtResource("1_upnaf")
-type = 0
-text = "---"
+script = ExtResource("1_anqtn")
+type = 2
+text = "stupid"
 description = "Deal Intelligence damage to one opponent. very small chance to inflict Poison."
 target_type = 1
 exhausts = false
 mana_cost = 2
 value = 6
 attack_accuracy = 0.98
-effect_accuracy = 0.98
+effect_accuracy = 0.15
