@@ -5,7 +5,7 @@ signal finished_processing_type
 
 @export var import: bool = false:
 	set(value):
-		if not is_running:
+		if value and not is_running:
 			_import()
 @export var is_running: bool = false
 
@@ -28,6 +28,10 @@ func _import():
 	
 	var dir = DirAccess.open(ABILITIES_PATH)
 	if dir != null:
+		var resource_dir = DirAccess.open(RESOURCE_SAVE_PATH)
+		for file in resource_dir.get_files():
+			resource_dir.remove(file)
+		EditorInterface.get_resource_filesystem().scan()
 		dir.remove(RESOURCE_SAVE_PATH)
 		dir.make_dir_recursive(RESOURCE_SAVE_PATH)
 	else:
@@ -46,7 +50,7 @@ func _import():
 		var file = FileAccess.open(TEMP_PATH, FileAccess.WRITE)
 		file.store_string(current_csv_file)
 		file.close()
-		EditorInterface.get_resource_filesystem().scan_sources()
+		EditorInterface.get_resource_filesystem().scan()
 		await EditorInterface.get_edited_scene_root().get_tree().create_timer(0.5).timeout
 		
 		var csv_file = load("res://characters/abilities/temp.csv")
@@ -75,7 +79,7 @@ func _import():
 	dir.remove(TEMP_PATH)
 	dir.remove(TEMP_PATH + ".import")
 	is_running = false
-	print("Finished!")
+	print("Finished! Reload the project for the changes to take effect.")
 
 
 

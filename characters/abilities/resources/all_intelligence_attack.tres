@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ctbqghto3uthu"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b36or0tcy0b1j"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_34fv6"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_kuptf"]
 
 [resource]
-script = ExtResource("1_34fv6")
+script = ExtResource("1_kuptf")
 type = 2
 text = "pea brains"
 description = "Deal Intelligence damage to all opponents. Tiny chance to inflict Poison for each opponent."

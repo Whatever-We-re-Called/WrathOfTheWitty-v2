@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://byhoa6imlhod8"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dv0rx2vl4ea13"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_ltvja"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_n0qqh"]
 
 [resource]
-script = ExtResource("1_ltvja")
+script = ExtResource("1_n0qqh")
 type = 4
 text = "social rejects"
 description = "Deal strong Social Life damage to one opponent. Tiny chance to inflict Freeze for each opponent."

@@ -14,4 +14,4 @@ insecurity_blocks = Array[int]([])
 insecurity_heals = Array[int]([])
 insecurity_deflects = Array[int]([])
 max_health = 100
-abilities = Array[Resource("res://characters/abilities/resources/ability.gd")]([])
+abilities = Array[Resource("res://characters/abilities/ability.gd")]([])

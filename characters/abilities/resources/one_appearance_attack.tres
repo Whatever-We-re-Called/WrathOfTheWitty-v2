@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dej85i2y3davg"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dtoxnke324s0a"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_dmfl5"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_0k6i2"]
 
 [resource]
-script = ExtResource("1_dmfl5")
+script = ExtResource("1_0k6i2")
 type = 0
 text = "ugly"
 description = "Deal Appearance damage to one opponent. Very small chance to inflict Fear."

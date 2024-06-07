@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dhhtc0d4p3cu2"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://uc41xlgmruxi"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_dx66t"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_5qhgj"]
 
 [resource]
-script = ExtResource("1_dx66t")
+script = ExtResource("1_5qhgj")
 type = 3
 text = "wimpy"
 description = "Deal Physical Ability damage to one opponent. very small chance to inflict Burn."

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://c65homomhcakr"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b4n677bfng63d"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_x31l3"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_ouncw"]
 
 [resource]
-script = ExtResource("1_x31l3")
+script = ExtResource("1_ouncw")
 type = 3
 text = "fragile"
 description = "Deal very strong Physical Ability damage to one opponent. very small chance to inflict Burn."

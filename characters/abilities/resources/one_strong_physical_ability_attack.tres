@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://q70iro46ovpt"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://c2f7yy24emp24"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_oc8tg"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_t8ebc"]
 
 [resource]
-script = ExtResource("1_oc8tg")
+script = ExtResource("1_t8ebc")
 type = 3
 text = "feeble"
 description = "Deal strong Physical Ability damage to one opponent. very small chance to inflict Burn."

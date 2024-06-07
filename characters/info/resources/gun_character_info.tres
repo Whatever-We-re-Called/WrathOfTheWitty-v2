@@ -5,7 +5,13 @@
 
 [resource]
 script = ExtResource("2_soadv")
+name = ""
 forward_facing_texture = ExtResource("1_ooi3f")
 texture_scale = Vector2(0.25, 0.25)
 insecurity_weaknesses = Array[int]([])
+insecurity_strengths = Array[int]([])
+insecurity_blocks = Array[int]([])
+insecurity_heals = Array[int]([])
+insecurity_deflects = Array[int]([])
 max_health = 100
+abilities = Array[Resource("res://characters/abilities/ability.gd")]([])

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://jhw11t22ve3u"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bjetnbkb3jsl6"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_caalo"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_x7amk"]
 
 [resource]
-script = ExtResource("1_caalo")
-type = 2
+script = ExtResource("1_x7amk")
+type = 1
 text = "clumsy"
 description = "Deal Self-esteem damage to one opponent. very small chance to inflict Despair."
 target_type = 1

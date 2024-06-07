@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cqjmqly667kos"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cxemcts5bl0ci"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_upfor"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_x4q8o"]
 
 [resource]
-script = ExtResource("1_upfor")
+script = ExtResource("1_x4q8o")
 type = 0
 text = "greasy slobs"
 description = "Deal strong Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent."

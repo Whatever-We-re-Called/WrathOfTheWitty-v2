@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://d7cl58knjwry"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://6j0krqfg8awc"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_4mdps"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_lully"]
 
 [resource]
-script = ExtResource("1_4mdps")
-type = 2
+script = ExtResource("1_lully")
+type = 1
 text = "pathetic"
 description = "Deal very strong Self-esteem damage to one opponent. very small chance to inflict Despair."
 target_type = 1

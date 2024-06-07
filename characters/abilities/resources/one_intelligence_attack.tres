@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://b532f8fn3l28u"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dgtfhelpa71lv"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_anqtn"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_vfnri"]
 
 [resource]
-script = ExtResource("1_anqtn")
+script = ExtResource("1_vfnri")
 type = 2
 text = "stupid"
 description = "Deal Intelligence damage to one opponent. very small chance to inflict Poison."

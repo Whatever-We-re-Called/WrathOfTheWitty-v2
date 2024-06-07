@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://xi56utuwinqy"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dcfncdh283ogy"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_0qmrp"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_hi76x"]
 
 [resource]
-script = ExtResource("1_0qmrp")
+script = ExtResource("1_hi76x")
 type = 2
 text = "blockhead dunces"
 description = "Deal strong Intelligence damage to one opponent. Tiny chance to inflict Poison for each opponent."

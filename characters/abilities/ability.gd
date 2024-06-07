@@ -14,4 +14,4 @@ enum TargetType { ONE_SELF, ONE_OTHER, ALL_SELF, ALL_OTHER }
 
 
 func does_target_all() -> bool:
-	return target_type == TargetType.ALL_SELF or type == TargetType.ALL_OTHER
+	return target_type == TargetType.ALL_SELF or target_type == TargetType.ALL_OTHER

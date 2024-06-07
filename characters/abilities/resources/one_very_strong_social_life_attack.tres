@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://5o312lhlprpn"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://s4y80u6hu7pb"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_s3aik"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_54a7e"]
 
 [resource]
-script = ExtResource("1_s3aik")
+script = ExtResource("1_54a7e")
 type = 4
 text = "unlikeable"
 description = "Deal very strong Social Life damage to one opponent. very small chance to inflict Freeze."

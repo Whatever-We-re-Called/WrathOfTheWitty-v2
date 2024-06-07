@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dwa53f25gj8fd"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bia56g5scjafd"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_h6u56"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_4ddkp"]
 
 [resource]
-script = ExtResource("1_h6u56")
-type = 2
+script = ExtResource("1_4ddkp")
+type = 1
 text = "lowlife scum"
 description = "Deal strong Self-esteem damage to one opponent. Tiny chance to inflict Despair for each opponent."
 target_type = 3

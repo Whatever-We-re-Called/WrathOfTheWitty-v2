@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ckea36jfwjs0h"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://c6kxvbx7tqeyp"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_uxwml"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_velf8"]
 
 [resource]
-script = ExtResource("1_uxwml")
+script = ExtResource("1_velf8")
 type = 4
 text = "akward"
 description = "Deal strong Social Life damage to one opponent. very small chance to inflict Freeze."

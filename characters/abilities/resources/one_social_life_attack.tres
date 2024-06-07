@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ut3h0a487c2h"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://cq74rpdl684kw"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_ccoyi"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_rcsuh"]
 
 [resource]
-script = ExtResource("1_ccoyi")
+script = ExtResource("1_rcsuh")
 type = 4
 text = "lonely"
 description = "Deal Social Life damage to one opponent. very small chance to inflict Freeze."

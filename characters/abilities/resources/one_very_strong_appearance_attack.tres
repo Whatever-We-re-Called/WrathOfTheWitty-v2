@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://iuunmjcp7vct"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://ckk4vhumdxofq"]
 
-[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_flu0s"]
+[ext_resource type="Script" path="res://characters/abilities/ability.gd" id="1_38fcq"]
 
 [resource]
-script = ExtResource("1_flu0s")
+script = ExtResource("1_38fcq")
 type = 0
 text = "repulsive"
 description = "Deal very strong Appearance damage to one opponent. Very small chance to inflict Fear."
