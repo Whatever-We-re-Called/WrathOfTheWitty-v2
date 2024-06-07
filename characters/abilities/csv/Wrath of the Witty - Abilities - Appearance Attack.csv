@@ -1,0 +1,6 @@
+File Name,Insult/Compliment,Description,Target Type,Exhausts,Mana Cost,Value,Attack Accuracy,Effect Accuracy
+one_appearance_attack,ugly,Deal Appearance damage to one opponent. very small chance to inflict Fear.,One Other,FALSE,2,6,98.00%,98.00%
+one_strong_appearance_attack,disgusting,Deal strong Appearance damage to one opponent. very small chance to inflict Fear.,One Other,FALSE,3,10,98.00%,98.00%
+one_very_strong_appearance_attack,repulsive,Deal very strong Appearance damage to one opponent. very small chance to inflict Fear.,One Other,TRUE,4,16,98.00%,98.00%
+all_appearance_attack,bloated bunch,Deal Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent.,All Other,FALSE,4,6,95.00%,95.00%
+all_strong_appearance_attack,greasy slobs,Deal strong Appearance damage to all opponents. Tiny chance to inflict Fear for each opponent.,All Other,TRUE,6,10,95.00%,95.00%

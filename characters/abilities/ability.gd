@@ -1,6 +1,6 @@
 class_name Ability extends Resource
 
-enum TargetType { ONE, ALL }
+enum TargetType { ONE_SELF, ONE_OTHER, ALL_SELF, ALL_OTHER }
 
 @export var type: Constants.AbilityType
 @export var text: String = "Text TBD"
@@ -14,4 +14,4 @@ enum TargetType { ONE, ALL }
 
 
 func does_target_all() -> bool:
-	return target_type == TargetType.ALL
+	return target_type == TargetType.ALL_SELF or type == TargetType.ALL_OTHER

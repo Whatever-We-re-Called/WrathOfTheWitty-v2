@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AbilitiesCSVImporter" load_steps=2 format=3 uid="uid://cylqkrhliu48a"]
+
+[ext_resource type="Script" path="res://characters/abilities/csv/abilities_csv_importer.gd" id="1_7wkd6"]
+
+[resource]
+script = ExtResource("1_7wkd6")
+import = false

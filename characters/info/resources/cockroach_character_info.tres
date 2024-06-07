@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterInfo" load_steps=4 format=3 uid="uid://bmgh8hlp1fr3y"]
 
 [ext_resource type="Texture2D" uid="uid://cmk8at32roe7v" path="res://characters/textures/sprites/concept2_floor.png" id="1_0ck8o"]
-[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/appearance/one_strong_appearance_attack.tres" id="1_d4m7s"]
+[ext_resource type="Resource" uid="uid://cdjmsog2417yv" path="res://characters/abilities/resources/one_strong_appearance_attack.tres" id="1_d4m7s"]
 [ext_resource type="Script" path="res://characters/info/character_info.gd" id="2_wekuq"]
 
 [resource]
