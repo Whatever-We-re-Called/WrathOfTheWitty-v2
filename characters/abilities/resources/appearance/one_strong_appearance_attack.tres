@@ -12,4 +12,4 @@ exhausts = false
 mana_cost = 3
 value = 10
 attack_accuracy = 0.98
-effect_accuracy = 0.15
+effect_accuracy = 1.0

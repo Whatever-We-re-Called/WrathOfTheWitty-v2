@@ -246,7 +246,7 @@ func apply_status_effect(status_effect: Constants.ActiveStatusEffect):
 		status_effect_texture.modulate.a /= 2 
 
 
-func reset_active_status_effect():
+func clear_active_status_effect():
 	active_status_effect = Constants.ActiveStatusEffect.NONE
 	turns_with_active_status_effect = 0
 	sprite_2d.modulate = Color.WHITE
@@ -254,10 +254,14 @@ func reset_active_status_effect():
 
 
 func handle_active_status_effect():
-	match active_status_effect:
-		Constants.ActiveStatusEffect.FEAR:
-			match turns_with_active_status_effect:
-				1:
-					turns_with_active_status_effect += 1
-				2:
-					reset_active_status_effect()
+	var rng = RandomNumberGenerator.new()
+	match turns_with_active_status_effect:
+		0:
+			turns_with_active_status_effect += 1
+		1:
+			if rng.randf_range(0.0, 1.0) <= 0.5:
+				turns_with_active_status_effect += 1
+			else:
+				clear_active_status_effect()
+		2:
+			clear_active_status_effect()
