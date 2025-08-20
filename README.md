@@ -1,0 +1,4 @@
+Wrath of the Witty (v2) was a roguelike game where the player would accumulate fragments of insults and use them to string together bigger insults in collaboration with their party members in an attempt to mentally destroy their opponents. This version of Wrath of the Witty spawned from our distaste toward the previous version’s genre, as well as our interest in exploring a more humorous side of the card-insulting idea. With this version, we explored how the game mechanic would work in a more traditional RPG roguelike system. The mechanics were simpler and theoretically funnier. Though we relatively quickly grew bored of the idea, thinking we'd not be able to effectively pull it off.
+
+<img src="https://github.com/user-attachments/assets/a69abbc1-3e5f-4831-be6a-6cea27851b96" width="500">
+<img src="https://github.com/user-attachments/assets/10fa6f29-ebdd-4cea-b735-66ff25f3bbd2" width="500">
